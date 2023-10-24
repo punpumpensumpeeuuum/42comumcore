@@ -49,6 +49,10 @@ B = ft_lstnew.c \
 
 B_OBJ = $(B:.c=.o)
 
+CC = cc
+
+CFLAGS = -Wall -Werror -Wextra
+
 RM = rm -f
 
 all:	$(NAME)

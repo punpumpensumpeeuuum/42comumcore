@@ -1,24 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstiter.c                                       :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dinda-si <dinda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/11 17:29:13 by dinda-si          #+#    #+#             */
-/*   Updated: 2023/10/16 15:28:17 by dinda-si         ###   ########.fr       */
+/*   Created: 2023/10/04 11:37:46 by dinda-si          #+#    #+#             */
+/*   Updated: 2023/10/20 11:25:41 by dinda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstiter(t_list *lst, void (*f)(void *))
+char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
-	if (!f || !lst)
-		return ;
-	while (lst != NULL)
+	size_t	i;
+	size_t	j;
+	char	*m;
+
+	j = 0;
+	i = 0;
+	m = (char *)big;
+	if (!little[j])
+		return (m);
+	while ((i < len) && m[i])
 	{
-		f(lst->content);
-		lst = lst->next;
+		j = 0;
+		while (m[i + j] == little[j] && (i + j < len))
+		{
+			j++;
+			if (little[j] == '\0')
+				return (&m[i]);
+		}
+		i++;
 	}
+	return (0);
 }
