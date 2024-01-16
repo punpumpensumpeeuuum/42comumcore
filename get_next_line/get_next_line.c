@@ -6,11 +6,17 @@
 /*   By: dinda-si <dinda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 12:41:55 by dinda-si          #+#    #+#             */
-/*   Updated: 2023/11/28 17:40:58 by dinda-si         ###   ########.fr       */
+/*   Updated: 2024/01/16 11:08:43 by dinda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+
+char	*ft_line(char *str)
+{
+	free(str);
+	return (NULL);
+}
 
 char	*ft_joinfree(char *str, char *buffer)
 {
@@ -66,10 +72,7 @@ char	*get_next_line(int fd)
 		bufferclean(buffer);
 	}
 	if (str[0] == '\0')
-	{
-		free(str);
-		return (NULL);
-	}
+		return (ft_line(str));
 	return (str);
 }
 

@@ -6,7 +6,7 @@
 /*   By: dinda-si <dinda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 12:57:03 by dinda-si          #+#    #+#             */
-/*   Updated: 2023/11/28 15:26:47 by dinda-si         ###   ########.fr       */
+/*   Updated: 2024/01/16 11:13:46 by dinda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # include <fcntl.h>
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 100000
+#  define BUFFER_SIZE 10
 # endif
 
 char	*get_next_line(int fd);
