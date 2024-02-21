@@ -6,7 +6,7 @@
 /*   By: dinda-si <dinda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 15:25:53 by dinda-si          #+#    #+#             */
-/*   Updated: 2024/02/16 18:26:44 by dinda-si         ###   ########.fr       */
+/*   Updated: 2024/02/21 13:01:09 by dinda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@ void	pa(t_moves **lsta, t_moves **lstb)
 {
 	t_moves	*node;
 
-	if (!lstb)
+	if (!*lstb)
 		return ;
-	node = first(lstb);
+	node = popfirst(lstb);
 	ft_lstadd_front(lsta, node);
 	ft_printf("pa\n");
 }
@@ -27,9 +27,9 @@ void	pb(t_moves **lsta, t_moves **lstb)
 {
 	t_moves	*node;
 
-	if (!lsta)
+	if (!*lsta)
 		return ;
-	node = first(lsta);
+	node = popfirst(lsta);
 	ft_lstadd_front(lstb, node);
 	ft_printf("pb\n");
 }
@@ -38,7 +38,7 @@ void	ra(t_moves **lst)
 {
 	t_moves *node;
 	
-	node = first(lst);
+	node = popfirst(lst);
 	ft_lstadd_back(lst, node);
 	ft_printf("ra\n");
 }
@@ -47,7 +47,7 @@ void	rb(t_moves **lst)
 {
 	t_moves *node;
 	
-	node = first(lst);
+	node = popfirst(lst);
 	ft_lstadd_back(lst, node);
 	ft_printf("rb\n");
 }
