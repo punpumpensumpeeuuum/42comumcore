@@ -6,7 +6,7 @@
 /*   By: dinda-si <dinda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 16:45:21 by dinda-si          #+#    #+#             */
-/*   Updated: 2024/02/12 13:04:27 by dinda-si         ###   ########.fr       */
+/*   Updated: 2024/02/26 16:37:16 by dinda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,14 +53,13 @@ char				*ft_substr(char const *s, unsigned int start, size_t len);
 int					ft_tolower(int c);
 int					ft_toupper(int c);
 
-typedef struct s_list
+typedef struct s_atoa
 {
-	void			*content;
-	struct s_list	*next;
+	long int		sitio;
+	long int		content;
+	struct s_atoa	*next;
+}	t_list;
 
-}					t_list;
-
-t_list				*ft_lstnew(void *content);
 int					ft_lstsize(t_list *lst);
 void				ft_lstadd_front(t_list **lst, t_list *new);
 void				ft_lstadd_back(t_list **lst, t_list *new);

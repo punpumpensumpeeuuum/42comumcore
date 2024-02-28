@@ -1,6 +1,6 @@
 NAME = push_swap
 
-SRCS = main.c
+SRCS = main.c revrotate.c swaps.c checkers.c 
 
 CC = cc
 

@@ -37,15 +37,10 @@ SRCS = ft_isalpha.c \
 
 OBJ = $(SRCS:.c=.o)
 
-B = ft_lstnew.c \
-	ft_lstsize.c \
+B =	ft_lstsize.c \
 	ft_lstadd_front.c \
 	ft_lstadd_back.c \
 	ft_lstlast.c \
-	ft_lstdelone.c \
-	ft_lstclear.c \
-	ft_lstiter.c \
-	ft_lstmap.c
 
 B_OBJ = $(B:.c=.o)
 
@@ -58,10 +53,7 @@ RM = rm -f
 all:	$(NAME)
 
 $(NAME):	$(OBJ)
-			ar rcs $(NAME) $(OBJ)
-
-bonus:	$(B_OBJ)
-			ar rcs $(NAME) $(B_OBJ)
+			ar rcs $(NAME) $(OBJ) $(B_OBJ)
 
 clean:
 			$(RM) $(OBJ) $(B_OBJ)

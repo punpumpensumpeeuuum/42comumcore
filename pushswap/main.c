@@ -1,49 +1,62 @@
-// /* ************************************************************************** */
-// /*                                                                            */
-// /*                                                        :::      ::::::::   */
-// /*   main.c                                             :+:      :+:    :+:   */
-// /*                                                    +:+ +:+         +:+     */
-// /*   By: dinda-si <dinda-si@student.42.fr>          +#+  +:+       +#+        */
-// /*                                                +#+#+#+#+#+   +#+           */
-// /*   Created: 2024/01/31 14:17:24 by dinda-si          #+#    #+#             */
-// /*   Updated: 2024/01/31 15:17:48 by dinda-si         ###   ########.fr       */
-// /*                                                                            */
-// /* ************************************************************************** */
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dinda-si <dinda-si@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/01/31 14:17:24 by dinda-si          #+#    #+#             */
+/*   Updated: 2024/02/28 17:06:05 by dinda-si         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-// #include "pushswap.h"
+#include "pushswap.h"
 
-// int	main(int argc, char **argv)
-// {
-// 	int i = 1;
-// 	int j = 0;
+t_list	*createnode(char *split)
+{
+	t_list	*stack;
+	
+	stack = malloc(sizeof(t_list));
+	if (!stack)
+		return (NULL);
+	stack->content = ft_atoi(split);
+	stack->sitio = 0;
+	stack->next = NULL;
+	return (stack);
+}
 
-// 	if (argc < 2)
-// 	{
-// 		write(1, "Error\n", 6);
-// 		return(0);
-// 	}
-// 	while (argv[i])
-// 	{
-// 		while (argv[i][j])
-// 		{
-// 			if ((argv[i][j] < 48 || argv[i][j] > 57) && argv[i][j] && argv[i][j] != 45)
-// 			{
-// 				write(1, "Error\n", 6);
-// 				return (0);
-// 			}
-// 			j++;
-// 		}
-// 		j = 0;
-// 		i++;
-// 	}
-// 	i = 1;
-// 	while (argv[i])
-// 	{
-// 		while (argv[i][j])
-// 			write(1, &argv[i][j++], 1);
-// 		if (argv[i + 1])
-// 			write(1, " ", 1);
-// 		j = 0;
-// 		i++;
-// 	}
-// }
+t_list	*apendicar(t_list *stack, char **split)
+{
+	t_list	*head;
+	int	i;
+
+	i = 0;
+	head = createnode(split[i]);
+	stack = head;
+	while (split[i])
+	{
+		stack->next = createnode(split[i]);
+		stack = stack->next;
+		i++;
+	}
+	i = 0;
+	while (split[i])
+		free(split[i++]);
+	free(split);
+	return (stack);
+}
+
+int	main(int argc, char **argv)
+{
+	t_list	*a;
+	t_list	*b;
+	char	**split;
+
+	split = ft_split(argv[1], ' ');
+	a = NULL;
+	b = NULL;
+	if (argc < 2)
+		return (0);
+	a = apendicar(a, split);
+	minisort(a);
+}

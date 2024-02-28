@@ -6,26 +6,26 @@
 /*   By: dinda-si <dinda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 11:44:51 by dinda-si          #+#    #+#             */
-/*   Updated: 2024/02/21 16:33:50 by dinda-si         ###   ########.fr       */
+/*   Updated: 2024/02/22 15:36:05 by dinda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
 
-t_moves	*popfirst(t_moves **list)
+t_list	*popfirst(t_list **list)
 {
-	t_moves	*tmp;
+	t_list	*tmp;
 
 	tmp = *list;
-	list = (*list)->next;
+	list = &(*list)->next;
 	tmp->next = NULL;
 	return (tmp);
 }
 
-void	sa(t_moves **list)
+void	sa(t_list **list)
 {
-	t_moves	*tmp1;
-	t_moves	*tmp2;
+	t_list	*tmp1;
+	t_list	*tmp2;
 
 	tmp1 = popfirst(list);
 	tmp2 = popfirst(list);
@@ -34,10 +34,10 @@ void	sa(t_moves **list)
 	ft_printf("sa\n");
 }
 
-void	sb(t_moves **list)
+void	sb(t_list **list)
 {
-	t_moves	*tmp1;
-	t_moves	*tmp2;
+	t_list	*tmp1;
+	t_list	*tmp2;
 
 	tmp1 = popfirst(list);
 	tmp2 = popfirst(list);
@@ -46,7 +46,7 @@ void	sb(t_moves **list)
 	ft_printf("sb\n");
 }
 
-void	ss(t_moves **a, t_moves **b)
+void	ss(t_list **a, t_list **b)
 {
 	sa(a);
 	sb(b);
