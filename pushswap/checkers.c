@@ -6,29 +6,19 @@
 /*   By: dinda-si <dinda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 15:01:17 by dinda-si          #+#    #+#             */
-/*   Updated: 2024/02/28 17:10:41 by dinda-si         ###   ########.fr       */
+/*   Updated: 2024/03/01 13:16:06 by dinda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
 
-int	checkdup(t_list **a)
+int	checkdup(t_list *list, int *n)
 {
-	t_list	*tmp1;
-	t_list	*tmp2;
-
-	tmp1 = *a;
-	tmp2 = *a;
-	while (tmp1->next != NULL)
+	while (list)
 	{
-		while (tmp2->next != NULL)
-		{
-			tmp2 = tmp2->next;
-			if (tmp1->content == tmp2->content)
-				return (1);
-		}
-		tmp1 = tmp1->next;
-		tmp2 = tmp1;
+		if (*n == *list->content)
+			return (1);
+		list = list->next;
 	}
 	return (0);
 }
@@ -39,16 +29,16 @@ int	checknumb(int argc, char **argv)
 	int	j;
 
 	j = 1;
-	i = 0;
 	while (j < argc)
 	{
+		i = 0;
 		if (argv[j][i] == '-' && argv[j][i] == '0' && argv[j][i])
 			return (0);
 		if (argv[j][i] != '-' && argv[j][i] != '+')
 			i++;
 		while (argv[j][i])
 		{
-			if (!(argv[j][i] >= '0' && argv[j][i] <= '9'))
+			if (!(argv[j][i] >= 48 && argv[j][i] <= 57))
 				return (0);
 			i++;
 		}
@@ -74,4 +64,17 @@ void	minisort(t_list *a)
 		}
 		tmp1 = tmp1->next;
 	}
+}
+
+int	checknext(t_list *lst)
+{
+	if (!lst)
+		return (0);
+	while (lst->next)
+	{
+		if (lst->content > lst->next->content)
+			return (0);
+		lst = lst->next;
+	}
+	return (1);
 }

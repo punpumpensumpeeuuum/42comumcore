@@ -1,28 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memset.c                                        :+:      :+:    :+:   */
+/*   sort.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dinda-si <dinda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/02 14:00:48 by dinda-si          #+#    #+#             */
-/*   Updated: 2023/10/16 16:40:50 by dinda-si         ###   ########.fr       */
+/*   Created: 2024/02/29 11:46:12 by dinda-si          #+#    #+#             */
+/*   Updated: 2024/02/29 12:08:15 by dinda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "pushswap.h"
 
-void	*ft_memset(void *str, int qualquercaracter, size_t n)
+void	sort3(t_list **a)
 {
-	size_t			i;
-	unsigned char	*temp;
-
-	i = 0;
-	temp = (unsigned char *)str;
-	while (i < n)
+	if ((*a)->content > ((*a)->next)->content)
+		sa(a);
+	if (((*a)->next)->content > (((*a)->next)->next)->content)
 	{
-		temp[i] = (unsigned char)qualquercaracter;
-		i++;
+		ra(a);
+		sa(a);
 	}
-	return (str);
 }
