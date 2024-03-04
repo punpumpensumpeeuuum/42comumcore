@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checkers.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dinda-si <dinda-si@student.42.fr>          +#+  +:+       +#+        */
+/*   By: elemesmo <elemesmo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 15:01:17 by dinda-si          #+#    #+#             */
-/*   Updated: 2024/03/01 13:16:06 by dinda-si         ###   ########.fr       */
+/*   Updated: 2024/03/04 20:11:40 by elemesmo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ int	checknext(t_list *lst)
 		return (0);
 	while (lst->next)
 	{
-		if (lst->content > lst->next->content)
+		if (*lst->content > *lst->next->content)
 			return (0);
 		lst = lst->next;
 	}

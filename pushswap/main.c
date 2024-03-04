@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dinda-si <dinda-si@student.42.fr>          +#+  +:+       +#+        */
+/*   By: elemesmo <elemesmo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 14:17:24 by dinda-si          #+#    #+#             */
-/*   Updated: 2024/03/01 13:40:12 by dinda-si         ###   ########.fr       */
+/*   Updated: 2024/03/04 20:13:35 by elemesmo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,15 +48,16 @@ int	main(int argc, char **argv)
 	if (argc <= 2)
 		return (0);
 	stackprep(&a, argc);
-	stackprep(&b, argc);	
+	stackprep(&b, argc);
 	if (!getnumbers(argc, argv, &a))
 	{
 		ft_printf("Error\n");
 		ft_lstclear(&(&a)->head, free);
 		return (0);
 	}
-	if (!checknext((&a)->head))
+	if (checknext((&a)->head))
 	{
+		ft_printf("a\n");
 		if (argc <= 4)
 			sort3(&(&a)->head);
 	}

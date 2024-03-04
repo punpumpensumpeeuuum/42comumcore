@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dinda-si <dinda-si@student.42.fr>          +#+  +:+       +#+        */
+/*   By: elemesmo <elemesmo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 16:45:21 by dinda-si          #+#    #+#             */
-/*   Updated: 2024/02/29 17:06:03 by dinda-si         ###   ########.fr       */
+/*   Updated: 2024/03/04 19:39:58 by elemesmo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ char				*ft_strdup(const char *s);
 typedef struct s_atoa
 {
 	struct s_atoa	*head;
-	int		sitio;
-	int		*content;
+	int				sitio;
+	int				*content;
 	struct s_atoa	*next;
 }	t_list;
 
