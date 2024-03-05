@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: elemesmo <elemesmo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dinda-si <dinda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 16:45:21 by dinda-si          #+#    #+#             */
-/*   Updated: 2024/03/04 19:39:58 by elemesmo         ###   ########.fr       */
+/*   Updated: 2024/03/05 17:32:21 by dinda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,16 +28,14 @@ size_t				ft_strlen(const char *str);
 char				*ft_substr(char const *s, unsigned int start, size_t len);
 char				*ft_strdup(const char *s);
 
-typedef struct s_atoa
+typedef struct s_list
 {
-	struct s_atoa	*head;
-	int				sitio;
 	int				*content;
-	struct s_atoa	*next;
+	struct s_list	*next;
 }	t_list;
 
 int					ft_lstsize(t_list *lst);
-t_list				*ft_lstnew(void *c);
+t_list				*ft_lstnew(int *content);
 void				ft_lstadd_front(t_list **lst, t_list *new);
 void				ft_lstadd_back(t_list **lst, t_list *new);
 t_list				*ft_lstlast(t_list *lst);

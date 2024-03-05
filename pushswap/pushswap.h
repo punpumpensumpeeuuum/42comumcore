@@ -6,7 +6,7 @@
 /*   By: dinda-si <dinda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 14:20:11 by dinda-si          #+#    #+#             */
-/*   Updated: 2024/02/29 17:10:11 by dinda-si         ###   ########.fr       */
+/*   Updated: 2024/03/05 17:36:45 by dinda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,12 @@
 # define PUSHSWAP_H
 
 # include "ft_printf/ft_printf.h"
+
+typedef struct s_stack
+{
+	t_list *head;
+	int 	sitio;	
+}t_stack;
 
 t_list	*popfirst(t_list **list);
 t_list	*poplast(t_list **list);
@@ -28,12 +34,12 @@ void	rr(t_list **a, t_list **b);
 void	rra(t_list **list);
 void	rrb(t_list **list);
 void	rrr(t_list **a, t_list **b);
-void	minisort(t_list *a);
 int		checknumb(int argc, char **argv);
 int		checkdup(t_list *a, int *n);
-void	stackprep(t_list *stack, int argc);
+void	init(int argc, t_stack *stack);
 void	sort3(t_list **a);
-int		getnumbers(int argc, char **argv, t_list *a);
+int		getnumbers(int argc, char **argv, t_stack *a);
 int		checknext(t_list *lst);
+void	PRINTA(t_list *a);
 
 #endif

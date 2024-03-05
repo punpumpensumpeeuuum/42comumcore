@@ -6,7 +6,7 @@
 /*   By: dinda-si <dinda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 16:34:33 by dinda-si          #+#    #+#             */
-/*   Updated: 2024/02/22 15:29:46 by dinda-si         ###   ########.fr       */
+/*   Updated: 2024/03/05 16:06:38 by dinda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,14 @@
 
 t_list	*ft_lstlast(t_list *lst)
 {
-	t_list	*ultinmo;
+	t_list	*temp;
 
-	if (!lst)
+	temp = lst;
+	if (temp == NULL)
 		return (0);
-	while (lst->next != NULL)
-		lst = lst->next;
-	ultinmo = lst;
-	return (ultinmo);
+	while (temp->next != NULL)
+		temp = temp->next;
+	return (temp);
 }
 /*
 int	main(void)
