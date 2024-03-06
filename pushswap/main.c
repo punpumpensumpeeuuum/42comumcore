@@ -6,7 +6,7 @@
 /*   By: dinda-si <dinda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 14:17:24 by dinda-si          #+#    #+#             */
-/*   Updated: 2024/03/05 18:17:57 by dinda-si         ###   ########.fr       */
+/*   Updated: 2024/03/06 16:57:05 by dinda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,14 +38,13 @@ int	getnumbers(int argc, char **argv, t_stack *a)
 			return (0);
 		}
 		i++;
-
-	}
+	}			
 	return (1);
 }
 
 int	main(int argc, char **argv)
 {
-	t_stack a;
+	t_stack	a;
 	t_stack	b;
 
 	if (argc <= 2)
@@ -65,5 +64,6 @@ int	main(int argc, char **argv)
 			sort3(&(&a)->head);
 		}
 	}
-	ft_lstclear(&(&a)->head, free);
+	// printa(&a);
+	// ft_lstclear(&(&a)->head, free);
 }

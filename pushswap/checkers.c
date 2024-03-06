@@ -6,7 +6,7 @@
 /*   By: dinda-si <dinda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 15:01:17 by dinda-si          #+#    #+#             */
-/*   Updated: 2024/03/05 17:36:53 by dinda-si         ###   ########.fr       */
+/*   Updated: 2024/03/06 17:03:09 by dinda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	checkdup(t_list *list, int *n)
 {
 	while (list)
 	{
-		if (n == list->content)
+		if (*n == *list->content)
 			return (1);
 		list = list->next;
 	}
@@ -47,14 +47,13 @@ int	checknumb(int argc, char **argv)
 	return (1);
 }
 
-
 int	checknext(t_list *lst)
 {
 	if (!lst)
-		return (0);
+		return (1);
 	while (lst->next)
 	{
-		if (lst->content > lst->next->content)
+		if (*lst->content > *lst->next->content)
 			return (0);
 		lst = lst->next;
 	}

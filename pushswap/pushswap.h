@@ -6,7 +6,7 @@
 /*   By: dinda-si <dinda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 14:20:11 by dinda-si          #+#    #+#             */
-/*   Updated: 2024/03/05 17:36:45 by dinda-si         ###   ########.fr       */
+/*   Updated: 2024/03/06 15:54:00 by dinda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@
 
 typedef struct s_stack
 {
-	t_list *head;
-	int 	sitio;	
-}t_stack;
+	t_list	*head;
+	int		sitio;
+}	t_stack;
 
 t_list	*popfirst(t_list **list);
 t_list	*poplast(t_list **list);
@@ -40,6 +40,6 @@ void	init(int argc, t_stack *stack);
 void	sort3(t_list **a);
 int		getnumbers(int argc, char **argv, t_stack *a);
 int		checknext(t_list *lst);
-void	PRINTA(t_list *a);
+void	printa(t_stack *stack);
 
 #endif
