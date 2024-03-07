@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dinda-si <dinda-si@student.42.fr>          +#+  +:+       +#+        */
+/*   By: elemesmo <elemesmo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 11:46:12 by dinda-si          #+#    #+#             */
-/*   Updated: 2024/03/06 17:05:53 by dinda-si         ###   ########.fr       */
+/*   Updated: 2024/03/07 19:16:27 by elemesmo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,18 +18,15 @@ void	sort3(t_list **a)
 		sa(a);
 	if (*(*a)->next->content > *(*a)->next->next->content)
 	{
-		ra(a);
+		rra(a);
 		if (checknext(*a))
 			return ;
 		sa(a);
-		if (checknext(*a))
-			return ;
 	}
 }
 
-void	printa(t_stack *stack)
+void	printa(t_list *current)
 {
-	t_list *current = stack->head;
 	while (current)
 	{
 		ft_printf("%d\n", *(int *)current->content);
