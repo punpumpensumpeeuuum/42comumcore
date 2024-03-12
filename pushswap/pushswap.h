@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pushswap.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: elemesmo <elemesmo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dinda-si <dinda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 14:20:11 by dinda-si          #+#    #+#             */
-/*   Updated: 2024/03/07 20:16:12 by elemesmo         ###   ########.fr       */
+/*   Updated: 2024/03/12 17:40:44 by dinda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,6 @@ void	printa(t_list *current);
 
 //sorts
 void	sort3(t_list **a);
-void	sort5(t_list **a);
+void	sort_tudo(t_list **a, t_list **b);
 
 #endif

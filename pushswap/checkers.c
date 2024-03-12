@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checkers.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: elemesmo <elemesmo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dinda-si <dinda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 15:01:17 by dinda-si          #+#    #+#             */
-/*   Updated: 2024/03/11 19:57:44 by elemesmo         ###   ########.fr       */
+/*   Updated: 2024/03/12 11:14:38 by dinda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,14 +36,18 @@ int	checknumb(int argc, char **argv)
 		i = 0;
 		if (argv[j][i] == '-' && argv[j][i] == '0')
 			return (0);
-		if (argv[j][i] != '-' && argv[j][i] != '+' &&
-				argv[j][i] >= 48 && argv[j][i] <= 57 && argv[j][i] == 32)
-			i++;
 		while (argv[j][i])
 		{
-			if (!(argv[j][i] >= 48 && argv[j][i] <= 57) && argv[j][i] != 32)
+			if (!(argv[j][i] >= 48 && argv[j][i] <= 57) && argv[j][i] != 32 &&
+					argv[j][i] != '-' && argv[j][i] != '+')
 				return (0);
 			i++;
+			if (argv[j][i] == '-')
+			{
+				i++;
+				if (argv[j][i] == '-')
+					return (0);
+			}
 		}
 		j++;
 	}
