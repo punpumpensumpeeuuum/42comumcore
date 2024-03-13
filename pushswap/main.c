@@ -106,7 +106,7 @@ int	main(int argc, char **argv)
 		else
 			sort_tudo(&(&a)->head, &(&b)->head);
 	}
-	ft_printf("Stack:\n");
+	//ft_printf("Stack:\n");
 	printa((&a)->head);
 	ft_lstclear(&(&a)->head, free);
 }
