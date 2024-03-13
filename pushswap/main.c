@@ -6,7 +6,7 @@
 /*   By: dinda-si <dinda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 14:17:24 by dinda-si          #+#    #+#             */
-/*   Updated: 2024/03/12 18:01:48 by dinda-si         ###   ########.fr       */
+/*   Updated: 2024/03/13 16:16:41 by dinda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	printa(t_list *current)
 void	init(int argc, t_stack *stack)
 {
 	stack->head = NULL;
-	stack->sitio = argc - 1;
+	stack->size = argc - 1;
 }
 
 int	nocasodeserstring(int argc, char **argv, t_stack *a)
@@ -87,7 +87,7 @@ int	main(int argc, char **argv)
 
 	init(argc, &a);
 	init(argc, &b);
-	if (argc <= 2 && !nocasodeserstring(argc, argv, &a))
+	if (argc == 2 && !nocasodeserstring(argc, argv, &a))
 	{
 		ft_printf("Error\n");
 		ft_lstclear(&(&a)->head, free);
@@ -101,7 +101,7 @@ int	main(int argc, char **argv)
 	}
 	if (!checknext((&a)->head))
 	{
-		if (ft_lstsize((&a)->head) <= 3)
+		if (ft_lstsize((&a)->head) == 3 || ft_lstsize((&a)->head) == 2)
 			sort3(&(&a)->head);
 		else
 			sort_tudo(&(&a)->head, &(&b)->head);

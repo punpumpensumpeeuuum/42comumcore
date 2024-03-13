@@ -6,7 +6,7 @@
 /*   By: dinda-si <dinda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 15:01:17 by dinda-si          #+#    #+#             */
-/*   Updated: 2024/03/12 11:14:38 by dinda-si         ###   ########.fr       */
+/*   Updated: 2024/03/13 16:31:28 by dinda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,6 @@ int	checknumb(int argc, char **argv)
 	while (j < argc)
 	{
 		i = 0;
-		if (argv[j][i] == '-' && argv[j][i] == '0')
-			return (0);
 		while (argv[j][i])
 		{
 			if (!(argv[j][i] >= 48 && argv[j][i] <= 57) && argv[j][i] != 32 &&
@@ -65,4 +63,15 @@ int	checknext(t_list *lst)
 		lst = lst->next;
 	}
 	return (1);
+}
+
+void	miniontop(t_list **a)
+{
+	while ((*a)->content != findmin(*a)->content)
+	{
+		if (findmin(*a)->abvmedia)
+			ra(a, 1);
+		else
+			rra(a, 1);
+	}
 }

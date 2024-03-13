@@ -1,6 +1,6 @@
 NAME = push_swap
 
-SRCS = main.c revrotate.c swaps.c perots.c checkers.c sort.c
+SRCS = main.c revrotate.c swaps.c perots.c checkers.c sort.c stack_a.c stack_b.c
 
 CC = cc
 
@@ -38,7 +38,6 @@ $(NAME):	$(OBJ)
 		@echo -------------8--------------8888
 		@echo 888-----------8-------------8888
 		@echo 88888888888888888888888888888888
-
 
 clean:
 		@make clean -s -C ft_printf

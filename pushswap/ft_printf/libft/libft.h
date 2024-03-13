@@ -6,7 +6,7 @@
 /*   By: dinda-si <dinda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 16:45:21 by dinda-si          #+#    #+#             */
-/*   Updated: 2024/03/12 17:50:50 by dinda-si         ###   ########.fr       */
+/*   Updated: 2024/03/13 15:02:07 by dinda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <string.h>
 # include <unistd.h>
 # include <limits.h>
+# include <stdbool.h>
 
 long int			ft_atoi(const char *str);
 void				*ft_calloc(size_t nmemb, size_t size);
@@ -32,6 +33,11 @@ char				*ft_strdup(const char *s);
 typedef struct s_list
 {
 	int				*content;
+	int				place;
+	int				cost;
+	bool			abvmedia;
+	bool			cheap;
+	struct s_list	*target;
 	struct s_list	*next;
 }	t_list;
 
