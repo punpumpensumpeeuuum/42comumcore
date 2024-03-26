@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack_b.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dinda-si <dinda-si@student.42.fr>          +#+  +:+       +#+        */
+/*   By: elemesmo <elemesmo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 14:27:59 by dinda-si          #+#    #+#             */
-/*   Updated: 2024/03/13 16:26:22 by dinda-si         ###   ########.fr       */
+/*   Updated: 2024/03/23 23:13:38 by elemesmo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,9 @@ t_list	*findmax(t_list	*a)
 	max = INT_MIN;
 	while (a)
 	{
-		if (*(a->content) > max)
+		if (a->content > max)
 		{
-			max = *(a->content);
+			max = a->content;
 			node = a;
 		}
 		a = a->next;
@@ -55,9 +55,9 @@ t_list	*findmin(t_list *a)
 	min = INT_MAX;
 	while (a)
 	{
-		if (*(a->content) < min)
+		if (a->content < min)
 		{
-			min = *(a->content);
+			min = a->content;
 			node = a;
 		}
 		a = a->next;
@@ -69,12 +69,11 @@ void	assigntarget_b(t_list *a, t_list *b)
 {
 	t_list	*new_a;
 	t_list	*n;
-	int		*match;
+	int		match;
 
-	match = NULL;
 	while (b)
 	{
-		*match = INT_MAX;
+		match = INT_MAX;
 		new_a = a;
 		while (new_a)
 		{
@@ -85,7 +84,7 @@ void	assigntarget_b(t_list *a, t_list *b)
 			}
 			new_a = new_a->next;
 		}
-		if (*match == INT_MAX)
+		if (match == INT_MAX)
 			b->target = findmin(a);
 		else
 			b->target = n;

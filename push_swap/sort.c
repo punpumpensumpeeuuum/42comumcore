@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dinda-si <dinda-si@student.42.fr>          +#+  +:+       +#+        */
+/*   By: elemesmo <elemesmo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 11:46:12 by dinda-si          #+#    #+#             */
-/*   Updated: 2024/03/13 16:35:30 by dinda-si         ###   ########.fr       */
+/*   Updated: 2024/03/24 00:10:35 by elemesmo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,15 @@
 
 void	sort3(t_list **a)
 {
-	if (ft_lstsize(*a) == 2)
-	{
+	t_list	*biggest;
+
+	biggest = findmax(*a);
+	if (biggest == *a)
 		ra(a, 1);
-		return ;
-	}
-	if (*(*a)->content > *(*a)->next->content)
-		sa(a, 1);
-	if (*(*a)->next->content > *(*a)->next->next->content)
-	{
+	else if ((*a)->next == biggest)
 		rra(a, 1);
-		if (checknext(*a))
-			return ;
+	if ((*a)->content > (*a)->next->content)
 		sa(a, 1);
-	}
 }
 
 void	preppush(t_list **stack, t_list *head, char name)
@@ -61,8 +56,8 @@ void	move_atob(t_list **a, t_list **b)
 	else if (!(nodecheap->abvmedia) && !(nodecheap->target->abvmedia))
 		rerotateboth(a, b, nodecheap);
 	preppush(a, nodecheap, 'a');
-	preppush(a, nodecheap->target, 'b');
-	pb(b, a);
+	preppush(b, nodecheap->target, 'b');
+	pb(a, b);
 }
 
 void	move_btoa(t_list **a, t_list **b)
@@ -77,22 +72,20 @@ void	sort_tudo(t_list **a, t_list **b)
 
 	len_a = ft_lstsize(*a);
 	if (len_a-- > 3 && !checknext(*a))
-		pb(b, a);
+		pb(a, b);
 	if (len_a-- > 3 && !checknext(*a))
-		pb(b, a);
-
+		pb(a, b);
 	while (len_a-- > 3 && !checknext(*a))
-	{	
+	{
 		inistack_a(*a, *b);
 		move_atob(a, b);
 	}
 	sort3(a);
 	while (*b)
 	{
-		inistack_a(*a, *b);
+		inistack_b(*a, *b);
 		move_btoa(a, b);
 	}
-
 	assignplace(*a);
 	miniontop(a);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   swaps.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dinda-si <dinda-si@student.42.fr>          +#+  +:+       +#+        */
+/*   By: elemesmo <elemesmo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 11:44:51 by dinda-si          #+#    #+#             */
-/*   Updated: 2024/03/13 16:29:17 by dinda-si         ###   ########.fr       */
+/*   Updated: 2024/03/24 00:21:35 by elemesmo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ void	sa(t_list **list, int flag)
 	t_list	*tmp1;
 	t_list	*tmp2;
 
+	if (!*list || !(*list)->next)
+		return ;
 	tmp1 = popfirst(list);
 	tmp2 = popfirst(list);
 	ft_lstadd_front(list, tmp1);
@@ -40,6 +42,8 @@ void	sb(t_list **list, int flag)
 	t_list	*tmp1;
 	t_list	*tmp2;
 
+	if (!*list || !(*list)->next)
+		return ;
 	tmp1 = popfirst(list);
 	tmp2 = popfirst(list);
 	ft_lstadd_front(list, tmp1);

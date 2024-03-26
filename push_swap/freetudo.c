@@ -1,28 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstclear.c                                      :+:      :+:    :+:   */
+/*   freetudo.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dinda-si <dinda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/11 17:00:10 by dinda-si          #+#    #+#             */
-/*   Updated: 2024/03/05 17:31:22 by dinda-si         ###   ########.fr       */
+/*   Created: 2024/03/20 17:07:17 by dinda-si          #+#    #+#             */
+/*   Updated: 2024/03/26 11:51:51 by dinda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "pushswap.h"
 
-void	ft_lstclear(t_list **lst, void (*del)(void *))
+void	listfree(t_list **a)
 {
 	t_list	*temp;
 
-	if (!del || !lst)
+	if (!a)
 		return ;
-	while (*lst != NULL)
+	temp = *a;
+	while (*a != NULL)
 	{
-		temp = (*lst)->next;
-		del((*lst)->content);
-		free(*lst);
-		*lst = temp;
+		temp = (*a)->next;
+		free(*a);
+		*a = temp;
+	}
+}
+
+void	argvfree(char **av, int ac)
+{
+	int	i;
+
+	if (!av)
+		return ;
+	if (ac == 2)
+	{
+		i = 0;
+		while (av[i])
+		{
+			free(av[i]);
+			i++;
+		}
+		free(av);
 	}
 }

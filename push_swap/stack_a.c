@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack_a.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dinda-si <dinda-si@student.42.fr>          +#+  +:+       +#+        */
+/*   By: elemesmo <elemesmo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 11:32:09 by dinda-si          #+#    #+#             */
-/*   Updated: 2024/03/13 18:22:24 by dinda-si         ###   ########.fr       */
+/*   Updated: 2024/03/23 23:29:32 by elemesmo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,9 +45,9 @@ void	assigntarget_a(t_list *a, t_list *b)
 		new_b = b;
 		while (new_b)
 		{
-			if (new_b->content < a->content && *(new_b->content) > match)
+			if (new_b->content < a->content && new_b->content > match)
 			{
-				match = *(new_b->content);
+				match = new_b->content;
 				n = new_b;
 			}
 			new_b = new_b->next;
@@ -59,7 +59,7 @@ void	assigntarget_a(t_list *a, t_list *b)
 		a = a->next;
 	}
 }
-//ISTO TA COM UM PROBLEMA!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
 void	assigncost(t_list *a, t_list *b)
 {
 	int	lena;
@@ -105,6 +105,6 @@ void	inistack_a(t_list *a, t_list *b)
 	assignplace(a);
 	assignplace(b);
 	assigntarget_a(a, b);
-	assigncost(a, b);printa(a);
+	assigncost(a, b);
 	assigncheapest(a);
 }

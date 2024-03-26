@@ -6,7 +6,7 @@
 /*   By: dinda-si <dinda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 15:25:53 by dinda-si          #+#    #+#             */
-/*   Updated: 2024/03/13 16:31:10 by dinda-si         ###   ########.fr       */
+/*   Updated: 2024/03/19 15:53:05 by dinda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ void	ra(t_list **lst, int flag)
 {
 	t_list	*node;
 
+	if (!*lst || !(*lst)->next)
+		return ;
 	node = popfirst(lst);
 	ft_lstadd_back(lst, node);
 	if (flag == 1)
@@ -48,6 +50,8 @@ void	rb(t_list **lst, int flag)
 {
 	t_list	*node;
 
+	if (!*lst || !(*lst)->next)
+		return ;
 	node = popfirst(lst);
 	ft_lstadd_back(lst, node);
 	if (flag == 1)

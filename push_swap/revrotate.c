@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   revrotate.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dinda-si <dinda-si@student.42.fr>          +#+  +:+       +#+        */
+/*   By: elemesmo <elemesmo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 12:38:33 by dinda-si          #+#    #+#             */
-/*   Updated: 2024/03/13 16:30:41 by dinda-si         ###   ########.fr       */
+/*   Updated: 2024/03/24 00:21:54 by elemesmo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,12 @@ void	rra(t_list **list, int flag)
 {
 	t_list	*node;
 
-	node = poplast(list);
+	if (!*list || !(*list)->next)
+		return ;
+	node = *list;
+	while (node->next->next)
+		node = node->next;
+	node = poplast(&node);
 	ft_lstadd_front(list, node);
 	if (flag == 1)
 		ft_printf("rra\n");
@@ -37,7 +42,12 @@ void	rrb(t_list **list, int flag)
 {
 	t_list	*node;
 
-	node = poplast(list);
+	if (!*list || !(*list)->next)
+		return ;
+	node = *list;
+	while (node->next->next)
+		node = node->next;
+	node = poplast(&node);
 	ft_lstadd_front(list, node);
 	if (flag == 1)
 		ft_printf("rrb\n");
@@ -47,7 +57,7 @@ void	rrr(t_list **a, t_list **b)
 {
 	rra(a, 0);
 	rrb(b, 0);
-	ft_printf("rra\n");
+	ft_printf("rrr\n");
 }
 
 void	rotateboth(t_list **a, t_list **b, t_list *nodecheap)

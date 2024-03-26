@@ -6,7 +6,7 @@
 /*   By: dinda-si <dinda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 16:45:21 by dinda-si          #+#    #+#             */
-/*   Updated: 2024/03/13 15:02:07 by dinda-si         ###   ########.fr       */
+/*   Updated: 2024/03/20 17:06:23 by dinda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ char				*ft_strdup(const char *s);
 
 typedef struct s_list
 {
-	int				*content;
+	int				content;
 	int				place;
 	int				cost;
 	bool			abvmedia;
@@ -42,11 +42,9 @@ typedef struct s_list
 }	t_list;
 
 int					ft_lstsize(t_list *lst);
-t_list				*ft_lstnew(int *content);
+t_list				*ft_lstnew(int content);
 void				ft_lstadd_front(t_list **lst, t_list *new);
 void				ft_lstadd_back(t_list **lst, t_list *new);
 t_list				*ft_lstlast(t_list *lst);
-void				ft_lstdelone(t_list *lst, void (*del)(void *));
-void				ft_lstclear(t_list **lst, void (*del)(void *));
 
 #endif

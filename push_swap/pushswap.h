@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pushswap.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dinda-si <dinda-si@student.42.fr>          +#+  +:+       +#+        */
+/*   By: elemesmo <elemesmo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 14:20:11 by dinda-si          #+#    #+#             */
-/*   Updated: 2024/03/13 16:30:02 by dinda-si         ###   ########.fr       */
+/*   Updated: 2024/03/25 23:53:40 by elemesmo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,12 +40,11 @@ void	rerotateboth(t_list **a, t_list **b, t_list *nodecheap);
 
 //main
 int		checknumb(int argc, char **argv);
-int		checkdup(t_list *a, int *n);
+int		checkdup(t_list *a, int n);
 void	init(int argc, t_stack *stack);
 int		getnumbers(int argc, char **argv, t_stack *a);
 int		nocasodeserstring(int argc, char **argv, t_stack *a);
-int		checknext(t_list *lst);
-void	printa(t_list *current);
+bool	checknext(t_list *lst);
 
 //helpers
 t_list	*findmax(t_list	*a);
@@ -58,6 +57,10 @@ void	assigntarget_b(t_list *a, t_list *b);
 void	assignplace(t_list *a);
 void	inistack_a(t_list *a, t_list *b);
 void	inistack_b(t_list *a, t_list *b);
+
+//frees
+void	argvfree(char **av, int ac);
+void	listfree(t_list **a);
 
 //sorts
 void	sort3(t_list **a);
