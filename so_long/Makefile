@@ -1,6 +1,6 @@
 NAME = so_long
 
-SRCS = main.c
+SRCS = main.c sprites.c
 
 MLX = minilibx-linux/libmlx.a
 
