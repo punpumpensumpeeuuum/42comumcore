@@ -82,6 +82,5 @@ int	main(void)
 	sprites(&img);
 	mlx_hook(img.mlx_win, 2, 1L << 0, keypress, &img);
 	mlx_loop_hook(img.mlx_win, andar, &img);		
-	printf("ol\n");
 	mlx_loop(img.mlx);
 }
