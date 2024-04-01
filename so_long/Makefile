@@ -1,13 +1,10 @@
 NAME = so_long
 
-SRCS = main.c sprites.c
-
-MLX = minilibx-linux/libmlx.a
+SRCS = main.c sprites.c colorplayer.c
 
 CC = cc
 
 CFLAGS = -Wall -Werror -Wextra
-MLX_FLAGS = -lXext -lX11 -L/usr/local/lib
 
 RM = rm -f
 
@@ -16,10 +13,12 @@ OBJ = $(SRCS:.c=.o)
 all: $(NAME)
 
 $(NAME): $(OBJ)
-		@$(CC) $(CFLAGS) $(MLX_FLAGS) $(OBJ) $(MLX) -o $(NAME)
+		@make -s -C mlx-linux
+		@$(CC) $(CFLAGS) $(OBJ) mlx-linux/libmlx_Linux.a -lXext -lX11 -o $(NAME)
 
 clean:
 		@$(RM) $(OBJ)
+		@make clean -s -C mlx-linux
 
 fclean:	clean
 		@$(RM) $(NAME)

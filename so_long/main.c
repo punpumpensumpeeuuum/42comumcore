@@ -6,7 +6,7 @@
 /*   By: dinda-si <dinda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 17:23:41 by dinda-si          #+#    #+#             */
-/*   Updated: 2024/03/28 18:02:50 by dinda-si         ###   ########.fr       */
+/*   Updated: 2024/04/01 19:03:26 by dinda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,14 +73,28 @@
 // 	mlx_loop(img.mlx);
 // }
 
+void	init(t_data *img)
+{
+	img->player.w = 0;
+	img->player.a = 0;
+	img->player.s = 0;
+	img->player.d = 0;
+	img->player.ts = 0;
+	img->player.x = 500;
+	img->player.y = 300;
+	img->pixel = 50;
+}
+
 int	main(void)
 {
 	t_data	img;
 
 	img.mlx = mlx_init();
-	img.mlx_win = mlx_new_window(img.mlx, 1080, 720, "Hello world!");
+	img.mlx_win = mlx_new_window(img.mlx, 2500, 1250, "EEEEEEEEEEE");
+	init(&img);
 	sprites(&img);
 	mlx_hook(img.mlx_win, 2, 1L << 0, keypress, &img);
-	mlx_loop_hook(img.mlx_win, andar, &img);		
+	mlx_hook(img.mlx_win, 3, 1L << 1, keyunpress, &img);
+	mlx_loop_hook(img.mlx, andar, &img);
 	mlx_loop(img.mlx);
 }

@@ -6,7 +6,7 @@
 /*   By: dinda-si <dinda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 16:36:50 by dinda-si          #+#    #+#             */
-/*   Updated: 2024/03/28 18:00:51 by dinda-si         ###   ########.fr       */
+/*   Updated: 2024/04/01 19:11:23 by dinda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 void	sprites(t_data *img)
 {
-	img->img = "/images/rw.xpm";
-	img->imgred = "/images/red.xpm";
-	img->imgblu = "/images/blue.xpm";
-	img->imggrin= "/images/grin.xpm";
+	img->img = mlx_xpm_file_to_image(img->mlx, "images/rw.xpm", &img->pixel, &img->pixel);
+	img->imgred = mlx_xpm_file_to_image(img->mlx, "images/red.xpm", &img->pixel, &img->pixel);
+	img->imgblu = mlx_xpm_file_to_image(img->mlx, "images/blue.xpm", &img->pixel, &img->pixel);
+	img->imggrin= mlx_xpm_file_to_image(img->mlx, "images/grin.xpm", &img->pixel, &img->pixel);
 }
 
 int	keypress(int keycode, t_data *img)
@@ -29,56 +29,78 @@ int	keypress(int keycode, t_data *img)
 		exit(0);
 	}
 	else if (keycode == 114)
-		img->player.red = 0xFF0000;
-	else if (keycode == 98)
-		img->player.green = 0x0000FF;
+		img->player.red = 1;
 	else if (keycode == 103)
-		img->player.blue = 0x00FF00;
-	else if (keycode == 65362)
+		img->player.green = 1;
+	else if (keycode == 98)
+		img->player.blue = 1;
+	else if (keycode == 65362 || keycode == 'w')
 		img->player.w = 1;
-	else if (keycode == 65361)
+	else if (keycode == 65361 || keycode == 'a')
 		img->player.a = 1;
-	else if (keycode == 65363)
+	else if (keycode == 65364 || keycode == 's')
 		img->player.s = 1;
-	else if (keycode == 65364)
+	else if (keycode == 65363 || keycode == 'd')
 		img->player.d = 1;
+	else if (keycode == 32)
+		img->player.ts = 1;
+	return (0);
+}
+
+int	keyunpress(int keycode, t_data *img)
+{
+	if (keycode == 114)
+		img->player.red = 0;
+	else if (keycode == 103)
+		img->player.green = 0;
+	else if (keycode == 98)
+		img->player.blue = 0;
+	else if (keycode == 65362 || keycode == 'w')
+		img->player.w = 0;
+	else if (keycode == 65361 || keycode == 'a')
+		img->player.a = 0;
+	else if (keycode == 65364 || keycode == 's')
+		img->player.s = 0;
+	else if (keycode == 65363 || keycode == 'd')
+		img->player.d = 0;
+	else if (keycode == 32)
+		img->player.ts = 0;
 	return (0);
 }
 
 void	movimento(t_data *img)
 {
-	if (img->player.w == 1)
-		img->player.y --;
-	if (img->player.a == 1)
-		img->player.x --;
-	if (img->player.s == 1)
-		img->player.y ++;
-	if (img->player.d == 1)
-		img->player.x ++;
+	int window_width = 2500;
+	int window_height = 1250;
+
+	if (img->player.w == 1 && img->player.y >= 0)
+		img->player.y--;
+	if (img->player.a == 1 && img->player.x >= 0)
+		img->player.x--;
+	if (img->player.s == 1 && img->player.y + img->pixel <= window_height)
+		img->player.y++;
+	if (img->player.d == 1 && img->player.x + img->pixel <= window_width)
+		img->player.x++;
 }
 
 void	animation(t_data *img)
 {
-	if (img->player.w == 1)
-		mlx_put_image_to_window(img->mlx, img->mlx_win, img->img, img->player.x, img->player.y);
-	if (img->player.a == 1)
-		mlx_put_image_to_window(img->mlx, img->mlx_win, img->img, img->player.x, img->player.y);
-	if (img->player.s == 1)
-		mlx_put_image_to_window(img->mlx, img->mlx_win, img->img, img->player.x, img->player.y);
-	if (img->player.d == 1)
-		mlx_put_image_to_window(img->mlx, img->mlx_win, img->img, img->player.x, img->player.y);
 	if (img->player.red == 1)
-		mlx_put_image_to_window(img->mlx, img->mlx_win, img->imgred, img->player.x, img->player.y);
-	if (img->player.blue == 1)
-		mlx_put_image_to_window(img->mlx, img->mlx_win, img->imgblu, img->player.x, img->player.y);
-	if (img->player.green == 1)
-		mlx_put_image_to_window(img->mlx, img->mlx_win, img->imggrin, img->player.x, img->player.y);
+		red(img);
+	else if (img->player.blue == 1)
+		blue(img);
+	else if (img->player.green == 1)
+		green(img);
+	else
+		white(img);
 }
 
 int		andar(t_data *img)
 {
 	movimento(img);
-	mlx_put_image_to_window(img->mlx, img->mlx_win, img->img, img->player.x, img->player.y);
+	if (img->player.ts == 0)
+		mlx_clear_window(img->mlx, img->mlx_win);
 	animation(img);
+	usleep(50000 / 30);
 	return (0);
 }
