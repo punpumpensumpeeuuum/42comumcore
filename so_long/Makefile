@@ -1,6 +1,8 @@
 NAME = so_long
 
-SRCS = main.c sprites.c colorplayer.c
+SRCS = main.c sprites.c colorplayer.c toggles.c maps.c
+
+GNL = get_next_line_utils.c get_next_line.c
 
 CC = cc
 
@@ -14,7 +16,7 @@ all: $(NAME)
 
 $(NAME): $(OBJ)
 		@make -s -C mlx-linux
-		@$(CC) $(CFLAGS) $(OBJ) mlx-linux/libmlx_Linux.a -lXext -lX11 -o $(NAME)
+		@$(CC) -g $(CFLAGS) $(OBJ) $(addprefix get_next_line/,$(GNL)) mlx-linux/libmlx_Linux.a -lXext -lX11 -o $(NAME)
 
 clean:
 		@$(RM) $(OBJ)
@@ -25,4 +27,4 @@ fclean:	clean
 		@echo "apagou"
 
 re:	fclean $(NAME)
-	@echo "makou outra vez"
+		@echo "makou outra vez"
