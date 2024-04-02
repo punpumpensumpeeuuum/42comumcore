@@ -28,15 +28,17 @@ void	init(t_data *img)
 
 int	main(int argc, char **argv)
 {
-	argc = 0;
 	t_data	img;
 
-	img.mlx = mlx_init();
-	img.mlx_win = mlx_new_window(img.mlx, 2500, 1250, "EEEEEEEEEEE");
-	init(&img);
-	initgame(&img, argv);
-	mlx_hook(img.mlx_win, 2, 1L << 0, keypress, &img);
-	mlx_hook(img.mlx_win, 3, 1L << 1, keyunpress, &img);
-	mlx_loop_hook(img.mlx, andar, &img);
-	mlx_loop(img.mlx);
+	if (argc == 2)
+	{
+		img.mlx = mlx_init();
+		img.mlx_win = mlx_new_window(img.mlx, 2500, 1250, "EEEEEEEEEEE");
+		init(&img);
+		initgame(&img, argv);
+		mlx_hook(img.mlx_win, 2, 1L << 0, keypress, &img);
+		mlx_hook(img.mlx_win, 3, 1L << 1, keyunpress, &img);
+		mlx_loop_hook(img.mlx, andar, &img);
+		mlx_loop(img.mlx);
+	}
 }

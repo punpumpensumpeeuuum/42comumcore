@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   maps.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dinda-si <dinda-si@student.42.fr>          +#+  +:+       +#+        */
+/*   By: elemesmo <elemesmo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 18:19:33 by dinda-si          #+#    #+#             */
-/*   Updated: 2024/04/02 19:23:33 by dinda-si         ###   ########.fr       */
+/*   Updated: 2024/04/02 23:52:21 by elemesmo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int leraltura(char **argv)
+int	leraltura(char **argv)
 {
 	int		fd;
 	char	*temp;
@@ -49,28 +49,19 @@ char	**leromapa(char **argv)
 	while (temp)
 	{
 		map[a] = temp;
-		free(temp);
 		temp = get_next_line(fd);
 		a++;
 	}
 	map[a] = NULL;
 	free(temp);
 	close(fd);
-	// int i = 0;
-	// int j = 0;
-	// while (map[i])
-	// {
-	// 	while(map[i][j])
-	// 		printf("%c\n", map[i][j++]);
-	// 	i++;
-	// }
 	return (map);
 }
 
-int		initgame(t_data *img, char **argv)
+int	initgame(t_data *img, char **argv)
 {
 	init(img);
 	sprites(img);
-	img->mapcopy = leromapa(argv);	
+	img->mapcopy = leromapa(argv);
 	return (0);
 }
