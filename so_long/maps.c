@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   maps.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: elemesmo <elemesmo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dinda-si <dinda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 18:19:33 by dinda-si          #+#    #+#             */
-/*   Updated: 2024/04/02 23:52:21 by elemesmo         ###   ########.fr       */
+/*   Updated: 2024/04/03 19:06:10 by dinda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,10 +58,34 @@ char	**leromapa(char **argv)
 	return (map);
 }
 
+int	len(const char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+		i++;
+	return (i);
+}
+int	verifymapquadrado(t_data *img)
+{
+	int i;
+
+	i = len(img->mapcopy[img->map.height]);
+	while (img->mapcopy[img->map.width])
+	{
+		if (len(img->mapcopy[img->map.width]) != i)
+			return (0);
+		img->mapcopy[img->map.width]++;	
+	}
+	return (0);
+}
+
 int	initgame(t_data *img, char **argv)
 {
 	init(img);
 	sprites(img);
 	img->mapcopy = leromapa(argv);
+	verifymapquadrado(img);
 	return (0);
 }

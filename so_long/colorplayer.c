@@ -6,7 +6,7 @@
 /*   By: dinda-si <dinda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/01 18:15:50 by dinda-si          #+#    #+#             */
-/*   Updated: 2024/04/02 18:03:57 by dinda-si         ###   ########.fr       */
+/*   Updated: 2024/04/03 16:08:40 by dinda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 void	sprites(t_data *img)
 {
+	img->imgwall = mlx_xpm_file_to_image(img->mlx, "images/parede.xpm",
+			&img->pixel, &img->pixel);
 	img->img = mlx_xpm_file_to_image(img->mlx, "images/rw.xpm",
 			&img->pixel, &img->pixel);
 	img->imgred = mlx_xpm_file_to_image(img->mlx, "images/red.xpm",

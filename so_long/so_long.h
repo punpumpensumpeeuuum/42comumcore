@@ -6,13 +6,15 @@
 /*   By: dinda-si <dinda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 17:52:53 by dinda-si          #+#    #+#             */
-/*   Updated: 2024/04/02 19:11:03 by dinda-si         ###   ########.fr       */
+/*   Updated: 2024/04/03 17:35:00 by dinda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
+# include <fcntl.h>
+# include "ft_printf/ft_printf.h"
 # include "get_next_line/get_next_line.h"
 # include "mlx-linux/mlx.h"
 # include <unistd.h>
@@ -27,6 +29,9 @@ typedef	struct	s_data
 	void	*imgred;
 	void	*imgblu;
 	void	*imggrin;
+	void	*imgwall;
+	void	*imgcoin;
+	void	*imgexit;
 	int		pixel;
 	struct s_player
 	{
@@ -67,5 +72,6 @@ void	toggle2(int key, t_data *img);
 int		leraltura(char **argv);
 char	**leromapa(char **argv);
 int		initgame(t_data *img, char **argv);
+int		verifymapquadrado(t_data *img);
 
 #endif

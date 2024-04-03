@@ -15,12 +15,14 @@ OBJ = $(SRCS:.c=.o)
 all: $(NAME)
 
 $(NAME): $(OBJ)
+		@make -s -C ft_printf
 		@make -s -C mlx-linux
 		@$(CC) -g $(CFLAGS) $(OBJ) $(addprefix get_next_line/,$(GNL)) mlx-linux/libmlx_Linux.a -lXext -lX11 -o $(NAME)
 
 clean:
 		@$(RM) $(OBJ)
 		@make clean -s -C mlx-linux
+		@make clean -s -C ft_printf
 
 fclean:	clean
 		@$(RM) $(NAME)
