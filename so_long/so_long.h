@@ -6,7 +6,7 @@
 /*   By: dinda-si <dinda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 17:52:53 by dinda-si          #+#    #+#             */
-/*   Updated: 2024/04/03 17:35:00 by dinda-si         ###   ########.fr       */
+/*   Updated: 2024/04/04 15:42:29 by dinda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,6 @@
 # include "ft_printf/ft_printf.h"
 # include "get_next_line/get_next_line.h"
 # include "mlx-linux/mlx.h"
-# include <unistd.h>
-# include <stdlib.h>
-# include <stdio.h>
 
 typedef	struct	s_data
 {

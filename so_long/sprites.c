@@ -6,7 +6,7 @@
 /*   By: dinda-si <dinda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 16:36:50 by dinda-si          #+#    #+#             */
-/*   Updated: 2024/04/03 16:42:28 by dinda-si         ###   ########.fr       */
+/*   Updated: 2024/04/04 17:24:26 by dinda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,13 +47,13 @@ int	keyunpress(int keycode, t_data *img)
 
 void	movimento(t_data *img)
 {
-	if (img->player.w == 1 && img->player.y >= 0)
+	if (img->player.w == 1 && img->player.y - img->pixel >= 0)
 		img->player.y--;
-	if (img->player.a == 1 && img->player.x >= 0)
+	if (img->player.a == 1 && img->player.x - img->pixel >= 0)
 		img->player.x--;
-	if (img->player.s == 1 && img->player.y + img->pixel <= img->map.height * img->pixel)
+	if (img->player.s == 1 && img->player.y <= img->map.height * img->pixel)
 		img->player.y++;
-	if (img->player.d == 1 && img->player.x + img->pixel <= img->map.width * img->pixel)
+	if (img->player.d == 1 && img->player.x <= img->map.width * img->pixel)
 		img->player.x++;
 }
 

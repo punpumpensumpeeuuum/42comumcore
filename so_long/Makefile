@@ -17,7 +17,7 @@ all: $(NAME)
 $(NAME): $(OBJ)
 		@make -s -C ft_printf
 		@make -s -C mlx-linux
-		@$(CC) -g $(CFLAGS) $(OBJ) $(addprefix get_next_line/,$(GNL)) mlx-linux/libmlx_Linux.a -lXext -lX11 -o $(NAME)
+		@$(CC) -g $(CFLAGS) $(OBJ) $(addprefix get_next_line/,$(GNL)) ft_printf/libftprintf.a mlx-linux/libmlx_Linux.a -lXext -lX11 -o $(NAME)
 
 clean:
 		@$(RM) $(OBJ)

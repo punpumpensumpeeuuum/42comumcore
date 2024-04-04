@@ -6,7 +6,7 @@
 /*   By: dinda-si <dinda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 18:19:33 by dinda-si          #+#    #+#             */
-/*   Updated: 2024/04/03 19:06:10 by dinda-si         ###   ########.fr       */
+/*   Updated: 2024/04/04 19:10:27 by dinda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,31 +61,46 @@ char	**leromapa(char **argv)
 int	len(const char *str)
 {
 	int	i;
+	int a;
+	a = 0;
 
 	i = 0;
-	while (str[i])
+	while (str[i] == '1' || str[i] == '0')
 		i++;
+	if (!(str[i] >= 0 && str[i] <= 31))
+		return -1;
 	return (i);
 }
+
+
+
 int	verifymapquadrado(t_data *img)
 {
-	int i;
+	int	i;
+	int	row;
 
-	i = len(img->mapcopy[img->map.height]);
-	while (img->mapcopy[img->map.width])
+	row = len(img->mapcopy[0]);
+	img->map.width = row;
+	i = 0;
+	while (img->mapcopy[i])
 	{
-		if (len(img->mapcopy[img->map.width]) != i)
-			return (0);
-		img->mapcopy[img->map.width]++;	
+		if (len(img->mapcopy[i]) != row)
+			return (1);
+		i++;
 	}
+	img->map.height = i;
 	return (0);
 }
 
 int	initgame(t_data *img, char **argv)
-{
+{ 
 	init(img);
 	sprites(img);
 	img->mapcopy = leromapa(argv);
-	verifymapquadrado(img);
-	return (0);
+	if (verifymapquadrado(img) < 0 || img->map.height <= 1 || img->map.width <= 1)
+	{
+		ft_printf("Map is wrong\n");
+		return (0);
+	}
+	return (1);
 }
