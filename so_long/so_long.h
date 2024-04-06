@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dinda-si <dinda-si@student.42.fr>          +#+  +:+       +#+        */
+/*   By: elemesmo <elemesmo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 17:52:53 by dinda-si          #+#    #+#             */
-/*   Updated: 2024/04/04 15:42:29 by dinda-si         ###   ########.fr       */
+/*   Updated: 2024/04/06 04:19:10 by elemesmo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include "get_next_line/get_next_line.h"
 # include "mlx-linux/mlx.h"
 
-typedef	struct	s_data
+typedef struct	s_data
 {
 	void	*mlx;
 	void	*mlx_win;
@@ -27,8 +27,6 @@ typedef	struct	s_data
 	void	*imgblu;
 	void	*imggrin;
 	void	*imgwall;
-	void	*imgcoin;
-	void	*imgexit;
 	int		pixel;
 	struct s_player
 	{
@@ -70,5 +68,9 @@ int		leraltura(char **argv);
 char	**leromapa(char **argv);
 int		initgame(t_data *img, char **argv);
 int		verifymapquadrado(t_data *img);
+int		verifymaponly(t_data *img);
+
+void	place(t_data *img, int i, int j);
+void	imageplacer(t_data *img);
 
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dinda-si <dinda-si@student.42.fr>          +#+  +:+       +#+        */
+/*   By: elemesmo <elemesmo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 17:23:41 by dinda-si          #+#    #+#             */
-/*   Updated: 2024/04/04 18:45:38 by dinda-si         ###   ########.fr       */
+/*   Updated: 2024/04/06 04:34:49 by elemesmo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void	init(t_data *img)
 {
+	img->mapcopy = NULL;
 	img->map.height = 0;
 	img->map.width = 0;
 	img->player.w = 0;
@@ -32,8 +33,8 @@ int	main(int argc, char **argv)
 
 	if (argc == 2)
 	{
-		img.mlx = mlx_init();		
-		if (!initgame(&img, argv))
+		img.mlx = mlx_init();
+		if (initgame(&img, argv) == 0)
 			return (0);
 		img.mlx_win = mlx_new_window(img.mlx, img.map.width * img.pixel + img.pixel * 2, img.map.height * img.pixel + img.pixel * 2, "EEEEEEEEEEE");
 		if (!img.mlx_win)
@@ -43,7 +44,6 @@ int	main(int argc, char **argv)
 		}
 		mlx_hook(img.mlx_win, 2, 1L << 0, keypress, &img);
 		mlx_hook(img.mlx_win, 3, 1L << 1, keyunpress, &img);
-		ft_printf("ola");
 		mlx_loop_hook(img.mlx, andar, &img);
 		mlx_loop(img.mlx);
 	}

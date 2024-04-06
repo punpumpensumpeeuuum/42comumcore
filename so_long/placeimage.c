@@ -1,23 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   placeimage.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: elemesmo <elemesmo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/04 16:45:21 by dinda-si          #+#    #+#             */
-/*   Updated: 2024/04/06 02:42:38 by elemesmo         ###   ########.fr       */
+/*   Created: 2024/04/05 22:42:57 by elemesmo          #+#    #+#             */
+/*   Updated: 2024/04/06 04:35:59 by elemesmo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
+#include "so_long.h"
 
-# include <stdlib.h>
-# include <string.h>
-# include <unistd.h>
+void	place(t_data *img, int i, int j)
+{
+	if (img->mapcopy[i][j] == '1')
+		mlx_put_image_to_window(img->mlx, img->mlx_win, img->imgwall, j * img->pixel + img->pixel, i * img->pixel + img->pixel);
+}
 
-int					ft_putchar_fd(char c, int fd);
-int					ft_putstr_fd(char *s, int fd);
+void	imageplacer(t_data *img)
+{
+	int	i;
+	int	j;
 
-#endif
+	i = 0;
+	while (i < img->map.height)
+	{
+		j = 0;
+		while (j < img->map.width)
+		{
+			place(img, i, j);
+			j++;
+		}
+		i++;
+	}
+}

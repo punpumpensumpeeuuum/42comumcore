@@ -6,13 +6,13 @@
 /*   By: dinda-si <dinda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 16:46:07 by dinda-si          #+#    #+#             */
-/*   Updated: 2024/04/03 17:07:48 by dinda-si         ###   ########.fr       */
+/*   Updated: 2024/01/08 12:04:24 by dinda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-size_t	linelen(const char *str, size_t sn)
+size_t	ft_strlen(const char *str, size_t sn)
 {
 	int	i;
 
@@ -30,7 +30,7 @@ size_t	linelen(const char *str, size_t sn)
 	return (i);
 }
 
-char	*linejoin(char *str1, char *str2)
+char	*ft_strjoin(char *str1, char *str2)
 {
 	size_t	i;
 	char	*p;
@@ -38,7 +38,7 @@ char	*linejoin(char *str1, char *str2)
 	i = 0;
 	if (!str1 && !str2)
 		return (NULL);
-	p = ft_calloc(linelen(str1, 0) + linelen(str2, 0) + 1, 1);
+	p = ft_calloc(ft_strlen(str1, 0) + ft_strlen(str2, 0) + 1, 1);
 	if (!p)
 		return (NULL);
 	while (str1 && *str1 != '\0')

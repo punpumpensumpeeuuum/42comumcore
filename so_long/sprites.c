@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sprites.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dinda-si <dinda-si@student.42.fr>          +#+  +:+       +#+        */
+/*   By: elemesmo <elemesmo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 16:36:50 by dinda-si          #+#    #+#             */
-/*   Updated: 2024/04/04 17:24:26 by dinda-si         ###   ########.fr       */
+/*   Updated: 2024/04/06 04:36:26 by elemesmo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ int	andar(t_data *img)
 	if (img->player.ts == 0)
 		mlx_clear_window(img->mlx, img->mlx_win);
 	animation(img);
+	imageplacer(img);
 	usleep(50000 / 30);
 	return (0);
 }
