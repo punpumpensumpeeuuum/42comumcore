@@ -6,7 +6,7 @@
 /*   By: elemesmo <elemesmo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 17:23:41 by dinda-si          #+#    #+#             */
-/*   Updated: 2024/04/06 04:34:49 by elemesmo         ###   ########.fr       */
+/*   Updated: 2024/04/08 02:36:24 by elemesmo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ void	init(t_data *img)
 	img->player.s = 0;
 	img->player.d = 0;
 	img->player.ts = 0;
-	img->player.x = 64;
-	img->player.y = 64;
+	img->player.x = 0;
+	img->player.y = 0;
 	img->pixel = 64;
 }
 
@@ -36,12 +36,15 @@ int	main(int argc, char **argv)
 		img.mlx = mlx_init();
 		if (initgame(&img, argv) == 0)
 			return (0);
-		img.mlx_win = mlx_new_window(img.mlx, img.map.width * img.pixel + img.pixel * 2, img.map.height * img.pixel + img.pixel * 2, "EEEEEEEEEEE");
+		img.mlx_win = mlx_new_window(img.mlx, img.map.width * img.pixel + \
+			img.pixel * 2, img.map.height * img.pixel + img.pixel * 2, \
+						"EEEEEEEEEEE");
 		if (!img.mlx_win)
 		{
 			free(img.mlx);
 			return (1);
 		}
+		playerplacer(&img);
 		mlx_hook(img.mlx_win, 2, 1L << 0, keypress, &img);
 		mlx_hook(img.mlx_win, 3, 1L << 1, keyunpress, &img);
 		mlx_loop_hook(img.mlx, andar, &img);

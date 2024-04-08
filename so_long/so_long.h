@@ -6,7 +6,7 @@
 /*   By: elemesmo <elemesmo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 17:52:53 by dinda-si          #+#    #+#             */
-/*   Updated: 2024/04/06 04:19:10 by elemesmo         ###   ########.fr       */
+/*   Updated: 2024/04/07 22:39:43 by elemesmo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,5 +72,6 @@ int		verifymaponly(t_data *img);
 
 void	place(t_data *img, int i, int j);
 void	imageplacer(t_data *img);
+void	playerplacer(t_data *img);
 
 #endif

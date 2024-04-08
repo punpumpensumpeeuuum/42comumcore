@@ -6,7 +6,7 @@
 /*   By: elemesmo <elemesmo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 22:12:31 by elemesmo          #+#    #+#             */
-/*   Updated: 2024/04/06 04:37:01 by elemesmo         ###   ########.fr       */
+/*   Updated: 2024/04/08 02:04:11 by elemesmo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	len(const char *str)
 	int	i;
 
 	i = 0;
-	while (str[i] == '1' || str[i] == '0')
+	while (str[i] == '1' || str[i] == '0' || str[i] == 'P')
 		i++;
 	if (!(str[i] >= 0 && str[i] <= 31))
 		return (-1);
@@ -57,7 +57,8 @@ int	verifymaponly(t_data *img)
 	}
 	while (h < img->map.height)
 	{
-		if (img->mapcopy[h][0] != '1' || img->mapcopy[h][img->map.width - 1] != '1')
+		if (img->mapcopy[h][0] != '1' ||
+			img->mapcopy[h][img->map.width - 1] != '1')
 			return (1);
 		h++;
 	}
