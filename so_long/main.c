@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: elemesmo <elemesmo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dinda-si <dinda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 17:23:41 by dinda-si          #+#    #+#             */
-/*   Updated: 2024/04/09 00:51:34 by elemesmo         ###   ########.fr       */
+/*   Updated: 2024/04/09 17:54:40 by dinda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,15 @@
 
 void	init(t_data *img)
 {
-	img->img = NULL;	
+	img->img = NULL;
+	img->imgexit = NULL;
 	img->imgred = NULL;
 	img->imggrin = NULL;
 	img->imgblu = NULL;
 	img->imgwall = NULL;
-	img->imgcolet = NULL;	
+	img->imgcolet = NULL;
 	img->mapcopy = NULL;
+	img->p = NULL;
 	img->map.height = 0;
 	img->map.width = 0;
 	img->player.red = 0;
@@ -35,6 +37,8 @@ void	init(t_data *img)
 	img->player.y = 0;
 	img->pixel = 64;
 	img->minipixel = 32;
+	img->steepsteps = 0;
+	img->gamover = 0;
 }
 
 int	main(int argc, char **argv)
@@ -53,7 +57,8 @@ int	main(int argc, char **argv)
 		{
 			free(img.mlx);
 			return (1);
-		}
+		}	
+		mlx_do_key_autorepeatoff(img.mlx);
 		playerplacer(&img);
 		mlx_hook(img.mlx_win, 2, 1L << 0, keypress, &img);
 		mlx_hook(img.mlx_win, 3, 1L << 1, keyunpress, &img);

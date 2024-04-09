@@ -6,7 +6,7 @@
 /*   By: dinda-si <dinda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 12:57:03 by dinda-si          #+#    #+#             */
-/*   Updated: 2024/01/16 11:13:46 by dinda-si         ###   ########.fr       */
+/*   Updated: 2024/04/09 13:02:15 by dinda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ char	*get_next_line(int fd);
 char	*ft_joinfree(char *str, char *buffer);
 void	*ft_calloc(size_t mem, size_t size);
 char	*ft_strjoin(char *str1, char *str2);
-size_t	ft_strlen(const char *str, size_t sn);
+size_t	f_strlen(const char *str, size_t sn);
 void	bufferclean(char *buffer);
 
 #endif

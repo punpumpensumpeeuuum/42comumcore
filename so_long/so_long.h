@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: elemesmo <elemesmo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dinda-si <dinda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 17:52:53 by dinda-si          #+#    #+#             */
-/*   Updated: 2024/04/09 00:09:52 by elemesmo         ###   ########.fr       */
+/*   Updated: 2024/04/09 17:54:42 by dinda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,14 @@ typedef struct s_data
 {
 	void	*mlx;
 	void	*mlx_win;
+	void	*p;
 	void	*img;
 	void	*imgred;
 	void	*imgblu;
 	void	*imggrin;
 	void	*imgwall;
 	void	*imgcolet;
+	void	*imgexit;
 	int		pixel;
 	int		minipixel;
 	struct s_player
@@ -49,6 +51,8 @@ typedef struct s_data
 		int		height;
 		int		width;
 	}map;
+	unsigned long	steepsteps;
+	int				gamover;
 }				t_data;
 
 void	init(t_data *img);
@@ -59,6 +63,7 @@ void	movimento(t_data *img);
 void	animation(t_data *img);
 int		andar(t_data *img);
 
+void	closegame(int keycode, t_data *img);
 void	red(t_data *img);
 void	blue(t_data *img);
 void	green(t_data *img);
@@ -75,5 +80,6 @@ int		verifymaponly(t_data *img);
 void	place(t_data *img, int i, int j);
 void	imageplacer(t_data *img);
 void	playerplacer(t_data *img);
+void	steepsteps(t_data *img);
 
 #endif

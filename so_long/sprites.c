@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sprites.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: elemesmo <elemesmo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dinda-si <dinda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 16:36:50 by dinda-si          #+#    #+#             */
-/*   Updated: 2024/04/09 00:46:28 by elemesmo         ###   ########.fr       */
+/*   Updated: 2024/04/09 17:46:16 by dinda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,29 @@
 
 int	keypress(int keycode, t_data *img)
 {
-	if (keycode == 65307)
-	{
-		mlx_destroy_window(img->mlx, img->mlx_win);
-		exit(0);
-	}
-	else if (keycode == 65362 || keycode == 'w')
-		img->player.w = 1;
-	else if (keycode == 65361 || keycode == 'a')
-		img->player.a = 1;
-	else if (keycode == 65364 || keycode == 's')
-		img->player.s = 1;
-	else if (keycode == 65363 || keycode == 'd')
-		img->player.d = 1;
-	else if (keycode == 32 || keycode == 98 || keycode == 103 || keycode == 114)
+	closegame(keycode, img);
+	if (keycode == 32 || keycode == 98 || keycode == 103 || keycode == 114)
 		toggle(keycode, img);
+	else if (keycode == 65362 || keycode == 'w')
+	{
+		img->player.w = 1;
+		img->steepsteps++;
+	}
+	else if (keycode == 65361 || keycode == 'a')
+	{
+		img->player.a = 1;
+		img->steepsteps++;
+	}
+	else if (keycode == 65364 || keycode == 's')
+	{
+		img->player.s = 1;
+		img->steepsteps++;
+	}
+	else if (keycode == 65363 || keycode == 'd')
+	{
+		img->player.d = 1;
+		img->steepsteps++;
+	}
 	return (0);
 }
 
@@ -83,13 +91,17 @@ void	animation(t_data *img)
 
 int	andar(t_data *img)
 {
-	printf("x: %d\n", img->player.x);
-	printf("y: %d\n", img->player.y);
-	movimento(img);
-	if (img->player.ts == 0)
-		mlx_clear_window(img->mlx, img->mlx_win);
-	animation(img);
-	imageplacer(img);
-	usleep(50000 / 30);
+	if (img->gamover == 0)
+	{
+		printf("x: %d\n", img->player.x);
+		printf("y: %d\n", img->player.y);
+		movimento(img);
+		if (img->player.ts == 0)
+			mlx_clear_window(img->mlx, img->mlx_win);
+		steepsteps(img);
+		animation(img);
+		imageplacer(img);
+		usleep(50000 / 30);
+	}
 	return (0);
 }

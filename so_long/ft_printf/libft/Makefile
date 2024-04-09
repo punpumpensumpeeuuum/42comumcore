@@ -1,7 +1,6 @@
 NAME = libft.a
 
-SRCS =	ft_putchar_fd.c \
-	ft_putstr_fd.c \
+SRCS =	ft_putchar_fd.c ft_putstr_fd.c ft_itoa.c ft_strdup.c ft_strlen.c
 
 OBJ = $(SRCS:.c=.o)
 

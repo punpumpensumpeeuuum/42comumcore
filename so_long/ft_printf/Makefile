@@ -1,10 +1,8 @@
 NAME = libftprintf.a
 
-SRCS = ft_printf.c \
-		ft_printf_aux.c
+SRCS = ft_printf.c ft_printf_aux.c
 
-LIBSRCS = ft_putchar_fd.c \
-			ft_putstr_fd.c 
+LIBSRCS = ft_putchar_fd.c ft_putstr_fd.c ft_itoa.c ft_strdup.c ft_strlen.c
 
 CC = cc
 

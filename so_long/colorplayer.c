@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   colorplayer.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: elemesmo <elemesmo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dinda-si <dinda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/01 18:15:50 by dinda-si          #+#    #+#             */
-/*   Updated: 2024/04/09 00:57:54 by elemesmo         ###   ########.fr       */
+/*   Updated: 2024/04/09 16:46:45 by dinda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 
 void	sprites(t_data *img)
 {
+	int larg;
+
+	larg = img->pixel * 3;
 	img->imgwall = mlx_xpm_file_to_image(img->mlx, "images/parede.xpm",
 			&img->pixel, &img->pixel);
 	img->img = mlx_xpm_file_to_image(img->mlx, "images/rw.xpm",
@@ -26,6 +29,10 @@ void	sprites(t_data *img)
 			&img->pixel, &img->pixel);
 	img->imgcolet = mlx_xpm_file_to_image(img->mlx, "images/col.xpm",
 			&img->minipixel, &img->minipixel);
+	img->imgexit = mlx_xpm_file_to_image(img->mlx, "images/m.xpm",
+			&img->pixel, &img->pixel);
+	img->p = mlx_xpm_file_to_image(img->mlx, "images/p.xpm",
+			&larg, &img->pixel);
 }
 
 void	red(t_data *img)
