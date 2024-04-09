@@ -6,7 +6,7 @@
 /*   By: elemesmo <elemesmo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 17:23:41 by dinda-si          #+#    #+#             */
-/*   Updated: 2024/04/08 02:36:24 by elemesmo         ###   ########.fr       */
+/*   Updated: 2024/04/09 00:51:34 by elemesmo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,18 @@
 
 void	init(t_data *img)
 {
+	img->img = NULL;	
+	img->imgred = NULL;
+	img->imggrin = NULL;
+	img->imgblu = NULL;
+	img->imgwall = NULL;
+	img->imgcolet = NULL;	
 	img->mapcopy = NULL;
 	img->map.height = 0;
 	img->map.width = 0;
+	img->player.red = 0;
+	img->player.green = 0;
+	img->player.blue = 0;
 	img->player.w = 0;
 	img->player.a = 0;
 	img->player.s = 0;
@@ -25,6 +34,7 @@ void	init(t_data *img)
 	img->player.x = 0;
 	img->player.y = 0;
 	img->pixel = 64;
+	img->minipixel = 32;
 }
 
 int	main(int argc, char **argv)

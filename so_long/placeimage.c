@@ -6,7 +6,7 @@
 /*   By: elemesmo <elemesmo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 22:42:57 by elemesmo          #+#    #+#             */
-/*   Updated: 2024/04/08 02:03:52 by elemesmo         ###   ########.fr       */
+/*   Updated: 2024/04/09 00:58:32 by elemesmo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,9 @@ void	place(t_data *img, int i, int j)
 	if (img->mapcopy[i][j] == '1')
 		mlx_put_image_to_window(img->mlx, img->mlx_win, img->imgwall,
 			j * img->pixel + img->pixel, i * img->pixel + img->pixel);
+	if (img->mapcopy[i][j] == 'C')
+		mlx_put_image_to_window(img->mlx, img->mlx_win, img->imgcolet,
+			j * img->pixel + img->pixel + 16, i * img->pixel + img->pixel + 16);
 }
 
 void	imageplacer(t_data *img)

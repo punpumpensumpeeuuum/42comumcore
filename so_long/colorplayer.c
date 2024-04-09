@@ -6,7 +6,7 @@
 /*   By: elemesmo <elemesmo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/01 18:15:50 by dinda-si          #+#    #+#             */
-/*   Updated: 2024/04/06 04:34:28 by elemesmo         ###   ########.fr       */
+/*   Updated: 2024/04/09 00:57:54 by elemesmo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ void	sprites(t_data *img)
 			&img->pixel, &img->pixel);
 	img->imggrin = mlx_xpm_file_to_image(img->mlx, "images/grin.xpm",
 			&img->pixel, &img->pixel);
+	img->imgcolet = mlx_xpm_file_to_image(img->mlx, "images/col.xpm",
+			&img->minipixel, &img->minipixel);
 }
 
 void	red(t_data *img)

@@ -6,7 +6,7 @@
 /*   By: elemesmo <elemesmo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 16:36:50 by dinda-si          #+#    #+#             */
-/*   Updated: 2024/04/08 01:04:19 by elemesmo         ###   ########.fr       */
+/*   Updated: 2024/04/09 00:46:28 by elemesmo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,13 +47,25 @@ int	keyunpress(int keycode, t_data *img)
 
 void	movimento(t_data *img)
 {
-	if (img->player.w == 1 && img->player.y - img->pixel >= 0)
+	if (img->player.w == 1 && img->mapcopy
+		[((img->player.y - 1) / img->pixel) - 1][(img->player.x / img->pixel)]
+		!= '1' && img->mapcopy[((img->player.y - 1) / img->pixel) - 1]
+		[((img->player.x - 60) / img->pixel)] != '1')
 		img->player.y--;
-	if (img->player.a == 1 && img->player.x - img->pixel >= 0)
+	if (img->player.a == 1 && img->mapcopy
+		[((img->player.y + 1) / img->pixel) - 1][((img->player.x + 1)
+			/ img->pixel) - 1] != '1' && img->mapcopy[((img->player.y + 60)
+			/ img->pixel) - 1][((img->player.x + 1) / img->pixel) - 1] != '1')
 		img->player.x--;
-	if (img->player.s == 1 && img->player.y <= img->map.height * img->pixel)
+	if (img->player.s == 1 && img->mapcopy
+		[((img->player.y + 1) / img->pixel)][(img->player.x / img->pixel)]
+		!= '1' && img->mapcopy[((img->player.y + 1) / img->pixel)]
+		[((img->player.x - 60) / img->pixel)] != '1')
 		img->player.y++;
-	if (img->player.d == 1 && img->player.x <= img->map.width * img->pixel)
+	if (img->player.d == 1 && img->mapcopy[((img->player.y - 1) / img->pixel)]
+		[((img->player.x + 1) / img->pixel)] != '1' && img->mapcopy
+		[((img->player.y - 60) / img->pixel)][((img->player.x + 1)
+			/ img->pixel)] != '1')
 		img->player.x++;
 }
 
@@ -71,6 +83,8 @@ void	animation(t_data *img)
 
 int	andar(t_data *img)
 {
+	printf("x: %d\n", img->player.x);
+	printf("y: %d\n", img->player.y);
 	movimento(img);
 	if (img->player.ts == 0)
 		mlx_clear_window(img->mlx, img->mlx_win);

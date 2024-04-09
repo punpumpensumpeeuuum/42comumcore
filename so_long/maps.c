@@ -6,7 +6,7 @@
 /*   By: elemesmo <elemesmo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 18:19:33 by dinda-si          #+#    #+#             */
-/*   Updated: 2024/04/06 04:32:22 by elemesmo         ###   ########.fr       */
+/*   Updated: 2024/04/09 00:43:50 by elemesmo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,6 @@ char	**leromapa(char **argv)
 		return (NULL);
 	alt = leraltura(argv);
 	map = malloc(sizeof(char *) * (alt + 1));
-	temp = get_next_line(-1);
 	a = 0;
 	temp = get_next_line(fd);
 	while (temp)

@@ -6,7 +6,7 @@
 /*   By: elemesmo <elemesmo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 22:12:31 by elemesmo          #+#    #+#             */
-/*   Updated: 2024/04/08 02:04:11 by elemesmo         ###   ########.fr       */
+/*   Updated: 2024/04/08 22:26:40 by elemesmo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	len(const char *str)
 	int	i;
 
 	i = 0;
-	while (str[i] == '1' || str[i] == '0' || str[i] == 'P')
+	while (str[i] == '1' || str[i] == '0' || str[i] == 'P' || str[i] == 'C')
 		i++;
 	if (!(str[i] >= 0 && str[i] <= 31))
 		return (-1);

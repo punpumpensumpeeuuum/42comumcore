@@ -6,7 +6,7 @@
 /*   By: elemesmo <elemesmo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 17:52:53 by dinda-si          #+#    #+#             */
-/*   Updated: 2024/04/07 22:39:43 by elemesmo         ###   ########.fr       */
+/*   Updated: 2024/04/09 00:09:52 by elemesmo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include "get_next_line/get_next_line.h"
 # include "mlx-linux/mlx.h"
 
-typedef struct	s_data
+typedef struct s_data
 {
 	void	*mlx;
 	void	*mlx_win;
@@ -27,7 +27,9 @@ typedef struct	s_data
 	void	*imgblu;
 	void	*imggrin;
 	void	*imgwall;
+	void	*imgcolet;
 	int		pixel;
+	int		minipixel;
 	struct s_player
 	{
 		int	a;
