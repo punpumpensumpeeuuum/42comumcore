@@ -6,7 +6,7 @@
 /*   By: dinda-si <dinda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 17:37:26 by dinda-si          #+#    #+#             */
-/*   Updated: 2024/04/09 17:54:34 by dinda-si         ###   ########.fr       */
+/*   Updated: 2024/04/10 15:58:05 by dinda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,24 +29,22 @@ void	destroyimages(t_data *img)
 	}
 }
 
-void	closegame(int keycode, t_data *img)
+void	closegame(t_data *img)
 {
-	if (keycode == 65307)
-	{
-		int		i;
+	int		i;
 
-		i = 0;
+	i = 0;
+	if (img->imgwall)
 		destroyimages(img);
-		mlx_destroy_display(img->mlx);
-		free(img->mlx);
-		while (img->mapcopy[i])
-		{
-			free(img->mapcopy[i]);
-			i++;
-		}
-		get_next_line(123456789);
+	mlx_destroy_display(img->mlx);
+	free(img->mlx);
+	while (img->mapcopy[i])
+	{
 		free(img->mapcopy[i]);
-		free(img->mapcopy);
-		exit(0);
+		i++;
 	}
+	get_next_line(123456789);
+	free(img->mapcopy[i]);
+	free(img->mapcopy);
+	exit(0);
 }

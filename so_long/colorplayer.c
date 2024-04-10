@@ -6,7 +6,7 @@
 /*   By: dinda-si <dinda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/01 18:15:50 by dinda-si          #+#    #+#             */
-/*   Updated: 2024/04/09 16:46:45 by dinda-si         ###   ########.fr       */
+/*   Updated: 2024/04/10 18:20:35 by dinda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ void	sprites(t_data *img)
 			&img->pixel, &img->pixel);
 	img->p = mlx_xpm_file_to_image(img->mlx, "images/p.xpm",
 			&larg, &img->pixel);
+	img->imgfloor = mlx_xpm_file_to_image(img->mlx, "images/floor.xpm",
+			&img->pixel, &img->pixel);
 }
 
 void	red(t_data *img)

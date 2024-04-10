@@ -6,7 +6,7 @@
 /*   By: dinda-si <dinda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 16:36:50 by dinda-si          #+#    #+#             */
-/*   Updated: 2024/04/09 17:46:16 by dinda-si         ###   ########.fr       */
+/*   Updated: 2024/04/10 18:19:32 by dinda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,28 +14,29 @@
 
 int	keypress(int keycode, t_data *img)
 {
-	closegame(keycode, img);
+	if (keycode == 65307)
+		closegame(img);
 	if (keycode == 32 || keycode == 98 || keycode == 103 || keycode == 114)
 		toggle(keycode, img);
 	else if (keycode == 65362 || keycode == 'w')
 	{
 		img->player.w = 1;
-		img->steepsteps++;
+		countsteps(img);
 	}
 	else if (keycode == 65361 || keycode == 'a')
 	{
 		img->player.a = 1;
-		img->steepsteps++;
+		countsteps(img);
 	}
 	else if (keycode == 65364 || keycode == 's')
 	{
 		img->player.s = 1;
-		img->steepsteps++;
+		countsteps(img);
 	}
 	else if (keycode == 65363 || keycode == 'd')
 	{
 		img->player.d = 1;
-		img->steepsteps++;
+		countsteps(img);
 	}
 	return (0);
 }
@@ -58,21 +59,21 @@ void	movimento(t_data *img)
 	if (img->player.w == 1 && img->mapcopy
 		[((img->player.y - 1) / img->pixel) - 1][(img->player.x / img->pixel)]
 		!= '1' && img->mapcopy[((img->player.y - 1) / img->pixel) - 1]
-		[((img->player.x - 60) / img->pixel)] != '1')
+		[((img->player.x - 62) / img->pixel)] != '1')
 		img->player.y--;
 	if (img->player.a == 1 && img->mapcopy
 		[((img->player.y + 1) / img->pixel) - 1][((img->player.x + 1)
-			/ img->pixel) - 1] != '1' && img->mapcopy[((img->player.y + 60)
+			/ img->pixel) - 1] != '1' && img->mapcopy[((img->player.y + 62)
 			/ img->pixel) - 1][((img->player.x + 1) / img->pixel) - 1] != '1')
 		img->player.x--;
 	if (img->player.s == 1 && img->mapcopy
 		[((img->player.y + 1) / img->pixel)][(img->player.x / img->pixel)]
 		!= '1' && img->mapcopy[((img->player.y + 1) / img->pixel)]
-		[((img->player.x - 60) / img->pixel)] != '1')
+		[((img->player.x - 62) / img->pixel)] != '1')
 		img->player.y++;
 	if (img->player.d == 1 && img->mapcopy[((img->player.y - 1) / img->pixel)]
 		[((img->player.x + 1) / img->pixel)] != '1' && img->mapcopy
-		[((img->player.y - 60) / img->pixel)][((img->player.x + 1)
+		[((img->player.y - 62) / img->pixel)][((img->player.x + 1)
 			/ img->pixel)] != '1')
 		img->player.x++;
 }
@@ -93,14 +94,15 @@ int	andar(t_data *img)
 {
 	if (img->gamover == 0)
 	{
-		printf("x: %d\n", img->player.x);
-		printf("y: %d\n", img->player.y);
+		// printf("x: %d\n", img->player.x);
+		// printf("y: %d\n", img->player.y);
 		movimento(img);
 		if (img->player.ts == 0)
 			mlx_clear_window(img->mlx, img->mlx_win);
 		steepsteps(img);
-		animation(img);
+		mlx_put_image_to_window(img->mlx, img->mlx_win, img->imgfloor, img->pixel, img->pixel);
 		imageplacer(img);
+		animation(img);
 		usleep(50000 / 30);
 	}
 	return (0);

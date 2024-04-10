@@ -6,7 +6,7 @@
 /*   By: dinda-si <dinda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 22:12:31 by elemesmo          #+#    #+#             */
-/*   Updated: 2024/04/09 15:24:32 by dinda-si         ###   ########.fr       */
+/*   Updated: 2024/04/10 17:15:37 by dinda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,9 +51,8 @@ int	verifymaponly(t_data *img)
 	h = 0;
 	while (w < img->map.width)
 	{
-		if (img->mapcopy[h][w] != '1')
+		if (img->mapcopy[h][w++] != '1')
 			return (1);
-		w++;
 	}
 	while (h < img->map.height)
 	{
@@ -62,11 +61,12 @@ int	verifymaponly(t_data *img)
 			return (1);
 		h++;
 	}
+	h--;
+	w = 0;
 	while (w < img->map.width)
 	{
-		if (img->mapcopy[h][w] != '1')
+		if (img->mapcopy[h][w++] != '1')
 			return (1);
-		w++;
 	}
 	return (0);
 }

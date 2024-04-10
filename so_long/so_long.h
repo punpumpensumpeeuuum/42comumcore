@@ -6,7 +6,7 @@
 /*   By: dinda-si <dinda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 17:52:53 by dinda-si          #+#    #+#             */
-/*   Updated: 2024/04/09 17:54:42 by dinda-si         ###   ########.fr       */
+/*   Updated: 2024/04/10 18:11:07 by dinda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ typedef struct s_data
 	void	*imgwall;
 	void	*imgcolet;
 	void	*imgexit;
+	void	*imgfloor;
 	int		pixel;
 	int		minipixel;
 	struct s_player
@@ -63,7 +64,7 @@ void	movimento(t_data *img);
 void	animation(t_data *img);
 int		andar(t_data *img);
 
-void	closegame(int keycode, t_data *img);
+void	closegame(t_data *img);
 void	red(t_data *img);
 void	blue(t_data *img);
 void	green(t_data *img);
@@ -71,6 +72,7 @@ void	white(t_data *img);
 void	toggle(int key, t_data *img);
 void	toggle2(int key, t_data *img);
 
+int		len(const char *str);
 int		leraltura(char **argv);
 char	**leromapa(char **argv);
 int		initgame(t_data *img, char **argv);
@@ -80,6 +82,11 @@ int		verifymaponly(t_data *img);
 void	place(t_data *img, int i, int j);
 void	imageplacer(t_data *img);
 void	playerplacer(t_data *img);
+void	countsteps(t_data *img);
 void	steepsteps(t_data *img);
+
+int		argmap(char **av);
+
+void	coins(t_data *img);
 
 #endif
