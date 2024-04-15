@@ -6,7 +6,7 @@
 /*   By: dinis <dinis@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 16:36:50 by dinda-si          #+#    #+#             */
-/*   Updated: 2024/04/14 18:59:08 by dinis            ###   ########.fr       */
+/*   Updated: 2024/04/15 16:37:28 by dinis            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,6 @@ void	animation(t_data *img)
 
 int	andar(t_data *img)
 {
-
 	// printf("x: %d\n", img->player.x);
 	// printf("y: %d\n", img->player.y);
 	movimento(img);
@@ -103,7 +102,7 @@ int	andar(t_data *img)
 	imageplacer(img);
 	animation(img);
 	usleep(50000 / 30);
-	if (img->colectables == 0)
+	if (img->count.colect == 0)
 		img->exit = 1;
 	return (0);
 }

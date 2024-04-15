@@ -6,7 +6,7 @@
 /*   By: dinis <dinis@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 17:52:53 by dinda-si          #+#    #+#             */
-/*   Updated: 2024/04/14 18:58:30 by dinis            ###   ########.fr       */
+/*   Updated: 2024/04/15 16:29:29 by dinis            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,12 @@ typedef struct s_data
 		int		height;
 		int		width;
 	}map;
-	int				colectables;
+	struct s_count
+	{
+		int		exit;
+		int		player;
+		int		colect;
+	}count;
 	unsigned long	steepsteps;
 	int				gamover;
 }				t_data;
@@ -75,12 +80,14 @@ void	white(t_data *img);
 void	toggle(int key, t_data *img);
 void	toggle2(int key, t_data *img);
 
-int		len(const char *str, t_data *img);
+int		len(const char *str);
 int		leraltura(char **argv);
 char	**leromapa(char **argv);
 int		initgame(t_data *img, char **argv);
 int		verifymapquadrado(t_data *img);
 int		verifymaponly(t_data *img);
+void	mapcount(t_data *img);
+
 
 void	place(t_data *img, int i, int j);
 void	imageplacer(t_data *img);

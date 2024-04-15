@@ -6,7 +6,7 @@
 /*   By: dinis <dinis@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 18:19:33 by dinda-si          #+#    #+#             */
-/*   Updated: 2024/04/14 19:04:19 by dinis            ###   ########.fr       */
+/*   Updated: 2024/04/15 16:50:09 by dinis            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ int	initgame(t_data *img, char **argv)
 {
 	if (argmap(argv) == 0)
 	{	
-		printf("No map?\n");
+		ft_printf("Error\n\nNo map?\n");
 		exit(0);
 	}
 	img->mlx = mlx_init();
@@ -72,10 +72,13 @@ int	initgame(t_data *img, char **argv)
 	img->mapcopy = leromapa(argv);
 	if (img->mapcopy == NULL)
 		return (0);
+	mapcount(img);
 	if (verifymapquadrado(img) != 0 || img->map.height <= 1
-		|| img->map.width <= 1 || verifymaponly(img) != 0)
+		|| img->map.width <= 1 || verifymaponly(img) != 0 ||
+		img->count.player != 1 || img->count.exit != 1 ||
+		img->count.colect < 1)
 	{
-		ft_printf("Map is wrong\n");
+		ft_printf("Error\n\nMap is wrong\n");
 		return (0);
 	}
 	return (1);

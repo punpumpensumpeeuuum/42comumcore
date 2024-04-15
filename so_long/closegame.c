@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   closegame.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dinda-si <dinda-si@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dinis <dinis@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 17:37:26 by dinda-si          #+#    #+#             */
-/*   Updated: 2024/04/10 15:58:05 by dinda-si         ###   ########.fr       */
+/*   Updated: 2024/04/15 16:47:51 by dinis            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ void	destroyimages(t_data *img)
 	mlx_destroy_image(img->mlx, img->imgcolet);
 	mlx_destroy_image(img->mlx, img->p);
 	mlx_destroy_image(img->mlx, img->imgexit);
+	mlx_destroy_image(img->mlx, img->imgfloor);
+	mlx_destroy_image(img->mlx, img->imgenemy);
 	if (img->mlx_win)
 	{
 		mlx_clear_window(img->mlx, img->mlx_win);
@@ -34,8 +36,7 @@ void	closegame(t_data *img)
 	int		i;
 
 	i = 0;
-	if (img->imgwall)
-		destroyimages(img);
+	destroyimages(img);
 	mlx_destroy_display(img->mlx);
 	free(img->mlx);
 	while (img->mapcopy[i])

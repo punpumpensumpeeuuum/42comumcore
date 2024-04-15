@@ -6,7 +6,7 @@
 /*   By: dinis <dinis@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 17:23:41 by dinda-si          #+#    #+#             */
-/*   Updated: 2024/04/14 19:04:48 by dinis            ###   ########.fr       */
+/*   Updated: 2024/04/15 16:14:31 by dinis            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,9 @@ void	initvalues(t_data *img)
 	img->steepsteps = 0;
 	img->gamover = 0;
 	img->exit = 0;
-	img->colectables = 0;
+	img->count.colect = 0;
+	img->count.exit = 0;
+	img->count.player = 0;
 }
 
 void	init(t_data *img)
