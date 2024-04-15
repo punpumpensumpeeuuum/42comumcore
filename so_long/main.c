@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dinda-si <dinda-si@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dinis <dinis@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 17:23:41 by dinda-si          #+#    #+#             */
-/*   Updated: 2024/04/10 18:18:33 by dinda-si         ###   ########.fr       */
+/*   Updated: 2024/04/14 19:04:48 by dinis            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ void	initvalues(t_data *img)
 	img->minipixel = 32;
 	img->steepsteps = 0;
 	img->gamover = 0;
+	img->exit = 0;
+	img->colectables = 0;
 }
 
 void	init(t_data *img)
@@ -44,6 +46,7 @@ void	init(t_data *img)
 	img->mapcopy = NULL;
 	img->p = NULL;
 	img->imgfloor = NULL;
+	img->imgenemy = NULL;
 	initvalues(img);
 }
 
@@ -62,7 +65,7 @@ int	main(int argc, char **argv)
 		{
 			free(img.mlx);
 			return (1);
-		}	
+		}
 		mlx_do_key_autorepeatoff(img.mlx);
 		playerplacer(&img);
 		mlx_hook(img.mlx_win, 2, 1L << 0, keypress, &img);

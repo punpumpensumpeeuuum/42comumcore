@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   placeimage.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dinda-si <dinda-si@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dinis <dinis@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 22:42:57 by elemesmo          #+#    #+#             */
-/*   Updated: 2024/04/10 18:20:41 by dinda-si         ###   ########.fr       */
+/*   Updated: 2024/04/14 19:02:06 by dinis            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,19 @@ void	place(t_data *img, int i, int j)
 		mlx_put_image_to_window(img->mlx, img->mlx_win, img->imgcolet,
 			j * img->pixel + img->pixel + 16, i * img->pixel + img->pixel + 16);
 	}
-	else if (img->mapcopy[i][j] == 'E')
-		mlx_put_image_to_window(img->mlx, img->mlx_win, img->imgexit,
+	else if (img->mapcopy[i][j] == 'L')
+		mlx_put_image_to_window(img->mlx, img->mlx_win, img->imgenemy,
 			j * img->pixel + img->pixel, i * img->pixel + img->pixel);
-	else if (img->mapcopy[i][j] == '0')
+	else if (img->mapcopy[i][j] == 'E')
+	{
+		if (img->exit == 0)
+			mlx_put_image_to_window(img->mlx, img->mlx_win, img->imgfloor,
+				j * img->pixel + img->pixel, i * img->pixel + img->pixel);
+		else
+			mlx_put_image_to_window(img->mlx, img->mlx_win, img->imgexit,
+				j * img->pixel + img->pixel, i * img->pixel + img->pixel);
+	}
+	else if (img->mapcopy[i][j] == '0' || img->mapcopy[i][j] == 'P')
 		mlx_put_image_to_window(img->mlx, img->mlx_win, img->imgfloor,
 			j * img->pixel + img->pixel, i * img->pixel + img->pixel);
 }

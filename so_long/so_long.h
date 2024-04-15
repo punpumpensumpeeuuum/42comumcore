@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dinda-si <dinda-si@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dinis <dinis@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 17:52:53 by dinda-si          #+#    #+#             */
-/*   Updated: 2024/04/10 18:11:07 by dinda-si         ###   ########.fr       */
+/*   Updated: 2024/04/14 18:58:30 by dinis            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,10 @@ typedef struct s_data
 	void	*imgcolet;
 	void	*imgexit;
 	void	*imgfloor;
+	void	*imgenemy;
 	int		pixel;
 	int		minipixel;
+	int		exit;
 	struct s_player
 	{
 		int	a;
@@ -52,6 +54,7 @@ typedef struct s_data
 		int		height;
 		int		width;
 	}map;
+	int				colectables;
 	unsigned long	steepsteps;
 	int				gamover;
 }				t_data;
@@ -72,7 +75,7 @@ void	white(t_data *img);
 void	toggle(int key, t_data *img);
 void	toggle2(int key, t_data *img);
 
-int		len(const char *str);
+int		len(const char *str, t_data *img);
 int		leraltura(char **argv);
 char	**leromapa(char **argv);
 int		initgame(t_data *img, char **argv);

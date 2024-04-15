@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sprites.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dinda-si <dinda-si@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dinis <dinis@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 16:36:50 by dinda-si          #+#    #+#             */
-/*   Updated: 2024/04/10 18:19:32 by dinda-si         ###   ########.fr       */
+/*   Updated: 2024/04/14 18:59:08 by dinis            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,18 +92,18 @@ void	animation(t_data *img)
 
 int	andar(t_data *img)
 {
-	if (img->gamover == 0)
-	{
-		// printf("x: %d\n", img->player.x);
-		// printf("y: %d\n", img->player.y);
-		movimento(img);
-		if (img->player.ts == 0)
-			mlx_clear_window(img->mlx, img->mlx_win);
-		steepsteps(img);
-		mlx_put_image_to_window(img->mlx, img->mlx_win, img->imgfloor, img->pixel, img->pixel);
-		imageplacer(img);
-		animation(img);
-		usleep(50000 / 30);
-	}
+
+	// printf("x: %d\n", img->player.x);
+	// printf("y: %d\n", img->player.y);
+	movimento(img);
+	if (img->player.ts == 0)
+		mlx_clear_window(img->mlx, img->mlx_win);
+	coins(img);
+	steepsteps(img);
+	imageplacer(img);
+	animation(img);
+	usleep(50000 / 30);
+	if (img->colectables == 0)
+		img->exit = 1;
 	return (0);
 }

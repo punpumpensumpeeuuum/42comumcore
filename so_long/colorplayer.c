@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   colorplayer.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dinda-si <dinda-si@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dinis <dinis@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/01 18:15:50 by dinda-si          #+#    #+#             */
-/*   Updated: 2024/04/10 18:20:35 by dinda-si         ###   ########.fr       */
+/*   Updated: 2024/04/14 18:04:54 by dinis            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,15 @@ void	sprites(t_data *img)
 			&img->pixel, &img->pixel);
 	img->imggrin = mlx_xpm_file_to_image(img->mlx, "images/grin.xpm",
 			&img->pixel, &img->pixel);
-	img->imgcolet = mlx_xpm_file_to_image(img->mlx, "images/col.xpm",
+	img->imgcolet = mlx_xpm_file_to_image(img->mlx, "images/cole.xpm",
 			&img->minipixel, &img->minipixel);
 	img->imgexit = mlx_xpm_file_to_image(img->mlx, "images/m.xpm",
 			&img->pixel, &img->pixel);
 	img->p = mlx_xpm_file_to_image(img->mlx, "images/p.xpm",
 			&larg, &img->pixel);
 	img->imgfloor = mlx_xpm_file_to_image(img->mlx, "images/floor.xpm",
+			&img->pixel, &img->pixel);
+	img->imgenemy = mlx_xpm_file_to_image(img->mlx, "images/enemy.xpm",
 			&img->pixel, &img->pixel);
 }
 
