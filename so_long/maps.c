@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   maps.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dinis <dinis@student.42.fr>                +#+  +:+       +#+        */
+/*   By: dinda-si <dinda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 18:19:33 by dinda-si          #+#    #+#             */
-/*   Updated: 2024/04/15 16:50:09 by dinis            ###   ########.fr       */
+/*   Updated: 2024/04/18 18:12:31 by dinda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,13 +73,17 @@ int	initgame(t_data *img, char **argv)
 	if (img->mapcopy == NULL)
 		return (0);
 	mapcount(img);
-	if (verifymapquadrado(img) != 0 || img->map.height <= 1
-		|| img->map.width <= 1 || verifymaponly(img) != 0 ||
+	if (verifymapquadrado(img) != 0 || img->map.height < 3
+		|| img->map.width < 3 || verifymaponly(img) != 0 ||
 		img->count.player != 1 || img->count.exit != 1 ||
-		img->count.colect < 1)
+		img->count.colect < 1 || checkpath(img) != 0)
 	{
+		freemap(img);
 		ft_printf("Error\n\nMap is wrong\n");
 		return (0);
 	}
+	img->mapcopy = leromapa(argv);
+	if (img->mapcopy == NULL)
+		return (0);
 	return (1);
 }

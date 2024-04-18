@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   placeimage.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dinis <dinis@student.42.fr>                +#+  +:+       +#+        */
+/*   By: dinda-si <dinda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 22:42:57 by elemesmo          #+#    #+#             */
-/*   Updated: 2024/04/14 19:02:06 by dinis            ###   ########.fr       */
+/*   Updated: 2024/04/18 16:13:35 by dinda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,26 +61,9 @@ void	imageplacer(t_data *img)
 
 void	playerplacer(t_data *img)
 {
-	int	i;
-	int	j;
-
-	i = 0;
-	while (i < img->map.height)
-	{
-		j = 0;
-		while (j < img->map.width)
-		{
-			if (img->mapcopy[i][j] == 'P')
-			{
-				img->player.x = (j * img->pixel) + (img->pixel);
-				img->player.y = (i * img->pixel) + (img->pixel);
-				mlx_put_image_to_window(img->mlx, img->mlx_win, img->img,
-					img->player.x, img->player.y);
-			}
-			j++;
-		}
-		i++;
-	}
+	playerfinder(img);
+	mlx_put_image_to_window(img->mlx, img->mlx_win, img->img,
+		img->player.x, img->player.y);
 }
 
 void	countsteps(t_data *img)

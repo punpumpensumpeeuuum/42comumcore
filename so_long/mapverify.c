@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mapverify.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dinis <dinis@student.42.fr>                +#+  +:+       +#+        */
+/*   By: dinda-si <dinda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 22:12:31 by elemesmo          #+#    #+#             */
-/*   Updated: 2024/04/15 16:29:06 by dinis            ###   ########.fr       */
+/*   Updated: 2024/04/18 16:47:00 by dinda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,28 @@ void	mapcount(t_data *img)
 				img->count.exit++;
 			if (img->mapcopy[i][j] == 'C')
 				img->count.colect++;
+			j++;
+		}
+		i++;
+	}
+}
+
+void	playerfinder(t_data *img)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (i < img->map.height)
+	{
+		j = 0;
+		while (j < img->map.width)
+		{
+			if (img->mapcopy[i][j] == 'P')
+			{
+				img->player.x = (j * img->pixel) + (img->pixel);
+				img->player.y = (i * img->pixel) + (img->pixel);
+			}
 			j++;
 		}
 		i++;

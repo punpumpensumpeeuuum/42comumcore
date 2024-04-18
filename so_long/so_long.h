@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dinis <dinis@student.42.fr>                +#+  +:+       +#+        */
+/*   By: dinda-si <dinda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 17:52:53 by dinda-si          #+#    #+#             */
-/*   Updated: 2024/04/15 16:29:29 by dinis            ###   ########.fr       */
+/*   Updated: 2024/04/18 16:39:19 by dinda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,12 @@ typedef struct s_data
 		int		player;
 		int		colect;
 	}count;
+	struct s_path
+	{
+		int		pexit;
+		int		pcolect;
+	}path;
+	
 	unsigned long	steepsteps;
 	int				gamover;
 }				t_data;
@@ -87,6 +93,7 @@ int		initgame(t_data *img, char **argv);
 int		verifymapquadrado(t_data *img);
 int		verifymaponly(t_data *img);
 void	mapcount(t_data *img);
+void	playerfinder(t_data *img);
 
 
 void	place(t_data *img, int i, int j);
@@ -94,8 +101,10 @@ void	imageplacer(t_data *img);
 void	playerplacer(t_data *img);
 void	countsteps(t_data *img);
 void	steepsteps(t_data *img);
+int		checkpath(t_data *img);
 
 int		argmap(char **av);
+void	freemap(t_data *inf);
 
 void	coins(t_data *img);
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dinis <dinis@student.42.fr>                +#+  +:+       +#+        */
+/*   By: dinda-si <dinda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 17:23:41 by dinda-si          #+#    #+#             */
-/*   Updated: 2024/04/15 16:14:31 by dinis            ###   ########.fr       */
+/*   Updated: 2024/04/18 18:20:41 by dinda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ void	initvalues(t_data *img)
 	img->count.colect = 0;
 	img->count.exit = 0;
 	img->count.player = 0;
+	img->path.pcolect = 0;
+	img->path.pexit = 0;
 }
 
 void	init(t_data *img)
@@ -59,7 +61,7 @@ int	main(int argc, char **argv)
 	if (argc == 2)
 	{
 		if (initgame(&img, argv) == 0)
-			return (0);
+			exit(0);
 		img.mlx_win = mlx_new_window(img.mlx, img.map.width * img.pixel + \
 			img.pixel * 2, img.map.height * img.pixel + img.pixel * 2, \
 						"EEEEEEEEEEE");
@@ -68,8 +70,16 @@ int	main(int argc, char **argv)
 			free(img.mlx);
 			return (1);
 		}
+		// printf("%s\n", img.mapcopy[0]);
+		// printf("%s\n", img.mapcopy[1]);
+		// printf("%s\n", img.mapcopy[2]);
+		// printf("%s\n", img.mapcopy[3]);
+		// printf("%s\n", img.mapcopy[4]);
+		// printf("%s\n", img.mapcopy[5]);
 		mlx_do_key_autorepeatoff(img.mlx);
 		playerplacer(&img);
+		// printf("%d\n", (img.player.x - img.pixel) / (img.pixel));
+		// printf("%d\n", (img.player.y - img.pixel) / (img.pixel));
 		mlx_hook(img.mlx_win, 2, 1L << 0, keypress, &img);
 		mlx_hook(img.mlx_win, 3, 1L << 1, keyunpress, &img);
 		mlx_loop_hook(img.mlx, andar, &img);
