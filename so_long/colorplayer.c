@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   colorplayer.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dinis <dinis@student.42.fr>                +#+  +:+       +#+        */
+/*   By: dinda-si <dinda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/01 18:15:50 by dinda-si          #+#    #+#             */
-/*   Updated: 2024/04/15 16:45:55 by dinis            ###   ########.fr       */
+/*   Updated: 2024/04/19 18:11:08 by dinda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,13 @@ void	sprites(t_data *img)
 	larg = img->pixel * 3;
 	img->imgwall = mlx_xpm_file_to_image(img->mlx, "images/parede.xpm",
 			&img->pixel, &img->pixel);
-	img->img = mlx_xpm_file_to_image(img->mlx, "images/rw.xpm",
+	img->img = mlx_xpm_file_to_image(img->mlx, "images/wp/p1true.xpm",
 			&img->pixel, &img->pixel);
-	img->imgred = mlx_xpm_file_to_image(img->mlx, "images/red.xpm",
+	img->imgred = mlx_xpm_file_to_image(img->mlx, "images/rp/p1red.xpm",
 			&img->pixel, &img->pixel);
-	img->imgblu = mlx_xpm_file_to_image(img->mlx, "images/blue.xpm",
+	img->imgblu = mlx_xpm_file_to_image(img->mlx, "images/bp/p1blue.xpm",
 			&img->pixel, &img->pixel);
-	img->imggrin = mlx_xpm_file_to_image(img->mlx, "images/grin.xpm",
+	img->imggrin = mlx_xpm_file_to_image(img->mlx, "images/gp/p1green.xpm",
 			&img->pixel, &img->pixel);
 	img->imgcolet = mlx_xpm_file_to_image(img->mlx, "images/cole.xpm",
 			&img->minipixel, &img->minipixel);

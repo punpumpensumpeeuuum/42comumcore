@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   interactions.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dinis <dinis@student.42.fr>                +#+  +:+       +#+        */
+/*   By: dinda-si <dinda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 18:10:36 by dinda-si          #+#    #+#             */
-/*   Updated: 2024/04/16 17:33:25 by dinis            ###   ########.fr       */
+/*   Updated: 2024/04/19 14:35:50 by dinda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,14 +53,14 @@ void	coins(t_data *img)
 		img->mapcopy[((img->player.y - 32) / img->pixel)][((img->player.x - 32) / img->pixel)] = '0';
 	}
 	coins2(img);
-	if (img->mapcopy[((img->player.y) / img->pixel)][((img->player.x) / img->pixel)] == 'L' ||
-	img->mapcopy[((img->player.y - 63) / img->pixel)][((img->player.x) / img->pixel)] == 'L')
+	if (img->mapcopy[((img->player.y - 4) / img->pixel)][((img->player.x - 4) / img->pixel)] == 'L' ||
+	img->mapcopy[((img->player.y - 60) / img->pixel)][((img->player.x - 4) / img->pixel)] == 'L')
 	{
 		ft_printf("\nYou dead\n\nGame over\n");
 		closegame(img);
 	}
-	else if (img->mapcopy[((img->player.y - 63) / img->pixel)][((img->player.x - 63) / img->pixel)] == 'L' ||
-	img->mapcopy[((img->player.y) / img->pixel)][((img->player.x - 63) / img->pixel)] == 'L')
+	else if (img->mapcopy[((img->player.y - 60) / img->pixel)][((img->player.x - 60) / img->pixel)] == 'L' ||
+	img->mapcopy[((img->player.y - 4) / img->pixel)][((img->player.x - 60) / img->pixel)] == 'L')
 	{
 		ft_printf("\nYou dead\n\nGame over\n");
 		closegame(img);

@@ -6,7 +6,7 @@
 /*   By: dinda-si <dinda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 15:58:31 by dinis             #+#    #+#             */
-/*   Updated: 2024/04/18 18:14:44 by dinda-si         ###   ########.fr       */
+/*   Updated: 2024/04/19 14:39:48 by dinda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,6 @@ void	checkerpather(t_data *img, int x, int y)
 	if (img->mapcopy[y][x] == 'E')
 	{
 		img->path.pexit++;
-		img->mapcopy[y][x] = '1';
-		return ;
 	}
 	img->mapcopy[y][x] = '1';
 	checkerpather(img, x - 1,  y);

@@ -6,7 +6,7 @@
 /*   By: dinda-si <dinda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 17:23:41 by dinda-si          #+#    #+#             */
-/*   Updated: 2024/04/18 18:20:41 by dinda-si         ###   ########.fr       */
+/*   Updated: 2024/04/19 14:30:09 by dinda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,12 +70,12 @@ int	main(int argc, char **argv)
 			free(img.mlx);
 			return (1);
 		}
-		// printf("%s\n", img.mapcopy[0]);
-		// printf("%s\n", img.mapcopy[1]);
-		// printf("%s\n", img.mapcopy[2]);
-		// printf("%s\n", img.mapcopy[3]);
-		// printf("%s\n", img.mapcopy[4]);
-		// printf("%s\n", img.mapcopy[5]);
+		printf("%s", img.mapcopy[0]);
+		printf("%s", img.mapcopy[1]);
+		printf("%s", img.mapcopy[2]);
+		printf("%s", img.mapcopy[3]);
+		printf("%s", img.mapcopy[4]);
+		printf("%s", img.mapcopy[5]);
 		mlx_do_key_autorepeatoff(img.mlx);
 		playerplacer(&img);
 		// printf("%d\n", (img.player.x - img.pixel) / (img.pixel));
