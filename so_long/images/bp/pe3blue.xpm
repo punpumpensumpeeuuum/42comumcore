@@ -2,7 +2,7 @@
 static char *pe3true1713546099[] = {
 /* columns rows colors chars-per-pixel */
 "63 64 3 1 ",
-"  c None",
+"  c #333333",
 ". c white",
 "X c blue",
 /* pixels */

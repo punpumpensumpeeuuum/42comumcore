@@ -6,11 +6,18 @@
 /*   By: elemesmo <elemesmo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 17:23:41 by dinda-si          #+#    #+#             */
-/*   Updated: 2024/04/20 00:39:18 by elemesmo         ###   ########.fr       */
+/*   Updated: 2024/04/21 00:44:33 by elemesmo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+void	playerplacer(t_data *img)
+{
+	playerfinder(img);
+	mlx_put_image_to_window(img->mlx, img->mlx_win,
+		img->playwhit.imgdown[0], img->player.x, img->player.y);
+}
 
 void	mallocmatrix(t_data *img)
 {

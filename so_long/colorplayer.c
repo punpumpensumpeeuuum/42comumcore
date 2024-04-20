@@ -6,7 +6,7 @@
 /*   By: elemesmo <elemesmo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/01 18:15:50 by dinda-si          #+#    #+#             */
-/*   Updated: 2024/04/20 01:22:23 by elemesmo         ###   ########.fr       */
+/*   Updated: 2024/04/21 00:33:25 by elemesmo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,17 +43,17 @@ void	red(t_data *img)
 {
 	if (img->player.red == 1)
 	{
-		if (img->player.w == 1)
-			animationup(img);
-		if (img->player.a == 1)
-			animationleft(img);
-		if (img->player.s == 1)
-			animationdown(img);
-		if (img->player.d == 1)
-			animationright(img);
 		if (img->player.w == 1 || img->player.a == 1 || \
 			img->player.s == 1 || img->player.d == 1)
 			img->a++;
+		if (img->player.w == 1 && img->player.s == 0)
+			animationup(img);
+		else if (img->player.s == 1 && img->player.w == 0)
+			animationdown(img);
+		else if (img->player.a == 1 && img->player.d == 0)
+			animationleft(img);
+		else if (img->player.d == 1 && img->player.a == 0)
+			animationright(img);
 		else
 		{
 			img->a = 0;
@@ -67,17 +67,17 @@ void	blue(t_data *img)
 {
 	if (img->player.blue == 1)
 	{
-		if (img->player.w == 1)
-			animationup(img);
-		if (img->player.a == 1)
-			animationleft(img);
-		if (img->player.s == 1)
-			animationdown(img);
-		if (img->player.d == 1)
-			animationright(img);
 		if (img->player.w == 1 || img->player.a == 1 || \
 			img->player.s == 1 || img->player.d == 1)
 			img->a++;
+		if (img->player.w == 1 && img->player.s == 0)
+			animationup(img);
+		else if (img->player.s == 1 && img->player.w == 0)
+			animationdown(img);
+		else if (img->player.a == 1 && img->player.d == 0)
+			animationleft(img);
+		else if (img->player.d == 1 && img->player.a == 0)
+			animationright(img);
 		else
 		{
 			img->a = 0;
@@ -91,17 +91,17 @@ void	green(t_data *img)
 {
 	if (img->player.green == 1)
 	{
-		if (img->player.w == 1)
-			animationup(img);
-		if (img->player.a == 1)
-			animationleft(img);
-		if (img->player.s == 1)
-			animationdown(img);
-		if (img->player.d == 1)
-			animationright(img);
 		if (img->player.w == 1 || img->player.a == 1 || \
 			img->player.s == 1 || img->player.d == 1)
 			img->a++;
+		if (img->player.w == 1 && img->player.s == 0)
+			animationup(img);
+		else if (img->player.s == 1 && img->player.w == 0)
+			animationdown(img);
+		else if (img->player.a == 1 && img->player.d == 0)
+			animationleft(img);
+		else if (img->player.d == 1 && img->player.a == 0)
+			animationright(img);
 		else
 		{
 			img->a = 0;
@@ -113,17 +113,17 @@ void	green(t_data *img)
 
 void	white(t_data *img)
 {
-	if (img->player.w == 1)
-		animationup(img);
-	if (img->player.a == 1)
-		animationleft(img);
-	if (img->player.s == 1)
-		animationdown(img);
-	if (img->player.d == 1)
-		animationright(img);
 	if (img->player.w == 1 || img->player.a == 1 || \
 		img->player.s == 1 || img->player.d == 1)
 		img->a++;
+	if (img->player.w == 1 && img->player.s == 0)
+		animationup(img);
+	else if (img->player.s == 1 && img->player.w == 0)
+		animationdown(img);
+	else if (img->player.a == 1 && img->player.d == 0)
+		animationleft(img);
+	else if (img->player.d == 1 && img->player.a == 0)
+		animationright(img);
 	else
 	{
 		img->a = 0;

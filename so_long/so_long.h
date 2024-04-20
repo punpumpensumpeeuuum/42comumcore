@@ -6,7 +6,7 @@
 /*   By: elemesmo <elemesmo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 17:52:53 by dinda-si          #+#    #+#             */
-/*   Updated: 2024/04/20 00:58:46 by elemesmo         ###   ########.fr       */
+/*   Updated: 2024/04/21 00:56:52 by elemesmo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,7 +131,7 @@ void	spritesplayerblue(t_data *img);
 void	spritesplayergreen(t_data *img);
 
 void	place(t_data *img, int i, int j);
-void	imageplacer(t_data *img);
+void	imageplacer(t_data *img, int flag);
 void	playerplacer(t_data *img);
 void	countsteps(t_data *img);
 void	steepsteps(t_data *img);

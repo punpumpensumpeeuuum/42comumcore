@@ -6,7 +6,7 @@
 /*   By: elemesmo <elemesmo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 15:58:31 by dinis             #+#    #+#             */
-/*   Updated: 2024/04/20 00:49:49 by elemesmo         ###   ########.fr       */
+/*   Updated: 2024/04/20 22:30:04 by elemesmo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ int	checkpath(t_data *img)
 	// printf("count :%d\n", img->count.exit);
 	// printf("path :%d\n", img->path.pcolect);
 	// printf("path :%d\n", img->path.pexit);
-	if (img->count.colect != img->path.pcolect ||
+	if (img->count.colect != img->path.pcolect || \
 		img->count.exit != img->path.pexit)
 		return (1);
 	img->mapcopy = NULL;

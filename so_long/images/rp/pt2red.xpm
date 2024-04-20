@@ -2,7 +2,7 @@
 static char *pt2true1713546099[] = {
 /* columns rows colors chars-per-pixel */
 "64 64 2 1 ",
-"  c None",
+"  c #333333",
 ". c red",
 /* pixels */
 "                           ...............                      ",

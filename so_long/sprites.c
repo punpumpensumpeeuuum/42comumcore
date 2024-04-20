@@ -6,7 +6,7 @@
 /*   By: elemesmo <elemesmo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 16:36:50 by dinda-si          #+#    #+#             */
-/*   Updated: 2024/04/20 01:17:35 by elemesmo         ###   ########.fr       */
+/*   Updated: 2024/04/21 00:55:14 by elemesmo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,8 +99,9 @@ int	andar(t_data *img)
 		mlx_clear_window(img->mlx, img->mlx_win);
 	coins(img);
 	steepsteps(img);
-	imageplacer(img);
+	imageplacer(img, 1);
 	animation(img);
+	imageplacer(img, 2);
 	usleep(50000 / 30);
 	if (img->count.colect == 0)
 		img->exit = 1;

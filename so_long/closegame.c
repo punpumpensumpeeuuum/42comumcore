@@ -6,16 +6,40 @@
 /*   By: elemesmo <elemesmo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 17:37:26 by dinda-si          #+#    #+#             */
-/*   Updated: 2024/04/20 01:27:12 by elemesmo         ###   ########.fr       */
+/*   Updated: 2024/04/20 22:45:47 by elemesmo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	destroymatrix(t_data *img);
+void	destroymatrix(t_data *img)
+{
+	img->a = 0;
+	while (img->a < 3)
+	{
+		mlx_destroy_image(img->mlx, img->playwhit.imgdown[img->a]);
+		mlx_destroy_image(img->mlx, img->playwhit.imgup[img->a]);
+		mlx_destroy_image(img->mlx, img->playwhit.imgright[img->a]);
+		mlx_destroy_image(img->mlx, img->playwhit.imgleft[img->a]);
+		mlx_destroy_image(img->mlx, img->playred.imgdown[img->a]);
+		mlx_destroy_image(img->mlx, img->playred.imgup[img->a]);
+		mlx_destroy_image(img->mlx, img->playred.imgright[img->a]);
+		mlx_destroy_image(img->mlx, img->playred.imgleft[img->a]);
+		mlx_destroy_image(img->mlx, img->playblue.imgdown[img->a]);
+		mlx_destroy_image(img->mlx, img->playblue.imgup[img->a]);
+		mlx_destroy_image(img->mlx, img->playblue.imgright[img->a]);
+		mlx_destroy_image(img->mlx, img->playblue.imgleft[img->a]);
+		mlx_destroy_image(img->mlx, img->playgreen.imgdown[img->a]);
+		mlx_destroy_image(img->mlx, img->playgreen.imgup[img->a]);
+		mlx_destroy_image(img->mlx, img->playgreen.imgright[img->a]);
+		mlx_destroy_image(img->mlx, img->playgreen.imgleft[img->a]);
+		img->a++;
+	}
+}
 
 void	destroyimages(t_data *img)
 {
+	destroymatrix(img);
 	// mlx_destroy_image(img->mlx, img->img);
 	// mlx_destroy_image(img->mlx, img->imgred);
 	// mlx_destroy_image(img->mlx, img->imgblu);

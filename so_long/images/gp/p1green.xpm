@@ -2,7 +2,7 @@
 static char *bf6092e7fb5844e6d52351838ad7bf8fxkiwBmSs5ITuBIMl[] = {
 /* columns rows colors chars-per-pixel */
 "64 64 3 1 ",
-"  c None",
+"  c #333333",
 ". c green",
 "X c white",
 /* pixels */
