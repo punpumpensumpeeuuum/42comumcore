@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   maps.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dinda-si <dinda-si@student.42.fr>          +#+  +:+       +#+        */
+/*   By: elemesmo <elemesmo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 18:19:33 by dinda-si          #+#    #+#             */
-/*   Updated: 2024/04/19 14:36:47 by dinda-si         ###   ########.fr       */
+/*   Updated: 2024/04/20 00:07:19 by elemesmo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,13 +62,13 @@ char	**leromapa(char **argv)
 int	initgame(t_data *img, char **argv)
 {
 	if (argmap(argv) == 0)
-	{	
+	{
 		ft_printf("Error\n\nNo map?\n");
 		exit(0);
 	}
 	img->mlx = mlx_init();
 	init(img);
-	sprites(img);
+	allatribuition(img);
 	img->mapcopy = leromapa(argv);
 	if (img->mapcopy == NULL)
 		return (0);

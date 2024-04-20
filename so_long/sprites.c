@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sprites.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dinda-si <dinda-si@student.42.fr>          +#+  +:+       +#+        */
+/*   By: elemesmo <elemesmo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 16:36:50 by dinda-si          #+#    #+#             */
-/*   Updated: 2024/04/19 14:46:09 by dinda-si         ###   ########.fr       */
+/*   Updated: 2024/04/20 01:17:35 by elemesmo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,8 +92,8 @@ void	animation(t_data *img)
 
 int	andar(t_data *img)
 {
-	printf("x: %d\n", img->player.x);
-	printf("y: %d\n", img->player.y);
+	// printf("x: %d\n", img->player.x);
+	// printf("y: %d\n", img->player.y);
 	movimento(img);
 	if (img->player.ts == 0)
 		mlx_clear_window(img->mlx, img->mlx_win);

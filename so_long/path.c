@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   path.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dinda-si <dinda-si@student.42.fr>          +#+  +:+       +#+        */
+/*   By: elemesmo <elemesmo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 15:58:31 by dinis             #+#    #+#             */
-/*   Updated: 2024/04/19 14:39:48 by dinda-si         ###   ########.fr       */
+/*   Updated: 2024/04/20 00:49:49 by elemesmo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,9 @@ void	checkerpather(t_data *img, int x, int y)
 	// printf("OOO: %c\n", img->mapcopy[y][x]);
 	// printf("%d\n", x);
 	// printf("%d\n", y);
-	if (!img->mapcopy || img->mapcopy[y][x] == '1' || x < 0 || x >= img->map.width
-	|| y < 0 || y >= img->map.height || img->mapcopy[y][x] == 'L')
+	if (!img->mapcopy || img->mapcopy[y][x] == '1' || x < 0 ||
+		x >= img->map.width || y < 0 || y >= img->map.height ||
+		img->mapcopy[y][x] == 'L')
 		return ;
 	if (img->mapcopy[y][x] == 'C')
 	{
@@ -44,10 +45,10 @@ void	checkerpather(t_data *img, int x, int y)
 		img->path.pexit++;
 	}
 	img->mapcopy[y][x] = '1';
-	checkerpather(img, x - 1,  y);
-	checkerpather(img, x + 1,  y);
-	checkerpather(img, x,  y - 1);
-	checkerpather(img, x,  y + 1);
+	checkerpather(img, x - 1, y);
+	checkerpather(img, x + 1, y);
+	checkerpather(img, x, y - 1);
+	checkerpather(img, x, y + 1);
 }
 
 int	checkpath(t_data *img)
@@ -63,7 +64,8 @@ int	checkpath(t_data *img)
 	// printf("count :%d\n", img->count.exit);
 	// printf("path :%d\n", img->path.pcolect);
 	// printf("path :%d\n", img->path.pexit);
-	if (img->count.colect != img->path.pcolect || img->count.exit != img->path.pexit)
+	if (img->count.colect != img->path.pcolect ||
+		img->count.exit != img->path.pexit)
 		return (1);
 	img->mapcopy = NULL;
 	return (0);

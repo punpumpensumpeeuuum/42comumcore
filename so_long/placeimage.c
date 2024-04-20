@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   placeimage.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dinda-si <dinda-si@student.42.fr>          +#+  +:+       +#+        */
+/*   By: elemesmo <elemesmo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 22:42:57 by elemesmo          #+#    #+#             */
-/*   Updated: 2024/04/18 16:13:35 by dinda-si         ###   ########.fr       */
+/*   Updated: 2024/04/20 00:48:49 by elemesmo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	place(t_data *img, int i, int j)
 		mlx_put_image_to_window(img->mlx, img->mlx_win, img->imgwall,
 			j * img->pixel + img->pixel, i * img->pixel + img->pixel);
 	else if (img->mapcopy[i][j] == 'C')
-	{	
+	{
 		mlx_put_image_to_window(img->mlx, img->mlx_win, img->imgfloor,
 			j * img->pixel + img->pixel, i * img->pixel + img->pixel);
 		mlx_put_image_to_window(img->mlx, img->mlx_win, img->imgcolet,
@@ -62,8 +62,8 @@ void	imageplacer(t_data *img)
 void	playerplacer(t_data *img)
 {
 	playerfinder(img);
-	mlx_put_image_to_window(img->mlx, img->mlx_win, img->img,
-		img->player.x, img->player.y);
+	mlx_put_image_to_window(img->mlx, img->mlx_win,
+		img->playwhit.imgdown[0], img->player.x, img->player.y);
 }
 
 void	countsteps(t_data *img)
@@ -77,8 +77,11 @@ void	steepsteps(t_data *img)
 	char	*movements;
 
 	movements = ft_itoa(img->steepsteps);
-	mlx_put_image_to_window(img->mlx, img->mlx_win, img->p, img->pixel / 4, img->pixel / 4);
-	mlx_string_put(img->mlx, img->mlx_win, img->pixel / 2, img->pixel / 2, 0xFFFFFF, "MOVEMENTS :");
-	mlx_string_put(img->mlx, img->mlx_win, 110, img->pixel / 2, 0xFFFFFF, movements);
+	mlx_put_image_to_window(img->mlx, img->mlx_win, img->p,
+		img->pixel / 4, img->pixel / 4);
+	mlx_string_put(img->mlx, img->mlx_win, img->pixel / 2,
+		img->pixel / 2, 0xFFFFFF, "MOVEMENTS :");
+	mlx_string_put(img->mlx, img->mlx_win, 110, img->pixel / 2,
+		0xFFFFFF, movements);
 	free(movements);
 }

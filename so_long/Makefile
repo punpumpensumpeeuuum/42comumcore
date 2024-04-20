@@ -1,6 +1,6 @@
 NAME = so_long
 
-SRCS = main.c sprites.c colorplayer.c toggles.c maps.c mapverify.c placeimage.c closegame.c argmap.c interactions.c path.c
+SRCS = main.c sprites.c colorplayer.c toggles.c maps.c mapverify.c placeimage.c closegame.c argmap.c interactions.c path.c animationsprite.c atribuitionsprite.c
 
 GNL = get_next_line_utils.c get_next_line.c
 

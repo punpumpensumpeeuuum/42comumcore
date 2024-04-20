@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dinda-si <dinda-si@student.42.fr>          +#+  +:+       +#+        */
+/*   By: elemesmo <elemesmo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 17:52:53 by dinda-si          #+#    #+#             */
-/*   Updated: 2024/04/18 16:39:19 by dinda-si         ###   ########.fr       */
+/*   Updated: 2024/04/20 00:58:46 by elemesmo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,36 @@ typedef struct s_data
 	void	*mlx;
 	void	*mlx_win;
 	void	*p;
-	void	*img;
-	void	*imgred;
-	void	*imgblu;
-	void	*imggrin;
+	int		a;
+	struct s_white
+	{
+		void	**imgdown;
+		void	**imgleft;
+		void	**imgright;
+		void	**imgup;
+	}playwhit;
+	struct s_red
+	{
+		void	**imgdown;
+		void	**imgleft;
+		void	**imgright;
+		void	**imgup;
+	}playred;
+	struct s_green
+	{
+		void	**imgdown;
+		void	**imgleft;
+		void	**imgright;
+		void	**imgup;
+	}playgreen;
+	struct s_blue
+	{
+		void	**imgdown;
+		void	**imgleft;
+		void	**imgright;
+		void	**imgup;
+	}playblue;
+	void	**imgblu;
 	void	*imgwall;
 	void	*imgcolet;
 	void	*imgexit;
@@ -65,18 +91,20 @@ typedef struct s_data
 		int		pexit;
 		int		pcolect;
 	}path;
-	
 	unsigned long	steepsteps;
-	int				gamover;
+	int			gamover;
 }				t_data;
 
 void	init(t_data *img);
-void	sprites(t_data *img);
 int		keypress(int keycode, t_data *img);
 int		keyunpress(int keycode, t_data *img);
 void	movimento(t_data *img);
 void	animation(t_data *img);
 int		andar(t_data *img);
+void	animationdown(t_data *img);
+void	animationup(t_data *img);
+void	animationright(t_data *img);
+void	animationleft(t_data *img);
 
 void	closegame(t_data *img);
 void	red(t_data *img);
@@ -95,6 +123,12 @@ int		verifymaponly(t_data *img);
 void	mapcount(t_data *img);
 void	playerfinder(t_data *img);
 
+void	allatribuition(t_data *img);
+void	sprites(t_data *img);
+void	spritesplayerwhite(t_data *img);
+void	spritesplayerred(t_data *img);
+void	spritesplayerblue(t_data *img);
+void	spritesplayergreen(t_data *img);
 
 void	place(t_data *img, int i, int j);
 void	imageplacer(t_data *img);

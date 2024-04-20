@@ -3,14 +3,34 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dinda-si <dinda-si@student.42.fr>          +#+  +:+       +#+        */
+/*   By: elemesmo <elemesmo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 17:23:41 by dinda-si          #+#    #+#             */
-/*   Updated: 2024/04/19 14:30:09 by dinda-si         ###   ########.fr       */
+/*   Updated: 2024/04/20 00:39:18 by elemesmo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+void	mallocmatrix(t_data *img)
+{
+	img->playwhit.imgdown = malloc(sizeof(void *) * 3);
+	img->playwhit.imgleft = malloc(sizeof(void *) * 3);
+	img->playwhit.imgup = malloc(sizeof(void *) * 3);
+	img->playwhit.imgright = malloc(sizeof(void *) * 3);
+	img->playred.imgdown = malloc(sizeof(void *) * 3);
+	img->playred.imgleft = malloc(sizeof(void *) * 3);
+	img->playred.imgup = malloc(sizeof(void *) * 3);
+	img->playred.imgright = malloc(sizeof(void *) * 3);
+	img->playgreen.imgdown = malloc(sizeof(void *) * 3);
+	img->playgreen.imgleft = malloc(sizeof(void *) * 3);
+	img->playgreen.imgup = malloc(sizeof(void *) * 3);
+	img->playgreen.imgright = malloc(sizeof(void *) * 3);
+	img->playblue.imgdown = malloc(sizeof(void *) * 3);
+	img->playblue.imgleft = malloc(sizeof(void *) * 3);
+	img->playblue.imgup = malloc(sizeof(void *) * 3);
+	img->playblue.imgright = malloc(sizeof(void *) * 3);
+}
 
 void	initvalues(t_data *img)
 {
@@ -36,21 +56,35 @@ void	initvalues(t_data *img)
 	img->count.player = 0;
 	img->path.pcolect = 0;
 	img->path.pexit = 0;
+	img->a = 0;
 }
 
 void	init(t_data *img)
 {
-	img->img = NULL;
+	img->playwhit.imgdown = NULL;
+	img->playwhit.imgleft = NULL;
+	img->playwhit.imgright = NULL;
+	img->playwhit.imgup = NULL;
 	img->imgexit = NULL;
-	img->imgred = NULL;
-	img->imggrin = NULL;
-	img->imgblu = NULL;
+	img->playred.imgdown = NULL;
+	img->playred.imgleft = NULL;
+	img->playred.imgright = NULL;
+	img->playred.imgup = NULL;
+	img->playgreen.imgdown = NULL;
+	img->playgreen.imgleft = NULL;
+	img->playgreen.imgright = NULL;
+	img->playgreen.imgup = NULL;
+	img->playblue.imgdown = NULL;
+	img->playblue.imgleft = NULL;
+	img->playblue.imgright = NULL;
+	img->playblue.imgup = NULL;
 	img->imgwall = NULL;
 	img->imgcolet = NULL;
 	img->mapcopy = NULL;
 	img->p = NULL;
 	img->imgfloor = NULL;
 	img->imgenemy = NULL;
+	mallocmatrix(img);
 	initvalues(img);
 }
 
@@ -70,16 +104,8 @@ int	main(int argc, char **argv)
 			free(img.mlx);
 			return (1);
 		}
-		printf("%s", img.mapcopy[0]);
-		printf("%s", img.mapcopy[1]);
-		printf("%s", img.mapcopy[2]);
-		printf("%s", img.mapcopy[3]);
-		printf("%s", img.mapcopy[4]);
-		printf("%s", img.mapcopy[5]);
 		mlx_do_key_autorepeatoff(img.mlx);
 		playerplacer(&img);
-		// printf("%d\n", (img.player.x - img.pixel) / (img.pixel));
-		// printf("%d\n", (img.player.y - img.pixel) / (img.pixel));
 		mlx_hook(img.mlx_win, 2, 1L << 0, keypress, &img);
 		mlx_hook(img.mlx_win, 3, 1L << 1, keyunpress, &img);
 		mlx_loop_hook(img.mlx, andar, &img);

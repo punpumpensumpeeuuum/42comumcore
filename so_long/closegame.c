@@ -3,21 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   closegame.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dinis <dinis@student.42.fr>                +#+  +:+       +#+        */
+/*   By: elemesmo <elemesmo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 17:37:26 by dinda-si          #+#    #+#             */
-/*   Updated: 2024/04/15 16:47:51 by dinis            ###   ########.fr       */
+/*   Updated: 2024/04/20 01:27:12 by elemesmo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
+void	destroymatrix(t_data *img);
+
 void	destroyimages(t_data *img)
 {
-	mlx_destroy_image(img->mlx, img->img);
-	mlx_destroy_image(img->mlx, img->imgred);
-	mlx_destroy_image(img->mlx, img->imgblu);
-	mlx_destroy_image(img->mlx, img->imggrin);
+	// mlx_destroy_image(img->mlx, img->img);
+	// mlx_destroy_image(img->mlx, img->imgred);
+	// mlx_destroy_image(img->mlx, img->imgblu);
+	// mlx_destroy_image(img->mlx, img->imggrin);
 	mlx_destroy_image(img->mlx, img->imgwall);
 	mlx_destroy_image(img->mlx, img->imgcolet);
 	mlx_destroy_image(img->mlx, img->p);

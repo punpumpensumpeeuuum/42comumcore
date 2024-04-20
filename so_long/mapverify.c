@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mapverify.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dinda-si <dinda-si@student.42.fr>          +#+  +:+       +#+        */
+/*   By: elemesmo <elemesmo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 22:12:31 by elemesmo          #+#    #+#             */
-/*   Updated: 2024/04/18 16:47:00 by dinda-si         ###   ########.fr       */
+/*   Updated: 2024/04/20 00:51:18 by elemesmo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,9 @@ int	len(const char *str)
 	int	i;
 
 	i = 0;
-	while (str[i] == '1' || str[i] == '0' || str[i] == 'P' || str[i] == 'C' || str[i] == 'E' || str[i] == 'L')
+	while (str[i] == '1' || str[i] == '0' || \
+		str[i] == 'P' || str[i] == 'C' || \
+		str[i] == 'E' || str[i] == 'L')
 		i++;
 	return (i);
 }
