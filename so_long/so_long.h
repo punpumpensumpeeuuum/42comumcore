@@ -6,7 +6,7 @@
 /*   By: elemesmo <elemesmo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 17:52:53 by dinda-si          #+#    #+#             */
-/*   Updated: 2024/04/21 00:56:52 by elemesmo         ###   ########.fr       */
+/*   Updated: 2024/04/21 19:46:48 by elemesmo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ typedef struct s_data
 	void	*mlx_win;
 	void	*p;
 	int		a;
+	char	*wallcheck;
 	struct s_white
 	{
 		void	**imgdown;
@@ -52,8 +53,10 @@ typedef struct s_data
 		void	**imgright;
 		void	**imgup;
 	}playblue;
-	void	**imgblu;
 	void	*imgwall;
+	void	*redwall;
+	void	*greenwall;
+	void	*bluewall;
 	void	*imgcolet;
 	void	*imgexit;
 	void	*imgfloor;
@@ -106,7 +109,7 @@ void	animationup(t_data *img);
 void	animationright(t_data *img);
 void	animationleft(t_data *img);
 
-void	closegame(t_data *img);
+int		closegame(t_data *img);
 void	red(t_data *img);
 void	blue(t_data *img);
 void	green(t_data *img);
@@ -140,6 +143,17 @@ int		checkpath(t_data *img);
 int		argmap(char **av);
 void	freemap(t_data *inf);
 
+// colisions
 void	coins(t_data *img);
+void	colup(t_data *img);
+void	coldown(t_data *img);
+void	colleft(t_data *img);
+void	colright(t_data *img);
+void	colorcolision(t_data *img);
+void	redcolision(t_data *img);
+void	greencolision(t_data *img);
+void	bluecolision(t_data *img);
+
+
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: elemesmo <elemesmo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 18:03:39 by dinda-si          #+#    #+#             */
-/*   Updated: 2024/04/09 00:48:36 by elemesmo         ###   ########.fr       */
+/*   Updated: 2024/04/21 19:30:58 by elemesmo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ void	toggle(int key, t_data *img)
 			return ;
 		}
 		img->player.red = 1;
+		img->player.green = 0;
+		img->player.blue = 0;
 	}
 	else
 		toggle2(key, img);
@@ -45,7 +47,9 @@ void	toggle2(int key, t_data *img)
 			img->player.green = 0;
 			return ;
 		}
+		img->player.red = 0;
 		img->player.green = 1;
+		img->player.blue = 0;
 	}
 	else if (key == 98)
 	{
@@ -54,6 +58,8 @@ void	toggle2(int key, t_data *img)
 			img->player.blue = 0;
 			return ;
 		}
+		img->player.red = 0;
+		img->player.green = 0;
 		img->player.blue = 1;
 	}
 }

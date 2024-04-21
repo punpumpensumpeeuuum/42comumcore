@@ -6,11 +6,11 @@
 /*   By: elemesmo <elemesmo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/20 00:02:53 by elemesmo          #+#    #+#             */
-/*   Updated: 2024/04/20 01:21:11 by elemesmo         ###   ########.fr       */
+/*   Updated: 2024/04/21 20:11:59 by elemesmo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../so_long.h"
 
 void	allatribuition(t_data *img)
 {
@@ -28,7 +28,7 @@ void	spritesplayerwhite(t_data *img)
 	img->playwhit.imgdown[1] = mlx_xpm_file_to_image(img->mlx,
 			"images/wp/p2true.xpm", &img->pixel, &img->pixel);
 	img->playwhit.imgdown[2] = mlx_xpm_file_to_image(img->mlx,
-			"images/wp/p3true.xpm", &img->pixel, &img->pixel);
+			"images/wp/p3true.xpm", &img->pixel, &img->pixel);	
 	img->playwhit.imgleft[0] = mlx_xpm_file_to_image(img->mlx,
 			"images/wp/pe1true.xpm", &img->pixel, &img->pixel);
 	img->playwhit.imgleft[1] = mlx_xpm_file_to_image(img->mlx,

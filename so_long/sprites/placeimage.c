@@ -6,16 +6,31 @@
 /*   By: elemesmo <elemesmo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 22:42:57 by elemesmo          #+#    #+#             */
-/*   Updated: 2024/04/21 00:58:52 by elemesmo         ###   ########.fr       */
+/*   Updated: 2024/04/21 20:12:03 by elemesmo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../so_long.h"
 
-void	placetwo(t_data *img, int i, int j)
+void	placefront(t_data *img, int i, int j)
 {
 	if (img->mapcopy[i][j] == 'L')
 		mlx_put_image_to_window(img->mlx, img->mlx_win, img->imgenemy,
+			j * img->pixel + img->pixel, i * img->pixel + img->pixel);
+	else if (img->mapcopy[i][j] == 'E')
+	{
+		if (img->exit == 1)
+			mlx_put_image_to_window(img->mlx, img->mlx_win, img->imgexit,
+				j * img->pixel + img->pixel, i * img->pixel + img->pixel);
+	}
+	else if (img->mapcopy[i][j] == 'R')
+		mlx_put_image_to_window(img->mlx, img->mlx_win, img->redwall,
+			j * img->pixel + img->pixel, i * img->pixel + img->pixel);
+	else if (img->mapcopy[i][j] == 'G')
+		mlx_put_image_to_window(img->mlx, img->mlx_win, img->greenwall,
+			j * img->pixel + img->pixel, i * img->pixel + img->pixel);
+	else if (img->mapcopy[i][j] == 'B')
+		mlx_put_image_to_window(img->mlx, img->mlx_win, img->bluewall,
 			j * img->pixel + img->pixel, i * img->pixel + img->pixel);
 }
 
@@ -39,9 +54,6 @@ void	place(t_data *img, int i, int j)
 		if (img->exit == 0)
 			mlx_put_image_to_window(img->mlx, img->mlx_win, img->imgfloor,
 				j * img->pixel + img->pixel, i * img->pixel + img->pixel);
-		else
-			mlx_put_image_to_window(img->mlx, img->mlx_win, img->imgexit,
-				j * img->pixel + img->pixel, i * img->pixel + img->pixel);
 	}
 }
 
@@ -63,7 +75,7 @@ void	imageplacer(t_data *img, int flag)
 			}
 			if (flag == 2)
 			{
-				placetwo(img, i, j);
+				placefront(img, i, j);
 				j++;
 			}
 		}

@@ -6,7 +6,7 @@
 /*   By: elemesmo <elemesmo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 17:23:41 by dinda-si          #+#    #+#             */
-/*   Updated: 2024/04/21 00:44:33 by elemesmo         ###   ########.fr       */
+/*   Updated: 2024/04/21 18:40:50 by elemesmo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,10 @@ void	playerplacer(t_data *img)
 
 void	mallocmatrix(t_data *img)
 {
+	img->redwall = NULL;
+	img->greenwall = NULL;
+	img->bluewall = NULL;
+	img->wallcheck = malloc(sizeof(char) * 4);
 	img->playwhit.imgdown = malloc(sizeof(void *) * 3);
 	img->playwhit.imgleft = malloc(sizeof(void *) * 3);
 	img->playwhit.imgup = malloc(sizeof(void *) * 3);
@@ -37,6 +41,10 @@ void	mallocmatrix(t_data *img)
 	img->playblue.imgleft = malloc(sizeof(void *) * 3);
 	img->playblue.imgup = malloc(sizeof(void *) * 3);
 	img->playblue.imgright = malloc(sizeof(void *) * 3);
+	img->wallcheck[0] = '1';
+	img->wallcheck[1] = 'R';
+	img->wallcheck[2] = 'G';
+	img->wallcheck[3] = 'B';
 }
 
 void	initvalues(t_data *img)
@@ -102,7 +110,7 @@ int	main(int argc, char **argv)
 	if (argc == 2)
 	{
 		if (initgame(&img, argv) == 0)
-			exit(0);
+			closegame(&img);
 		img.mlx_win = mlx_new_window(img.mlx, img.map.width * img.pixel + \
 			img.pixel * 2, img.map.height * img.pixel + img.pixel * 2, \
 						"EEEEEEEEEEE");
@@ -115,6 +123,7 @@ int	main(int argc, char **argv)
 		playerplacer(&img);
 		mlx_hook(img.mlx_win, 2, 1L << 0, keypress, &img);
 		mlx_hook(img.mlx_win, 3, 1L << 1, keyunpress, &img);
+		mlx_hook(img.mlx_win, 17, 1L << 17, closegame, &img);
 		mlx_loop_hook(img.mlx, andar, &img);
 		mlx_loop(img.mlx);
 	}

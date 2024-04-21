@@ -6,11 +6,11 @@
 /*   By: elemesmo <elemesmo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 18:19:33 by dinda-si          #+#    #+#             */
-/*   Updated: 2024/04/20 00:07:19 by elemesmo         ###   ########.fr       */
+/*   Updated: 2024/04/21 20:22:57 by elemesmo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../so_long.h"
 
 int	leraltura(char **argv)
 {
@@ -74,11 +74,10 @@ int	initgame(t_data *img, char **argv)
 		return (0);
 	mapcount(img);
 	if (verifymapquadrado(img) != 0 || img->map.height < 3
-		|| img->map.width < 3 || verifymaponly(img) != 0 ||
-		img->count.player != 1 || img->count.exit != 1 ||
+		|| img->map.width < 3 || verifymaponly(img) != 0 || \
+		img->count.player != 1 || img->count.exit != 1 || \
 		img->count.colect < 1 || checkpath(img) != 0)
 	{
-		freemap(img);
 		ft_printf("Error\n\nMap is wrong\n");
 		return (0);
 	}

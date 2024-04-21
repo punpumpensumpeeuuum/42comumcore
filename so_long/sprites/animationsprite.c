@@ -6,11 +6,11 @@
 /*   By: elemesmo <elemesmo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 23:29:17 by elemesmo          #+#    #+#             */
-/*   Updated: 2024/04/20 22:35:15 by elemesmo         ###   ########.fr       */
+/*   Updated: 2024/04/21 20:11:54 by elemesmo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../so_long.h"
 
 void	animationup(t_data *img)
 {

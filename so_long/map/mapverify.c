@@ -6,11 +6,11 @@
 /*   By: elemesmo <elemesmo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 22:12:31 by elemesmo          #+#    #+#             */
-/*   Updated: 2024/04/20 00:51:18 by elemesmo         ###   ########.fr       */
+/*   Updated: 2024/04/21 20:23:03 by elemesmo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../so_long.h"
 
 int	len(const char *str)
 {
@@ -19,7 +19,9 @@ int	len(const char *str)
 	i = 0;
 	while (str[i] == '1' || str[i] == '0' || \
 		str[i] == 'P' || str[i] == 'C' || \
-		str[i] == 'E' || str[i] == 'L')
+		str[i] == 'E' || str[i] == 'L' || \
+		str[i] == 'R' || str[i] == 'B' || \
+		str[i] == 'G')
 		i++;
 	return (i);
 }

@@ -1,8 +1,14 @@
 NAME = so_long
 
-SRCS = main.c sprites.c colorplayer.c toggles.c maps.c mapverify.c placeimage.c steps.c closegame.c argmap.c interactions.c path.c animationsprite.c atribuitionsprite.c colisions.c
+SRCS = main.c move.c toggles.c steps.c closegame.c argmap.c
+
+COL = interactions.c colisions.c redcolision.c bluecolision.c greencolision.c
 
 GNL = get_next_line_utils.c get_next_line.c
+
+SPR = animationsprite.c atribuitionsprite.c placeimage.c colorplayer.c
+
+MAP = maps.c mapverify.c path.c
 
 CC = cc
 
@@ -17,7 +23,7 @@ all: $(NAME)
 $(NAME): $(OBJ)
 		@make -s -C ft_printf
 		@make -s -C mlx-linux
-		@$(CC) -g $(CFLAGS) $(OBJ) $(addprefix get_next_line/,$(GNL)) ft_printf/libftprintf.a mlx-linux/libmlx_Linux.a -lXext -lX11 -o $(NAME)
+		@$(CC) -g $(CFLAGS) $(OBJ) $(addprefix colisions/,$(COL)) $(addprefix map/,$(MAP)) $(addprefix sprites/,$(SPR)) $(addprefix get_next_line/,$(GNL)) ft_printf/libftprintf.a mlx-linux/libmlx_Linux.a -lXext -lX11 -o $(NAME)
 
 clean:
 		@$(RM) $(OBJ)

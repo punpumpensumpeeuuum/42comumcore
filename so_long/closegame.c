@@ -6,7 +6,7 @@
 /*   By: elemesmo <elemesmo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 17:37:26 by dinda-si          #+#    #+#             */
-/*   Updated: 2024/04/20 22:45:47 by elemesmo         ###   ########.fr       */
+/*   Updated: 2024/04/21 18:41:06 by elemesmo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,14 +37,35 @@ void	destroymatrix(t_data *img)
 	}
 }
 
+void	freeplayer(t_data *img)
+{
+	free(img->playwhit.imgdown);
+	free(img->playwhit.imgup);
+	free(img->playwhit.imgright);
+	free(img->playwhit.imgleft);
+	free(img->playred.imgdown);
+	free(img->playred.imgup);
+	free(img->playred.imgright);
+	free(img->playred.imgleft);
+	free(img->playblue.imgdown);
+	free(img->playblue.imgup);
+	free(img->playblue.imgright);
+	free(img->playblue.imgleft);
+	free(img->playgreen.imgdown);
+	free(img->playgreen.imgup);
+	free(img->playgreen.imgright);
+	free(img->playgreen.imgleft);
+	free(img->wallcheck);
+}
+
 void	destroyimages(t_data *img)
 {
 	destroymatrix(img);
-	// mlx_destroy_image(img->mlx, img->img);
-	// mlx_destroy_image(img->mlx, img->imgred);
-	// mlx_destroy_image(img->mlx, img->imgblu);
-	// mlx_destroy_image(img->mlx, img->imggrin);
+	freeplayer(img);
 	mlx_destroy_image(img->mlx, img->imgwall);
+	mlx_destroy_image(img->mlx, img->redwall);
+	mlx_destroy_image(img->mlx, img->greenwall);
+	mlx_destroy_image(img->mlx, img->bluewall);
 	mlx_destroy_image(img->mlx, img->imgcolet);
 	mlx_destroy_image(img->mlx, img->p);
 	mlx_destroy_image(img->mlx, img->imgexit);
@@ -57,7 +78,7 @@ void	destroyimages(t_data *img)
 	}
 }
 
-void	closegame(t_data *img)
+int	closegame(t_data *img)
 {
 	int		i;
 
@@ -70,7 +91,7 @@ void	closegame(t_data *img)
 		free(img->mapcopy[i]);
 		i++;
 	}
-	get_next_line(123456789);
+	get_next_line(-1);
 	free(img->mapcopy[i]);
 	free(img->mapcopy);
 	exit(0);
