@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: elemesmo <elemesmo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dinda-si <dinda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 17:52:53 by dinda-si          #+#    #+#             */
-/*   Updated: 2024/04/21 19:46:48 by elemesmo         ###   ########.fr       */
+/*   Updated: 2024/04/22 18:02:14 by dinda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,9 @@ typedef struct s_data
 	void	*mlx_win;
 	void	*p;
 	int		a;
-	char	*wallcheck;
+	int		gamover;
+	unsigned long	\
+			steepsteps;
 	struct s_white
 	{
 		void	**imgdown;
@@ -94,8 +96,6 @@ typedef struct s_data
 		int		pexit;
 		int		pcolect;
 	}path;
-	unsigned long	steepsteps;
-	int			gamover;
 }				t_data;
 
 void	init(t_data *img);
@@ -153,7 +153,6 @@ void	colorcolision(t_data *img);
 void	redcolision(t_data *img);
 void	greencolision(t_data *img);
 void	bluecolision(t_data *img);
-
-
+void	whitecolision(t_data *img);
 
 #endif

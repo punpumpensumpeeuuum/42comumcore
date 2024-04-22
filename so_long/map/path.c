@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   path.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: elemesmo <elemesmo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dinda-si <dinda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 15:58:31 by dinis             #+#    #+#             */
-/*   Updated: 2024/04/21 20:23:06 by elemesmo         ###   ########.fr       */
+/*   Updated: 2024/04/22 17:51:59 by dinda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,6 @@ void	freemap(t_data *inf)
 
 void	checkerpather(t_data *img, int x, int y)
 {
-	// printf("OOO: %c\n", img->mapcopy[y][x]);
-	// printf("%d\n", x);
-	// printf("%d\n", y);
 	if (!img->mapcopy || img->mapcopy[y][x] == '1' || x < 0 ||
 		x >= img->map.width || y < 0 || y >= img->map.height ||
 		img->mapcopy[y][x] == 'L')
@@ -60,10 +57,6 @@ int	checkpath(t_data *img)
 	x = (img->player.x - img->pixel) / (img->pixel);
 	y = (img->player.y - img->pixel) / (img->pixel);
 	checkerpather(img, x, y);
-	// printf("count :%d\n", img->count.colect);
-	// printf("count :%d\n", img->count.exit);
-	// printf("path :%d\n", img->path.pcolect);
-	// printf("path :%d\n", img->path.pexit);
 	if (img->count.colect != img->path.pcolect || \
 		img->count.exit != img->path.pexit)
 		return (1);

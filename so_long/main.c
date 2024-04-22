@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: elemesmo <elemesmo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dinda-si <dinda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 17:23:41 by dinda-si          #+#    #+#             */
-/*   Updated: 2024/04/21 18:40:50 by elemesmo         ###   ########.fr       */
+/*   Updated: 2024/04/22 17:36:09 by dinda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ void	mallocmatrix(t_data *img)
 	img->redwall = NULL;
 	img->greenwall = NULL;
 	img->bluewall = NULL;
-	img->wallcheck = malloc(sizeof(char) * 4);
 	img->playwhit.imgdown = malloc(sizeof(void *) * 3);
 	img->playwhit.imgleft = malloc(sizeof(void *) * 3);
 	img->playwhit.imgup = malloc(sizeof(void *) * 3);
@@ -41,10 +40,6 @@ void	mallocmatrix(t_data *img)
 	img->playblue.imgleft = malloc(sizeof(void *) * 3);
 	img->playblue.imgup = malloc(sizeof(void *) * 3);
 	img->playblue.imgright = malloc(sizeof(void *) * 3);
-	img->wallcheck[0] = '1';
-	img->wallcheck[1] = 'R';
-	img->wallcheck[2] = 'G';
-	img->wallcheck[3] = 'B';
 }
 
 void	initvalues(t_data *img)
@@ -72,6 +67,7 @@ void	initvalues(t_data *img)
 	img->path.pcolect = 0;
 	img->path.pexit = 0;
 	img->a = 0;
+	img->mlx_win = NULL;
 }
 
 void	init(t_data *img)
@@ -80,7 +76,6 @@ void	init(t_data *img)
 	img->playwhit.imgleft = NULL;
 	img->playwhit.imgright = NULL;
 	img->playwhit.imgup = NULL;
-	img->imgexit = NULL;
 	img->playred.imgdown = NULL;
 	img->playred.imgleft = NULL;
 	img->playred.imgright = NULL;
@@ -94,6 +89,7 @@ void	init(t_data *img)
 	img->playblue.imgright = NULL;
 	img->playblue.imgup = NULL;
 	img->imgwall = NULL;
+	img->imgexit = NULL;
 	img->imgcolet = NULL;
 	img->mapcopy = NULL;
 	img->p = NULL;

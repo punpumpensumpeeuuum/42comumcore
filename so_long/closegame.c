@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   closegame.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: elemesmo <elemesmo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dinda-si <dinda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 17:37:26 by dinda-si          #+#    #+#             */
-/*   Updated: 2024/04/21 18:41:06 by elemesmo         ###   ########.fr       */
+/*   Updated: 2024/04/22 17:44:07 by dinda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,6 @@ void	freeplayer(t_data *img)
 	free(img->playgreen.imgup);
 	free(img->playgreen.imgright);
 	free(img->playgreen.imgleft);
-	free(img->wallcheck);
 }
 
 void	destroyimages(t_data *img)

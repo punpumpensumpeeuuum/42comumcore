@@ -2,7 +2,7 @@ NAME = so_long
 
 SRCS = main.c move.c toggles.c steps.c closegame.c argmap.c
 
-COL = interactions.c colisions.c redcolision.c bluecolision.c greencolision.c
+COL = interactions.c colisions.c redcolision.c bluecolision.c greencolision.c whitecolision.c
 
 GNL = get_next_line_utils.c get_next_line.c
 

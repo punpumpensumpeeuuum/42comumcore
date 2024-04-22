@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mapverify.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: elemesmo <elemesmo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dinda-si <dinda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 22:12:31 by elemesmo          #+#    #+#             */
-/*   Updated: 2024/04/21 20:23:03 by elemesmo         ###   ########.fr       */
+/*   Updated: 2024/04/22 17:51:33 by dinda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ int	len(const char *str)
 	int	i;
 
 	i = 0;
+	if (!str)
+		return (-1);
 	while (str[i] == '1' || str[i] == '0' || \
 		str[i] == 'P' || str[i] == 'C' || \
 		str[i] == 'E' || str[i] == 'L' || \
@@ -32,6 +34,8 @@ int	verifymapquadrado(t_data *img)
 	int	row;
 
 	row = len(img->mapcopy[0]);
+	if (row < 3)
+		return (1);
 	img->map.width = row;
 	i = 0;
 	while (img->mapcopy[i])
@@ -40,6 +44,8 @@ int	verifymapquadrado(t_data *img)
 			return (1);
 		i++;
 	}
+	if (i < 3)
+		return (1);
 	img->map.height = i;
 	return (0);
 }
