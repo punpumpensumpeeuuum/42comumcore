@@ -1,35 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   argmap.c                                           :+:      :+:    :+:   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dinda-si <dinda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/10 14:06:54 by dinda-si          #+#    #+#             */
-/*   Updated: 2024/04/23 16:17:08 by dinda-si         ###   ########.fr       */
+/*   Created: 2023/10/18 14:17:49 by dinda-si          #+#    #+#             */
+/*   Updated: 2023/11/14 10:58:11 by dinda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
 
-int	argmap(char **av)
-{
-	char	*m;
-	char	*b;
-	int		fd;
+# include "libft/libft.h"
+# include <stdarg.h>
+# include <unistd.h>
 
-	b = ".ber";
-	m = "map";
-	if (ft_strlen(av[1]) < 4 || ft_strlen(av[1]) > 8)
-		return (0);
-	if (ft_strncmp(av[1], m, 3) != 0)
-		return (0);
-	if (av[1][4] != b[0] || av[1][5] != b[1] ||
-		av[1][6] != b[2] || av[1][7] != b[3])
-		return (0);
-	fd = open(av[1], O_RDONLY);
-	if (fd == -1)
-		return (0);
-	close(fd);
-	return (1);
-}
+int	ft_printf(const char *str, ...);
+int	ft_checkador(va_list va_args, const char *str);
+int	ft_hexdecimal(unsigned long long nb, int c);
+int	ft_len_nb(unsigned long long nb, int base);
+int	ft_newputnbr(long long nb, char c);
+int	ft_printadress(unsigned long long adress);
+
+#endif
