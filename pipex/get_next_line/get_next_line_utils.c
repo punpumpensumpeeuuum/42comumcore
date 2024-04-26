@@ -6,13 +6,13 @@
 /*   By: dinda-si <dinda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 16:46:07 by dinda-si          #+#    #+#             */
-/*   Updated: 2024/04/09 13:02:31 by dinda-si         ###   ########.fr       */
+/*   Updated: 2024/04/26 18:21:55 by dinda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-size_t	f_strlen(const char *str, size_t sn)
+size_t	ft_strlengetnextline(const char *str, size_t sn)
 {
 	int	i;
 
@@ -30,7 +30,7 @@ size_t	f_strlen(const char *str, size_t sn)
 	return (i);
 }
 
-char	*ft_strjoin(char *str1, char *str2)
+char	*ft_strjoingetnextline(char *str1, char *str2)
 {
 	size_t	i;
 	char	*p;
@@ -38,7 +38,8 @@ char	*ft_strjoin(char *str1, char *str2)
 	i = 0;
 	if (!str1 && !str2)
 		return (NULL);
-	p = ft_calloc(f_strlen(str1, 0) + f_strlen(str2, 0) + 1, 1);
+	p = ft_callocgetnextline(ft_strlengetnextline(str1, 0)
+		+ ft_strlengetnextline(str2, 0) + 1, 1);
 	if (!p)
 		return (NULL);
 	while (str1 && *str1 != '\0')
@@ -51,7 +52,7 @@ char	*ft_strjoin(char *str1, char *str2)
 	return (p);
 }
 
-void	*ft_calloc(size_t mem, size_t size)
+void	*ft_callocgetnextline(size_t mem, size_t size)
 {
 	char	*ptr;
 	size_t	i;

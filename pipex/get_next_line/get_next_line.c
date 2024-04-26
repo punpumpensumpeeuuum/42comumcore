@@ -6,7 +6,7 @@
 /*   By: dinda-si <dinda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 12:41:55 by dinda-si          #+#    #+#             */
-/*   Updated: 2024/04/09 13:02:22 by dinda-si         ###   ########.fr       */
+/*   Updated: 2024/04/26 18:22:20 by dinda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ char	*ft_joinfree(char *str, char *buffer)
 {
 	char	*temp;
 
-	temp = ft_strjoin(str, buffer);
+	temp = ft_strjoingetnextline(str, buffer);
 	free(str);
 	return (temp);
 }
@@ -62,11 +62,11 @@ char	*get_next_line(int fd)
 		return (0);
 	}
 	if (!buffer)
-		buffer = ft_calloc(BUFFER_SIZE + 1, 1);
+		buffer = ft_callocgetnextline(BUFFER_SIZE + 1, 1);
 	str = ft_joinfree(str, buffer);
 	bufferclean(buffer);
-	while (str && !(str[f_strlen(str, 1)] == '\n') && read(fd, buffer,
-			BUFFER_SIZE) && BUFFER_SIZE > 0)
+	while (str && !(str[ft_strlengetnextline(str, 1)] == '\n')
+		&& read(fd, buffer,	BUFFER_SIZE) && BUFFER_SIZE > 0)
 	{
 		str = ft_joinfree(str, buffer);
 		bufferclean(buffer);
