@@ -6,27 +6,33 @@
 /*   By: dinda-si <dinda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 11:21:24 by dinda-si          #+#    #+#             */
-/*   Updated: 2024/04/26 18:23:21 by dinda-si         ###   ########.fr       */
+/*   Updated: 2024/04/30 18:08:41 by dinda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-char	*checkcomand(char **env)
+char	*checkcomand(char *cmd, char **env)
 {
 	int i;
-	char **paths;
 	char *path;
+	char **paths;
 
 	i = 0;
-	path = NULL;
-	paths = NULL;
 	while (env && env[i])
 	{
 		if (ft_strncmp(env[i], "PATH=", 5) == 0)
-		{	
-			path = env[i];
-			paths = ft_split(env[i], ':');
+		{
+			paths = ft_split(env[i] + 5, ':');
+			i = 0;
+			while (paths[i])
+			{
+				path = ft_strjoin(paths[i], cmd);
+				ft_printf("%s\n", path);
+				if (!(access(path, X_OK)))
+					return ("ola");
+				i++;
+			}
 		}
 		i++;
 	}
@@ -40,11 +46,12 @@ int main(int ac, char **av, char **env)
 
 	path = NULL;
 	i = 0;
-	if (ac == 2 && av[1])
+	if (ac == 2)
 	{
-		path = checkcomand(env);
-		if (path != NULL)
-			ft_printf("%s\n", path);
+		ft_printf("%s\n",checkcomand(av[1], env));
+		path = checkcomand(av[1], env);
+		// if (path != NULL)
+		// 	ft_printf("%s\n", path);
 		i++;
 		return 0;
 	}
