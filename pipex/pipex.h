@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: elemesmo <elemesmo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dinda-si <dinda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 11:21:42 by dinda-si          #+#    #+#             */
-/*   Updated: 2024/05/02 03:06:26 by elemesmo         ###   ########.fr       */
+/*   Updated: 2024/05/02 15:59:54 by dinda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,18 @@
 typedef struct s_fd
 {
 	int	fd[2];
-	int	fd2[2];
+	int	fdfile[2];
 }	t_fds;
+
+typedef	struct s_vars
+{
+	char 	*pathcmd1;
+	char 	*pathcmd2;
+	char 	*cmd1;
+	char 	*cmd2;
+	int		id1;
+	int		id2;
+}	t_cmds;
+
 
 #endif
