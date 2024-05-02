@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dinda-si <dinda-si@student.42.fr>          +#+  +:+       +#+        */
+/*   By: elemesmo <elemesmo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 11:21:24 by dinda-si          #+#    #+#             */
-/*   Updated: 2024/04/30 18:08:41 by dinda-si         ###   ########.fr       */
+/*   Updated: 2024/05/02 03:33:09 by elemesmo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,45 +14,62 @@
 
 char	*checkcomand(char *cmd, char **env)
 {
-	int i;
-	char *path;
-	char **paths;
+	int		i;
+	int		p;
+	char	*path;
+	char	**paths;
 
 	i = 0;
+	p = 0;
 	while (env && env[i])
 	{
 		if (ft_strncmp(env[i], "PATH=", 5) == 0)
 		{
 			paths = ft_split(env[i] + 5, ':');
-			i = 0;
-			while (paths[i])
+			p = 0;
+			while (paths[p++])
 			{
-				path = ft_strjoin(paths[i], cmd);
-				ft_printf("%s\n", path);
-				if (!(access(path, X_OK)))
-					return ("ola");
-				i++;
+				path = ft_strjoin(paths[p], cmd, 1);
+				if (access(path, X_OK) == 0)
+					return (path);
 			}
 		}
 		i++;
 	}
+	path = NULL;
 	return (path);
 }
 
-int main(int ac, char **av, char **env)
+void	firstcmd(char *path, t_fds fd, char **env)
 {
-	int i;
-	char *path;
+	int	id;
+
+	id = fork();
+	if (id != 0)
+		return ;
+	dup2(fd.fd2[0], 0);
+	dup2(fd.fd[1], 1);
+}
+
+int	main(int ac, char **av, char **env)
+{
+	t_fds	fd;
+	char	*path;
 
 	path = NULL;
-	i = 0;
-	if (ac == 2)
+	if (ac == 3)
 	{
-		ft_printf("%s\n",checkcomand(av[1], env));
-		path = checkcomand(av[1], env);
-		// if (path != NULL)
-		// 	ft_printf("%s\n", path);
-		i++;
-		return 0;
+		path = checkcomand(av[2], env);
+		if (path != NULL)
+			ft_printf("%s\n", path);
+		if (pipe(fd.fd) != -1)
+		{
+			fd.fd2[0] = open(av[1], O_RDONLY);
+			if (fd.fd2[0] == -1)
+				return (-1);
+			firstcmd(path, fd, env);
+			close(fd.fd[0]);
+			close(fd.fd[1]);
+		}
 	}
 }
