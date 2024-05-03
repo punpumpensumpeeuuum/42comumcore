@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dinda-si <dinda-si@student.42.fr>          +#+  +:+       +#+        */
+/*   By: elemesmo <elemesmo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 11:21:24 by dinda-si          #+#    #+#             */
-/*   Updated: 2024/05/02 17:21:00 by dinda-si         ###   ########.fr       */
+/*   Updated: 2024/05/03 23:53:44 by elemesmo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,24 +40,32 @@ char	*checkcomand(char *cmd, char **env)
 	return (path);
 }
 
-void	firstcmd(t_cmds cmds, t_fds fd, char **env, char **av)
+void	firstcmd(t_cmds *cmd, t_fds *fd, char **env, char **av)
 {
-	fd.fdfile[0] = open(av[1], O_RDONLY);
-	if (fd.fdfile[0] == -1)
+	fd->fdfile[0] = open(av[1], O_RDONLY);
+	if (fd->fdfile[0] == -1)
 		return ;
-	cmds.id1 = fork();
-	if (cmds.id1 != 0)
-		return ;
-	dup2(fd.fdfile[0], 0);
-	dup2(fd.fd[1], 1);
-	close(fd.fdfile[1]);
-	close(fd.fd[0]);
-	if (cmds.pathcmd1 != NULL)
+	if (cmd->pathcmd1 == NULL)
 	{
-		execve(cmds.pathcmd1, &cmds.cmd1, env);
+		ft_printf("num ha path\n");
+		return ;
 	}
-	close(fd.fdfile[0]);
-	close(fd.fd[1]);
+	cmd->id1 = fork();
+	if (cmd->id1 != 0)
+		return ;
+	else
+	{
+		dup2(fd->fdfile[0], 0);
+		dup2(fd->fd[1], 4);
+		close(fd->fd[1]);
+		close(fd->fd[0]);
+		close(fd->fdfile[0]);
+		if (cmd->pathcmd1 != NULL)
+			execve(cmd->pathcmd1, cmd->flagcmd1, env);
+		exit(2);
+	}
+	close(fd->fdfile[0]);
+	close(fd->fd[1]);
 }
 
 int	main(int ac, char **av, char **env)
@@ -66,7 +74,7 @@ int	main(int ac, char **av, char **env)
 	t_cmds	cmd;
 
 	cmd.pathcmd1 = NULL;
-	av[1] = ft_strjoin("./", av[1], 0);
+	cmd.flagcmd1 = ft_split(av[2], ' ');
 	if (ac == 3)
 	{
 		cmd.pathcmd1 = checkcomand(av[2], env);
@@ -74,9 +82,10 @@ int	main(int ac, char **av, char **env)
 			ft_printf("%s\n", cmd.pathcmd1);
 		if (pipe(fd.fd) != -1)
 		{
-			firstcmd(cmd, fd, env, av);
+			firstcmd(&cmd, &fd, env, av);
 			close(fd.fd[0]);
-			close(fd.fd[1]);
+			close(fd.fdfile[1]);
+			waitpid(cmd.id1, NULL, 0);
 		}
 	}
 }
