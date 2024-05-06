@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dinda-si <dinda-si@student.42.fr>          +#+  +:+       +#+        */
+/*   By: elemesmo <elemesmo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 12:41:55 by dinda-si          #+#    #+#             */
-/*   Updated: 2024/04/26 18:22:20 by dinda-si         ###   ########.fr       */
+/*   Updated: 2024/05/05 18:34:39 by elemesmo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ char	*get_next_line(int fd)
 	str = ft_joinfree(str, buffer);
 	bufferclean(buffer);
 	while (str && !(str[ft_strlengetnextline(str, 1)] == '\n')
-		&& read(fd, buffer,	BUFFER_SIZE) && BUFFER_SIZE > 0)
+		&& read(fd, buffer, BUFFER_SIZE) && BUFFER_SIZE > 0)
 	{
 		str = ft_joinfree(str, buffer);
 		bufferclean(buffer);

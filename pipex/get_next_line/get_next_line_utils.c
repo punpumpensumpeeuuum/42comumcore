@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dinda-si <dinda-si@student.42.fr>          +#+  +:+       +#+        */
+/*   By: elemesmo <elemesmo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 16:46:07 by dinda-si          #+#    #+#             */
-/*   Updated: 2024/04/26 18:21:55 by dinda-si         ###   ########.fr       */
+/*   Updated: 2024/05/05 18:34:17 by elemesmo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ char	*ft_strjoingetnextline(char *str1, char *str2)
 	if (!str1 && !str2)
 		return (NULL);
 	p = ft_callocgetnextline(ft_strlengetnextline(str1, 0)
-		+ ft_strlengetnextline(str2, 0) + 1, 1);
+			+ ft_strlengetnextline(str2, 0) + 1, 1);
 	if (!p)
 		return (NULL);
 	while (str1 && *str1 != '\0')
