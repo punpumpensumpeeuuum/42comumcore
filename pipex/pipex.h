@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dinda-si <dinda-si@student.42.fr>          +#+  +:+       +#+        */
+/*   By: elemesmo <elemesmo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 11:21:42 by dinda-si          #+#    #+#             */
-/*   Updated: 2024/05/06 17:00:24 by dinda-si         ###   ########.fr       */
+/*   Updated: 2024/05/07 00:44:57 by elemesmo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,12 @@ typedef struct s_vars
 	int		id2;
 	int		ac;
 	int		i;
+	int		avindex;
 }	t_cmds;
+
+void	firstcmd(t_cmds *cmd, t_fds *fd, char **env, char **av);
+void	mid1cmd(t_cmds *cmd, t_fds *fd, char **env, char **av);
+void	mid2cmd(t_cmds *cmd, t_fds *fd, char **env, char **av);
+void	lastcmd(t_cmds *cmd, t_fds *fd, char **env, char **av);
 
 #endif
