@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: elemesmo <elemesmo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dinda-si <dinda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 11:21:42 by dinda-si          #+#    #+#             */
-/*   Updated: 2024/05/05 19:04:21 by elemesmo         ###   ########.fr       */
+/*   Updated: 2024/05/06 17:00:24 by dinda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,7 @@ typedef struct s_vars
 {
 	char	**pathstodos;
 	char	***flagtodos;
-	char	*cmd1;
-	char	*cmd2;
+	char	**cmdtodos;
 	int		id1;
 	int		id2;
 	int		ac;

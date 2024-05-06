@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: elemesmo <elemesmo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dinda-si <dinda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 11:21:24 by dinda-si          #+#    #+#             */
-/*   Updated: 2024/05/06 02:19:33 by elemesmo         ###   ########.fr       */
+/*   Updated: 2024/05/06 18:37:20 by dinda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,17 @@ char	*checkcomand(char *cmd, char **env)
 			p = 0;
 			while (paths[p++])
 			{
-				// ft_printf("1 >%s\n", path);
+				// ft_printf("1 >%s\n", cmd);
 				path = ft_strjoin(paths[p], cmd, 1);
-				// ft_printf("%s\n", path);
+				ft_printf("%s\n", path);
 				// ft_printf("%d\n", p);
 				if (access(path, X_OK) == 0)
 					return (path);
+				else
+				{
+					ft_printf("fds\n");
+					return (NULL);
+				}
 			}
 		}
 		i++;
@@ -62,12 +67,6 @@ void	getcomand(t_cmds *cmd, char **av, char **env)
 		ft_printf("errou os pahts\n");
 		return ;
 	}
-	// ft_printf("%d\n", cmd->i);
-	// ft_printf("%s\n", cmd->pathstodos[cmd->i]);
-	// checkcomand(cmd->pathstodos[cmd->i], env);
-	// ft_printf("comiasf%s\n", cmd->pathstodos[cmd->i]);
-	// cmd->flagtodos[cmd->i] = ft_split(av[j], ' ');
-	// ft_printf("a1231313\n");
 	j++;
 }
 
@@ -138,6 +137,11 @@ int	main(int ac, char **av, char **env)
 		cmd.ac = ac - 2;
 		cmd.pathstodos = malloc(sizeof(char *) * (ac - 3));
 		cmd.flagtodos = malloc(sizeof(char **) * (ac - 3));
+		if (cmd.pathstodos == NULL || cmd.flagtodos == NULL) 
+		{
+			ft_printf("Memory allocation failed\n");
+			exit(0);
+        }
 		while (cmd.i < cmd.ac)
 		{
 			getcomand(&cmd, av, env);
@@ -153,5 +157,17 @@ int	main(int ac, char **av, char **env)
 			waitpid(cmd.id1, NULL, 0);
 		}
 		free(cmd.pathstodos);
+		free(cmd.flagtodos);
 	}
 }
+
+
+    // Error Handling in checkcomand: You've added an error condition in the checkcomand function to return NULL if access to a path fails. This is a good addition for error handling.
+
+    // Incrementing j in getcomand: You correctly increment j in the getcomand function after setting cmd->flagtodos[cmd->i]. This ensures you move to the next argument in av.
+
+    // Error Messages: You've added error messages in case of memory allocation failure in main. This provides better feedback to users.
+
+    // Memory Allocation in main: You've fixed the memory allocation size in main to use (ac - 3) instead of (ac - 2).
+
+    // Formatting and Comments: It seems you've cleaned up some formatting and added comments, which improves readability.

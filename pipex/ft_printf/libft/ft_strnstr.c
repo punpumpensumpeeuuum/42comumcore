@@ -1,43 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dinda-si <dinda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/09 10:09:06 by dinda-si          #+#    #+#             */
-/*   Updated: 2024/05/06 18:06:47 by dinda-si         ###   ########.fr       */
+/*   Created: 2023/10/04 11:37:46 by dinda-si          #+#    #+#             */
+/*   Updated: 2024/05/06 16:59:33 by dinda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
 
-char	*ft_strjoin(char const *s1, char const *s2, int flag)
+char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
-	char	*n;
 	size_t	i;
 	size_t	j;
+	char	*m;
 
-	i = 0;
 	j = 0;
-	if (!s1 || !s2)
-		return (0);
-	n = malloc(ft_strlen(s1) + ft_strlen(s2) + 2);
-	if (!n)
-		return (0);
-	while (s1[i] != '\0')
+	i = 0;
+	m = (char *)big;
+	if (!little[j])
+		return (m);
+	while ((i < len) && m[i])
 	{
-		n[i] = s1[i];
+		j = 0;
+		while (m[i + j] == little[j] && (i + j < len))
+		{
+			j++;
+			if (little[j] == '\0')
+				return (&m[i]);
+		}
 		i++;
 	}
-	if (flag == 1)
-		n[i++] = '/';
-	while (s2[j] != '\0')
-	{
-		n[i++] = s2[j];
-		j++;
-	}
-	n[i] = '\0';
-	return (n);
+	return (0);
 }
