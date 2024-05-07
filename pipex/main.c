@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: elemesmo <elemesmo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dinda-si <dinda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 11:21:24 by dinda-si          #+#    #+#             */
-/*   Updated: 2024/05/07 00:42:46 by elemesmo         ###   ########.fr       */
+/*   Updated: 2024/05/07 17:18:03 by dinda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ void	initthings(t_cmds *cmd, int ac)
 	cmd->avindex = 2;
 	cmd->pathstodos = malloc(sizeof(char *) * (ac - 3));
 	cmd->flagtodos = malloc(sizeof(char **) * (ac - 3));
+	cmd->cmdtodos = malloc(sizeof(char *) * (ac - 3));
 	if (cmd->pathstodos == NULL || cmd->flagtodos == NULL)
 	{
 		ft_printf("Memory allocation failed\n");
@@ -59,12 +60,13 @@ void	getcomand(t_cmds *cmd, char **av, char **env)
 	cmd->flagtodos[cmd->i] = NULL;
 	cmd->pathstodos[cmd->i] = NULL;
 	cmd->flagtodos[cmd->i] = ft_split(av[cmd->avindex], ' ');
+	cmd->cmdtodos[cmd->i] = cmd->flagtodos[cmd->i][0];
 	if (cmd->flagtodos[cmd->i] == NULL)
 	{
 		ft_printf("errou as flgags\n");
 		return ;
 	}
-	cmd->pathstodos[cmd->i] = checkcomand(av[cmd->avindex], env);
+	cmd->pathstodos[cmd->i] = checkcomand(cmd->cmdtodos[cmd->i], env);
 	if (cmd->pathstodos[cmd->i] == NULL)
 	{
 		ft_printf("errou os pahts\n");
@@ -91,15 +93,22 @@ int	main(int ac, char **av, char **env)
 		{
 			while (cmd.i < ac - 3)
 			{
-				firstcmd(&cmd, &fd, env, av);
-				lastcmd(&cmd, &fd, env, av);
+				piping(&cmd, &fd, env, av);
+				cmd.avindex++;
 				close(fd.fd[0]);
 				close(fd.fdfile[1]);
 				waitpid(cmd.id1, NULL, 0);
-				cmd.i++;
 			}
 		}
 		free(cmd.pathstodos);
 		free(cmd.flagtodos);
 	}
 }
+
+/* errors a trata
+
+sleep 5 | sleep 2 		pipe tem q correr ao memo tempo
+varios cats da merda
+valgrinds
+
+*/

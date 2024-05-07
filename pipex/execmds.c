@@ -3,14 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   execmds.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: elemesmo <elemesmo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dinda-si <dinda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 23:11:26 by elemesmo          #+#    #+#             */
-/*   Updated: 2024/05/07 00:43:14 by elemesmo         ###   ########.fr       */
+/*   Updated: 2024/05/07 17:18:03 by dinda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
+
+void	piping(t_cmds *cmd, t_fds *fd, char **env, char **av)
+{
+	firstcmd(cmd, fd, env, av);
+	cmd->i++;
+	if (cmd->i < cmd->ac + 1)
+		lastcmd(cmd, fd, env, av);
+}
 
 void	firstcmd(t_cmds *cmd, t_fds *fd, char **env, char **av)
 {
@@ -46,7 +54,7 @@ void	mid2cmd(t_cmds *cmd, t_fds *fd, char **env, char **av);
 
 void	lastcmd(t_cmds *cmd, t_fds *fd, char **env, char **av)
 {
-	fd->fdfile[1] = open(av[4], O_WRONLY);
+	fd->fdfile[1] = open(av[cmd->ac + 3], O_WRONLY | O_TRUNC | O_CREAT , 0644);
 	if (fd->fdfile[1] == -1)
 		return ;
 	if (cmd->pathstodos[cmd->i] == NULL)
