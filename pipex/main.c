@@ -3,23 +3,28 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dinda-si <dinda-si@student.42.fr>          +#+  +:+       +#+        */
+/*   By: elemesmo <elemesmo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 11:21:24 by dinda-si          #+#    #+#             */
-/*   Updated: 2024/05/07 17:18:03 by dinda-si         ###   ########.fr       */
+/*   Updated: 2024/05/08 01:27:16 by elemesmo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-void	initthings(t_cmds *cmd, int ac)
+void	initthings(t_cmds *cmd, int ac, t_fds *fd)
 {
 	cmd->i = 0;
 	cmd->ac = ac - 4;
 	cmd->avindex = 2;
+	cmd->p = 0;
 	cmd->pathstodos = malloc(sizeof(char *) * (ac - 3));
 	cmd->flagtodos = malloc(sizeof(char **) * (ac - 3));
 	cmd->cmdtodos = malloc(sizeof(char *) * (ac - 3));
+	fd->fd = malloc(sizeof(int *) * (ac - 3));
+	while (cmd->i < cmd->ac + 1)
+		fd->fd[cmd->i++] = malloc(sizeof(int) * 3);
+	cmd->i = 0;
 	if (cmd->pathstodos == NULL || cmd->flagtodos == NULL)
 	{
 		ft_printf("Memory allocation failed\n");
@@ -81,7 +86,7 @@ int	main(int ac, char **av, char **env)
 
 	if (ac >= 5)
 	{
-		initthings(&cmd, ac);
+		initthings(&cmd, ac, &fd);
 		while (cmd.i < ac - 3)
 		{
 			getcomand(&cmd, av, env);
@@ -89,17 +94,17 @@ int	main(int ac, char **av, char **env)
 			cmd.avindex++;
 		}
 		cmd.i = 0;
-		if (pipe(fd.fd) != -1)
+		while (cmd.i < ac - 3)
 		{
-			while (cmd.i < ac - 3)
+			if (pipe(fd.fd[cmd.p]) != -1)
 			{
 				piping(&cmd, &fd, env, av);
 				cmd.avindex++;
-				close(fd.fd[0]);
 				close(fd.fdfile[1]);
-				waitpid(cmd.id1, NULL, 0);
+				cmd.p++;
 			}
 		}
+		waitpid(cmd.id1, NULL, 0);
 		free(cmd.pathstodos);
 		free(cmd.flagtodos);
 	}
@@ -107,7 +112,6 @@ int	main(int ac, char **av, char **env)
 
 /* errors a trata
 
-sleep 5 | sleep 2 		pipe tem q correr ao memo tempo
 varios cats da merda
 valgrinds
 
