@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: elemesmo <elemesmo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dinda-si <dinda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 11:21:24 by dinda-si          #+#    #+#             */
-/*   Updated: 2024/05/08 01:27:16 by elemesmo         ###   ########.fr       */
+/*   Updated: 2024/05/09 19:00:05 by dinda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,15 +32,25 @@ void	initthings(t_cmds *cmd, int ac, t_fds *fd)
 	}
 }
 
-char	*checkcomand(char *cmd, char **env)
+char	*checkcomand(char *comand, char **env, t_cmds *cmd, char **av)
 {
 	int		i;
 	int		p;
-	char	*path;
+	char	*path = NULL;
 	char	**paths;
 
 	i = 0;
-	p = 0;
+	cmd->avindex = 2;
+	while (cmd->avindex < cmd->ac + 3)
+	{
+		if (access(av[cmd->avindex], X_OK) == 0)
+		{
+			path = av[cmd->avindex];
+			return (path);
+		}
+		cmd->avindex++;
+	}
+	cmd->avindex = 2;
 	while (env && env[i])
 	{
 		if (ft_strncmp(env[i], "PATH=", 5) == 0)
@@ -49,7 +59,7 @@ char	*checkcomand(char *cmd, char **env)
 			p = 0;
 			while (paths[p++])
 			{
-				path = ft_strjoin(paths[p], cmd, 1);
+				path = ft_strjoin(paths[p], comand, 1);
 				if (access(path, X_OK) == 0)
 					return (path);
 			}
@@ -71,7 +81,7 @@ void	getcomand(t_cmds *cmd, char **av, char **env)
 		ft_printf("errou as flgags\n");
 		return ;
 	}
-	cmd->pathstodos[cmd->i] = checkcomand(cmd->cmdtodos[cmd->i], env);
+	cmd->pathstodos[cmd->i] = checkcomand(cmd->cmdtodos[cmd->i], env, cmd, av);
 	if (cmd->pathstodos[cmd->i] == NULL)
 	{
 		ft_printf("errou os pahts\n");
