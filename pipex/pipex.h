@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dinda-si <dinda-si@student.42.fr>          +#+  +:+       +#+        */
+/*   By: elemesmo <elemesmo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 11:21:42 by dinda-si          #+#    #+#             */
-/*   Updated: 2024/05/09 17:09:56 by dinda-si         ###   ########.fr       */
+/*   Updated: 2024/05/12 03:50:57 by elemesmo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@
 
 typedef struct s_fd
 {
-	int	**fd;
-	int	fdfile[2];
+	int		*fd;
+	int		fdfile[2];
 }	t_fds;
 
 typedef struct s_vars
@@ -38,6 +38,7 @@ typedef struct s_vars
 	int		avindex;
 }	t_cmds;
 
+void	concertaropipe(t_fds *fd, t_cmds *cmd);
 void	piping(t_cmds *cmd, t_fds *fd, char **env, char **av);
 void	firstcmd(t_cmds *cmd, t_fds *fd, char **env, char **av);
 void	mid1cmd(t_cmds *cmd, t_fds *fd, char **env);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dinda-si <dinda-si@student.42.fr>          +#+  +:+       +#+        */
+/*   By: elemesmo <elemesmo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 11:21:24 by dinda-si          #+#    #+#             */
-/*   Updated: 2024/05/09 19:00:05 by dinda-si         ###   ########.fr       */
+/*   Updated: 2024/05/12 05:14:28 by elemesmo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,13 @@ void	initthings(t_cmds *cmd, int ac, t_fds *fd)
 	cmd->pathstodos = malloc(sizeof(char *) * (ac - 3));
 	cmd->flagtodos = malloc(sizeof(char **) * (ac - 3));
 	cmd->cmdtodos = malloc(sizeof(char *) * (ac - 3));
-	fd->fd = malloc(sizeof(int *) * (ac - 3));
-	while (cmd->i < cmd->ac + 1)
-		fd->fd[cmd->i++] = malloc(sizeof(int) * 3);
+	fd->fd = malloc(sizeof(int) * ((ac - 3) * 2) + 1);
+	while (cmd->i < (ac - 3))
+	{
+		if (pipe(fd->fd + 2 * cmd->i) < 0)
+			return ;
+		cmd->i++;
+	}
 	cmd->i = 0;
 	if (cmd->pathstodos == NULL || cmd->flagtodos == NULL)
 	{
@@ -36,7 +40,7 @@ char	*checkcomand(char *comand, char **env, t_cmds *cmd, char **av)
 {
 	int		i;
 	int		p;
-	char	*path = NULL;
+	char	*path;
 	char	**paths;
 
 	i = 0;
@@ -74,7 +78,7 @@ void	getcomand(t_cmds *cmd, char **av, char **env)
 {
 	cmd->flagtodos[cmd->i] = NULL;
 	cmd->pathstodos[cmd->i] = NULL;
-	cmd->flagtodos[cmd->i] = ft_split(av[cmd->avindex], ' ');
+	cmd->flagtodos[cmd->i] = ft_split(av[cmd->i + 2], ' ');
 	cmd->cmdtodos[cmd->i] = cmd->flagtodos[cmd->i][0];
 	if (cmd->flagtodos[cmd->i] == NULL)
 	{
@@ -106,13 +110,12 @@ int	main(int ac, char **av, char **env)
 		cmd.i = 0;
 		while (cmd.i < ac - 3)
 		{
-			if (pipe(fd.fd[cmd.p]) != -1)
-			{
-				piping(&cmd, &fd, env, av);
-				cmd.avindex++;
-				close(fd.fdfile[1]);
-				cmd.p++;
-			}
+			ft_printf("0: %d\n", fd.fd[2 * cmd.p]);
+			ft_printf("1: %d\n", fd.fd[2 * cmd.p + 1]);
+			piping(&cmd, &fd, env, av);
+			sleep(1);
+			cmd.avindex++;
+			cmd.p++;
 		}
 		waitpid(cmd.id1, NULL, 0);
 		free(cmd.pathstodos);
