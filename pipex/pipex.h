@@ -6,7 +6,7 @@
 /*   By: elemesmo <elemesmo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 11:21:42 by dinda-si          #+#    #+#             */
-/*   Updated: 2024/05/12 03:50:57 by elemesmo         ###   ########.fr       */
+/*   Updated: 2024/05/15 01:33:22 by elemesmo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,13 +36,17 @@ typedef struct s_vars
 	int		i;
 	int		p;
 	int		avindex;
+	char	*minipath;
+	char	**minipaths;
 }	t_cmds;
 
-void	concertaropipe(t_fds *fd, t_cmds *cmd);
-void	piping(t_cmds *cmd, t_fds *fd, char **env, char **av);
+void	checkhelp(char *comand, char **env, int i, t_cmds *cmd);
+int		piping(t_cmds *cmd, t_fds *fd, char **env, char **av);
 void	firstcmd(t_cmds *cmd, t_fds *fd, char **env, char **av);
-void	mid1cmd(t_cmds *cmd, t_fds *fd, char **env);
-void	mid2cmd(t_cmds *cmd, t_fds *fd, char **env, char **av);
+void	midcmd(t_cmds *cmd, t_fds *fd, char **env);
 void	lastcmd(t_cmds *cmd, t_fds *fd, char **env, char **av);
+
+void	freefree(t_cmds *cmd, t_fds *fd);
+void	freepaths(char **paths, int i);
 
 #endif

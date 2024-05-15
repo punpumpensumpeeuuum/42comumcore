@@ -1,2 +1,13 @@
-pao
-ola
+execmds.c
+execmds.o
+frees.c
+frees.o
+ft_printf
+get_next_line
+in
+main.c
+main.o
+Makefile
+out
+pipex
+pipex.h

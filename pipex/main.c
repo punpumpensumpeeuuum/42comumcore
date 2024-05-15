@@ -6,7 +6,7 @@
 /*   By: elemesmo <elemesmo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 11:21:24 by dinda-si          #+#    #+#             */
-/*   Updated: 2024/05/12 05:14:28 by elemesmo         ###   ########.fr       */
+/*   Updated: 2024/05/15 01:33:57 by elemesmo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,19 @@
 
 void	initthings(t_cmds *cmd, int ac, t_fds *fd)
 {
+	cmd->id1 = 0;
+	cmd->id2 = 0;
+	cmd->id3 = 0;
 	cmd->i = 0;
 	cmd->ac = ac - 4;
 	cmd->avindex = 2;
 	cmd->p = 0;
-	cmd->pathstodos = malloc(sizeof(char *) * (ac - 3));
-	cmd->flagtodos = malloc(sizeof(char **) * (ac - 3));
-	cmd->cmdtodos = malloc(sizeof(char *) * (ac - 3));
+	cmd->pathstodos = malloc(sizeof(char *) * (ac - 2));
+	cmd->pathstodos[ac - 3] = NULL;
+	cmd->flagtodos = malloc(sizeof(char **) * (ac - 2));
+	cmd->flagtodos[ac - 3] = NULL;
+	cmd->cmdtodos = malloc(sizeof(char *) * (ac - 2));
+	cmd->cmdtodos[ac - 3] = NULL;
 	fd->fd = malloc(sizeof(int) * ((ac - 3) * 2) + 1);
 	while (cmd->i < (ac - 3))
 	{
@@ -30,18 +36,12 @@ void	initthings(t_cmds *cmd, int ac, t_fds *fd)
 	}
 	cmd->i = 0;
 	if (cmd->pathstodos == NULL || cmd->flagtodos == NULL)
-	{
-		ft_printf("Memory allocation failed\n");
-		exit(0);
-	}
+		return ;
 }
 
 char	*checkcomand(char *comand, char **env, t_cmds *cmd, char **av)
 {
 	int		i;
-	int		p;
-	char	*path;
-	char	**paths;
 
 	i = 0;
 	cmd->avindex = 2;
@@ -49,29 +49,14 @@ char	*checkcomand(char *comand, char **env, t_cmds *cmd, char **av)
 	{
 		if (access(av[cmd->avindex], X_OK) == 0)
 		{
-			path = av[cmd->avindex];
-			return (path);
+			cmd->minipath = av[cmd->avindex];
+			return (cmd->minipath);
 		}
 		cmd->avindex++;
 	}
 	cmd->avindex = 2;
-	while (env && env[i])
-	{
-		if (ft_strncmp(env[i], "PATH=", 5) == 0)
-		{
-			paths = ft_split(env[i] + 5, ':');
-			p = 0;
-			while (paths[p++])
-			{
-				path = ft_strjoin(paths[p], comand, 1);
-				if (access(path, X_OK) == 0)
-					return (path);
-			}
-		}
-		i++;
-	}
-	path = NULL;
-	return (path);
+	checkhelp(comand, env, i, cmd);
+	return (cmd->minipath);
 }
 
 void	getcomand(t_cmds *cmd, char **av, char **env)
@@ -88,6 +73,7 @@ void	getcomand(t_cmds *cmd, char **av, char **env)
 	cmd->pathstodos[cmd->i] = checkcomand(cmd->cmdtodos[cmd->i], env, cmd, av);
 	if (cmd->pathstodos[cmd->i] == NULL)
 	{
+		cmd->pathstodos[cmd->i] = ft_strdup("error");
 		ft_printf("errou os pahts\n");
 		return ;
 	}
@@ -112,20 +98,13 @@ int	main(int ac, char **av, char **env)
 		{
 			ft_printf("0: %d\n", fd.fd[2 * cmd.p]);
 			ft_printf("1: %d\n", fd.fd[2 * cmd.p + 1]);
-			piping(&cmd, &fd, env, av);
-			sleep(1);
+			if (piping(&cmd, &fd, env, av) != 0)
+				freefree(&cmd, &fd);
+			// sleep(1);
 			cmd.avindex++;
 			cmd.p++;
 		}
 		waitpid(cmd.id1, NULL, 0);
-		free(cmd.pathstodos);
-		free(cmd.flagtodos);
+		freefree(&cmd, &fd);
 	}
 }
-
-/* errors a trata
-
-varios cats da merda
-valgrinds
-
-*/
