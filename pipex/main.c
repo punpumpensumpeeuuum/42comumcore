@@ -6,7 +6,7 @@
 /*   By: elemesmo <elemesmo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 11:21:24 by dinda-si          #+#    #+#             */
-/*   Updated: 2024/05/15 01:33:57 by elemesmo         ###   ########.fr       */
+/*   Updated: 2024/05/21 20:52:34 by elemesmo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,16 +65,11 @@ void	getcomand(t_cmds *cmd, char **av, char **env)
 	cmd->pathstodos[cmd->i] = NULL;
 	cmd->flagtodos[cmd->i] = ft_split(av[cmd->i + 2], ' ');
 	cmd->cmdtodos[cmd->i] = cmd->flagtodos[cmd->i][0];
-	if (cmd->flagtodos[cmd->i] == NULL)
-	{
-		ft_printf("errou as flgags\n");
-		return ;
-	}
 	cmd->pathstodos[cmd->i] = checkcomand(cmd->cmdtodos[cmd->i], env, cmd, av);
-	if (cmd->pathstodos[cmd->i] == NULL)
+	if (cmd->pathstodos[cmd->i] == NULL || cmd->pathstodos[cmd->i] == NULL)
 	{
 		cmd->pathstodos[cmd->i] = ft_strdup("error");
-		ft_printf("errou os pahts\n");
+		ft_printf("errou os paths ou as flags\n");
 		return ;
 	}
 }
@@ -96,11 +91,8 @@ int	main(int ac, char **av, char **env)
 		cmd.i = 0;
 		while (cmd.i < ac - 3)
 		{
-			ft_printf("0: %d\n", fd.fd[2 * cmd.p]);
-			ft_printf("1: %d\n", fd.fd[2 * cmd.p + 1]);
 			if (piping(&cmd, &fd, env, av) != 0)
 				freefree(&cmd, &fd);
-			// sleep(1);
 			cmd.avindex++;
 			cmd.p++;
 		}
@@ -108,3 +100,6 @@ int	main(int ac, char **av, char **env)
 		freefree(&cmd, &fd);
 	}
 }
+
+// ft_printf("0: %d\n", fd.fd[2 * cmd.p]);
+// ft_printf("1: %d\n", fd.fd[2 * cmd.p + 1]);

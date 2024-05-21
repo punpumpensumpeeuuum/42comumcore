@@ -6,7 +6,7 @@
 /*   By: elemesmo <elemesmo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 01:18:52 by elemesmo          #+#    #+#             */
-/*   Updated: 2024/05/15 01:20:42 by elemesmo         ###   ########.fr       */
+/*   Updated: 2024/05/21 20:48:14 by elemesmo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,4 +39,5 @@ void	freepaths(char **paths, int i)
 	while (paths[i])
 		free(paths[i++]);
 	free(paths);
+	paths = NULL;
 }
