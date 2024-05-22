@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   frees.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: elemesmo <elemesmo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dinda-si <dinda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/15 01:18:52 by elemesmo          #+#    #+#             */
-/*   Updated: 2024/05/21 20:48:14 by elemesmo         ###   ########.fr       */
+/*   Created: 2024/05/15 01:18:52 by dinda-si          #+#    #+#             */
+/*   Updated: 2024/05/22 14:42:16 by dinda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	freefree(t_cmds *cmd, t_fds *fd)
 		free(cmd->pathstodos[cmd->i++]);
 	free(cmd->pathstodos);
 	cmd->i = 0;
-	while (cmd->flagtodos[cmd->i])
+	while (cmd->flagtodos[cmd->i] && cmd->flagtodos)
 	{
 		while (cmd->flagtodos[cmd->i][cmd->p])
 			free(cmd->flagtodos[cmd->i][cmd->p++]);

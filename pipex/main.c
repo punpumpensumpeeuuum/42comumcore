@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: elemesmo <elemesmo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dinda-si <dinda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 11:21:24 by dinda-si          #+#    #+#             */
-/*   Updated: 2024/05/21 20:52:34 by elemesmo         ###   ########.fr       */
+/*   Updated: 2024/05/22 14:34:52 by dinda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,20 +39,16 @@ void	initthings(t_cmds *cmd, int ac, t_fds *fd)
 		return ;
 }
 
-char	*checkcomand(char *comand, char **env, t_cmds *cmd, char **av)
+char	*checkcomand(char *comand, char **env, t_cmds *cmd)
 {
 	int		i;
 
 	i = 0;
 	cmd->avindex = 2;
-	while (cmd->avindex < cmd->ac + 3)
+	if (access(comand, X_OK) == 0)
 	{
-		if (access(av[cmd->avindex], X_OK) == 0)
-		{
-			cmd->minipath = av[cmd->avindex];
-			return (cmd->minipath);
-		}
-		cmd->avindex++;
+		cmd->minipath = comand;
+		return (cmd->minipath);
 	}
 	cmd->avindex = 2;
 	checkhelp(comand, env, i, cmd);
@@ -65,8 +61,8 @@ void	getcomand(t_cmds *cmd, char **av, char **env)
 	cmd->pathstodos[cmd->i] = NULL;
 	cmd->flagtodos[cmd->i] = ft_split(av[cmd->i + 2], ' ');
 	cmd->cmdtodos[cmd->i] = cmd->flagtodos[cmd->i][0];
-	cmd->pathstodos[cmd->i] = checkcomand(cmd->cmdtodos[cmd->i], env, cmd, av);
-	if (cmd->pathstodos[cmd->i] == NULL || cmd->pathstodos[cmd->i] == NULL)
+	cmd->pathstodos[cmd->i] = checkcomand(cmd->cmdtodos[cmd->i], env, cmd);
+	if (cmd->pathstodos[cmd->i] == NULL || cmd->flagtodos[cmd->i] == NULL)
 	{
 		cmd->pathstodos[cmd->i] = ft_strdup("error");
 		ft_printf("errou os paths ou as flags\n");
