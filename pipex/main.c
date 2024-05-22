@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dinda-si <dinda-si@student.42.fr>          +#+  +:+       +#+        */
+/*   By: elemesmo <elemesmo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 11:21:24 by dinda-si          #+#    #+#             */
-/*   Updated: 2024/05/22 14:34:52 by dinda-si         ###   ########.fr       */
+/*   Updated: 2024/05/22 23:01:47 by elemesmo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ char	*checkcomand(char *comand, char **env, t_cmds *cmd)
 	cmd->avindex = 2;
 	if (access(comand, X_OK) == 0)
 	{
-		cmd->minipath = comand;
+		cmd->minipath = ft_strdup(comand);
 		return (cmd->minipath);
 	}
 	cmd->avindex = 2;

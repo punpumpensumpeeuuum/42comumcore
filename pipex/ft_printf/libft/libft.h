@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dinda-si <dinda-si@student.42.fr>          +#+  +:+       +#+        */
+/*   By: elemesmo <elemesmo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 16:45:21 by dinda-si          #+#    #+#             */
-/*   Updated: 2024/05/22 12:40:29 by dinda-si         ###   ########.fr       */
+/*   Updated: 2024/05/22 22:18:38 by elemesmo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ char				*ft_substr(char const *str, unsigned int start, size_t len);
 char				*ft_strjoin(char const *s1, char const *s2, int flag);
 char				*ft_strnstr(const char *big, const char *little,
 						size_t len);
-char	*ft_strtrim(char const *s1, char const *set);
-char	*ft_strchr(const char *s, int c);
+char				*ft_strtrim(char const *s1, char const *set);
+char				*ft_strchr(const char *s, int c);
 
 #endif
