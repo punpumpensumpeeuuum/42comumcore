@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: elemesmo <elemesmo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dinda-si <dinda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 11:21:24 by dinda-si          #+#    #+#             */
-/*   Updated: 2024/05/22 23:01:47 by elemesmo         ###   ########.fr       */
+/*   Updated: 2024/05/24 16:09:30 by dinda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ int	main(int ac, char **av, char **env)
 	t_fds	fd;
 	t_cmds	cmd;
 
-	if (ac >= 5)
+	if (ac >= 5 && env && env[0])
 	{
 		initthings(&cmd, ac, &fd);
 		while (cmd.i < ac - 3)
@@ -99,3 +99,5 @@ int	main(int ac, char **av, char **env)
 
 // ft_printf("0: %d\n", fd.fd[2 * cmd.p]);
 // ft_printf("1: %d\n", fd.fd[2 * cmd.p + 1]);
+
+//	valgrind --track-fds=yes --trace-children=yes ./pipex in cat ls outfile

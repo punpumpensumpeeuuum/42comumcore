@@ -6,7 +6,7 @@
 /*   By: dinda-si <dinda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 23:11:26 by dinda-si          #+#    #+#             */
-/*   Updated: 2024/05/22 14:31:52 by dinda-si         ###   ########.fr       */
+/*   Updated: 2024/05/24 16:06:12 by dinda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,8 +71,8 @@ int	piping(t_cmds *cmd, t_fds *fd, char **env, char **av)
 void	firstcmd(t_cmds *cmd, t_fds *fd, char **env, char **av)
 {
 	fd->fdfile[0] = open(av[1], O_RDONLY);
-	if (fd->fdfile[0] == -1)
-		return ;
+	// if (fd->fdfile[0] == -1)
+	// 	return ;
 	cmd->id1 = fork();
 	if (cmd->id1 != 0)
 		return ;
