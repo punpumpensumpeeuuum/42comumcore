@@ -6,7 +6,7 @@
 /*   By: dinda-si <dinda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 11:21:24 by dinda-si          #+#    #+#             */
-/*   Updated: 2024/05/24 16:09:30 by dinda-si         ###   ########.fr       */
+/*   Updated: 2024/05/28 14:42:23 by dinda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,8 @@ int	main(int ac, char **av, char **env)
 			cmd.p++;
 		}
 		waitpid(cmd.id1, NULL, 0);
+		// ft_printf("closealldamain\n");
+		closeall(&fd, &cmd);
 		freefree(&cmd, &fd);
 	}
 }
