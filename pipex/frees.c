@@ -6,21 +6,36 @@
 /*   By: dinda-si <dinda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 01:18:52 by dinda-si          #+#    #+#             */
-/*   Updated: 2024/05/28 14:42:53 by dinda-si         ###   ########.fr       */
+/*   Updated: 2024/05/29 16:26:59 by dinda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
+
+void	sleepy(t_cmds *cmd)
+{
+	cmd->i = 0;
+	while (cmd->i < cmd->ac + 1)
+	{
+		if (cmd->id1 == 0)
+			cmd->i++;
+		else if (cmd->id2 == 0)
+			cmd->i++;
+		else if (cmd->id3 == 0)
+			cmd->i++;
+		else
+			cmd->i++;
+		waitpid(-1, NULL, 0);
+	}
+}
 
 void	closeall(t_fds *fd, t_cmds *cmd)
 {
 	int	i;
 
 	i = 0;
-	// ft_printf("2: %d\n", (cmd->ac + 1) * 2);
 	while (i < (cmd->ac + 1) * 2)
 	{
-		ft_printf("fd: %d\n", fd->fd[i]);
 		close(fd->fd[i]);
 		i++;
 	}

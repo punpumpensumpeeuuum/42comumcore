@@ -6,17 +6,30 @@
 /*   By: dinda-si <dinda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 11:21:24 by dinda-si          #+#    #+#             */
-/*   Updated: 2024/05/28 14:42:23 by dinda-si         ###   ########.fr       */
+/*   Updated: 2024/05/29 16:26:48 by dinda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
+int	checkenv(char **env)
+{
+	int	i;
+
+	i = 0;
+	if (!env && !env[i])
+		return (1);
+	while (env[i])
+	{
+		if (ft_strncmp(env[i], "PATH=", 5) == 0)
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
 void	initthings(t_cmds *cmd, int ac, t_fds *fd)
 {
-	cmd->id1 = 0;
-	cmd->id2 = 0;
-	cmd->id3 = 0;
 	cmd->i = 0;
 	cmd->ac = ac - 4;
 	cmd->avindex = 2;
@@ -75,7 +88,7 @@ int	main(int ac, char **av, char **env)
 	t_fds	fd;
 	t_cmds	cmd;
 
-	if (ac >= 5 && env && env[0])
+	if (ac >= 5 && checkenv(env) == 0)
 	{
 		initthings(&cmd, ac, &fd);
 		while (cmd.i < ac - 3)
@@ -92,14 +105,8 @@ int	main(int ac, char **av, char **env)
 			cmd.avindex++;
 			cmd.p++;
 		}
-		waitpid(cmd.id1, NULL, 0);
-		// ft_printf("closealldamain\n");
+		sleepy(&cmd);
 		closeall(&fd, &cmd);
 		freefree(&cmd, &fd);
 	}
 }
-
-// ft_printf("0: %d\n", fd.fd[2 * cmd.p]);
-// ft_printf("1: %d\n", fd.fd[2 * cmd.p + 1]);
-
-//	valgrind --track-fds=yes --trace-children=yes ./pipex in cat ls outfile

@@ -6,7 +6,7 @@
 /*   By: dinda-si <dinda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 11:21:42 by dinda-si          #+#    #+#             */
-/*   Updated: 2024/05/28 14:42:25 by dinda-si         ###   ########.fr       */
+/*   Updated: 2024/05/29 16:27:09 by dinda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,5 +49,6 @@ void	lastcmd(t_cmds *cmd, t_fds *fd, char **env, char **av);
 void	freefree(t_cmds *cmd, t_fds *fd);
 void	freepaths(char **paths, int i);
 void	closeall(t_fds *fd, t_cmds *cmd);
+void	sleepy(t_cmds *cmd);
 
 #endif

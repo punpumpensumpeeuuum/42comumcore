@@ -6,7 +6,7 @@
 /*   By: dinda-si <dinda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 23:11:26 by dinda-si          #+#    #+#             */
-/*   Updated: 2024/05/28 14:36:56 by dinda-si         ###   ########.fr       */
+/*   Updated: 2024/05/29 15:40:07 by dinda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,6 @@ int	piping(t_cmds *cmd, t_fds *fd, char **env, char **av)
 	{
 		lastcmd(cmd, fd, env, av);
 		close(fd->fdfile[1]);
-		// close(fd->fd[cmd->p - 1]);
 		if (cmd->id3 == 0)
 			return (3);
 	}
@@ -73,8 +72,6 @@ int	piping(t_cmds *cmd, t_fds *fd, char **env, char **av)
 void	firstcmd(t_cmds *cmd, t_fds *fd, char **env, char **av)
 {
 	fd->fdfile[0] = open(av[1], O_RDONLY);
-	// if (fd->fdfile[0] == -1)
-	// 	return ;
 	cmd->id1 = fork();
 	if (cmd->id1 != 0)
 		return ;
@@ -83,12 +80,9 @@ void	firstcmd(t_cmds *cmd, t_fds *fd, char **env, char **av)
 		dup2(fd->fdfile[0], 0);
 		dup2(fd->fd[cmd->p + 1], 1);
 		closeall(fd, cmd);
-		// close(fd->fdfile[0]);
 		execve(cmd->pathstodos[cmd->i], cmd->flagtodos[cmd->i], env);
 		exit(1);
 	}
-	// close(fd->fdfile[0]);
-	// close(fd->fd[cmd->p + 1]);
 }
 
 void	midcmd(t_cmds *cmd, t_fds *fd, char **env)
@@ -101,13 +95,9 @@ void	midcmd(t_cmds *cmd, t_fds *fd, char **env)
 		dup2(fd->fd[2 * (cmd->p - 1)], 0);
 		dup2(fd->fd[2 * cmd->p + 1], 1);
 		closeall(fd, cmd);
-		// close(fd->fd[2 * (cmd->p - 1) + 1]);
-		// close(fd->fd[2 * cmd->p + 1]);
 		execve(cmd->pathstodos[cmd->i], cmd->flagtodos[cmd->i], env);
 		exit(2);
 	}
-	// close(fd->fd[2 * (cmd->p - 1)]);
-	// close(fd->fd[2 * cmd->p + 1] + 1);
 }
 
 void	lastcmd(t_cmds *cmd, t_fds *fd, char **env, char **av)
@@ -122,13 +112,8 @@ void	lastcmd(t_cmds *cmd, t_fds *fd, char **env, char **av)
 	{
 		dup2(fd->fdfile[1], 1);
 		dup2(fd->fd[2 * (cmd->p - 1)], 0);
-		// close(fd->fd[2 * (cmd->p - 1)]);
-		// close(fd->fd[2 * (cmd->p - 1) + 1]);
 		closeall(fd, cmd);
-		// close(fd->fdfile[1]);
 		execve(cmd->pathstodos[cmd->i], cmd->flagtodos[cmd->i], env);
 		exit(3);
 	}
-	// close(fd->fdfile[1]);
-	// close(fd->fd[2 * (cmd->p - 1)]);
 }
